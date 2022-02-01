@@ -18,6 +18,7 @@ const checkAuthStatus = require("./middlewares/check-auth");
 // Route Imports
 const authRoutes = require("./routes/auth.routes");
 const baseRoutes = require("./routes/base.routes");
+const usersRoutes = require("./routes/users.routes");
 // const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
@@ -42,6 +43,7 @@ app.use(checkAuthStatus);
 // Routes
 app.use(baseRoutes);
 app.use(authRoutes);
+app.use(usersRoutes);
 // app.use("/admin", adminRoutes);
 
 // Error Handling Middleware
