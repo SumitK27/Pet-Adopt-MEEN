@@ -14,6 +14,7 @@ const db = require("./data/database");
 const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const checkAuthStatus = require("./middlewares/check-auth");
+const pageNotFoundMiddleware = require("./middlewares/page-not-found-handler");
 
 // Route Imports
 const authRoutes = require("./routes/auth.routes");
@@ -48,6 +49,7 @@ app.use(usersRoutes);
 
 // Error Handling Middleware
 app.use(errorHandlerMiddleware);
+app.use(pageNotFoundMiddleware);
 
 db.connectToDatabase()
     .then(function () {
