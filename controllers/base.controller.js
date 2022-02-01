@@ -9,6 +9,14 @@ function getAbout(req, res) {
     res.render("shared/about");
 }
 
+function getSearch(req, res) {
+    res.render("users/search");
+}
+
+function getDetails(req, res) {
+    res.render("users/pet-details");
+}
+
 function getContact(req, res) {
     let sessionData = sessionFlash.getSessionData(req);
 
@@ -60,4 +68,6 @@ module.exports = {
     getAbout,
     getContact,
     postContact,
+    getSearch,
+    getDetails,
 };
