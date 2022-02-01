@@ -1,29 +1,59 @@
 require("dotenv").config();
 const PORT = process.env.PORT || 3000;
+const path = require("path");
 
-// Third-party Imports
 const express = require("express");
-const cors = require("cors");
+const csrf = require("csurf");
+const expressSession = require("express-session");
+
+// Config Imports
+const createSessionConfig = require("./config/session");
+const db = require("./data/database");
+
+// Middleware Imports
+const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
+const errorHandlerMiddleware = require("./middlewares/error-handler");
+const checkAuthStatus = require("./middlewares/check-auth");
+
+// Route Imports
+const authRoutes = require("./routes/auth.routes");
+const baseRoutes = require("./routes/base.routes");
+// const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
-const corsOption = {
-    origin: "http://localhost:3000",
-};
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", path.join(__dirname, "views"));
 
-// Middlewares
-app.use(cors(corsOption));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
+
+// Session
+const sessionConfig = createSessionConfig();
+app.use(expressSession(sessionConfig));
+
+// Generate and check for incoming tokens
+app.use(csrf());
+
+// Distribute token to all routes and views
+app.use(addCsrfTokenMiddleware);
+app.use(checkAuthStatus);
 
 // Routes
-const baseRoute = require("./routes/base.route");
+app.use(baseRoutes);
+app.use(authRoutes);
+// app.use("/admin", adminRoutes);
 
-app.use("/", baseRoute);
+// Error Handling Middleware
+app.use(errorHandlerMiddleware);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+db.connectToDatabase()
+    .then(function () {
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    })
+    .catch(function (error) {
+        console.log("Failed to connect to the database!");
+        console.log(error);
+    });
