@@ -1,4 +1,5 @@
 const Contact = require("../models/contact.model");
+const sessionFlash = require("../util/session-flash");
 
 function getHome(req, res) {
     res.render("shared/index");
@@ -9,7 +10,17 @@ function getAbout(req, res) {
 }
 
 function getContact(req, res) {
-    res.render("shared/contact");
+    let sessionData = sessionFlash.getSessionData(req);
+
+    if (!sessionData) {
+        sessionData = {
+            name: "",
+            email: "",
+            message: "",
+        };
+    }
+
+    res.render("shared/contact", { inputData: sessionData });
 }
 
 async function postContact(req, res) {
@@ -17,7 +28,12 @@ async function postContact(req, res) {
 
     if (!name || !email || !message) {
         res.render("shared/contact", {
-            errorMessage: "All fields are required!",
+            inputData: {
+                errorMessage: "All fields are required!",
+                name,
+                email,
+                message,
+            },
         });
         return;
     }
@@ -29,7 +45,12 @@ async function postContact(req, res) {
         res.redirect("/");
     } catch (error) {
         res.render("shared/contact", {
-            errorMessage: "Something went wrong!",
+            inputData: {
+                errorMessage: "Something went wrong!",
+                name,
+                email,
+                message,
+            },
         });
     }
 }
