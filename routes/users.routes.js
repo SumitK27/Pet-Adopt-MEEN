@@ -6,4 +6,6 @@ router.get("/dashboard", userController.getDashboard);
 
 router.get("/profile", userController.getMyProfile);
 
+router.post("/profile", userController.updateProfile);
+
 module.exports = router;

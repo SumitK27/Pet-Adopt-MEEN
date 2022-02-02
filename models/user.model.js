@@ -3,28 +3,12 @@ const { ObjectId } = require("mongodb");
 const db = require("../data/database");
 
 class User {
-    constructor(
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        password,
-        street,
-        city,
-        country,
-        postal
-    ) {
+    constructor(firstName, lastName, email, phoneNumber, password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.address = {
-            street: street,
-            city: city,
-            country: country,
-            postalCode: postal,
-        };
     }
 
     getUserWithSameEmail() {
@@ -69,6 +53,99 @@ class User {
         }
 
         return user;
+    }
+
+    async updateUserDetails(
+        uid,
+        firstName,
+        middleName,
+        lastName,
+        email,
+        phoneNumber,
+        oldPassword,
+        password,
+        confirmPassword,
+        street,
+        city,
+        state,
+        country,
+        postal
+    ) {
+        const userId = ObjectId(uid);
+        const user = await db
+            .getDb()
+            .collection("users")
+            .findOne({ _id: userId });
+
+        if (!user) {
+            return null;
+        }
+
+        if (password && password !== confirmPassword) {
+            return {
+                error: "Passwords do not match",
+            };
+        }
+
+        if (oldPassword && !user.hasMatchingPassword(oldPassword)) {
+            return {
+                error: "Old password is incorrect",
+            };
+        }
+
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 12);
+            await db
+                .getDb()
+                .collection("users")
+                .updateOne(
+                    { _id: userId },
+                    {
+                        $set: {
+                            firstName,
+                            middleName,
+                            lastName,
+                            email,
+                            phoneNumber,
+                            password: hashedPassword,
+                            address: {
+                                street,
+                                city,
+                                state,
+                                country,
+                                postalCode: postal,
+                            },
+                        },
+                    }
+                );
+        } else {
+            await db
+                .getDb()
+                .collection("users")
+                .updateOne(
+                    { _id: userId },
+                    {
+                        $set: {
+                            firstName,
+                            middleName,
+                            lastName,
+                            email,
+                            phoneNumber,
+                            address: {
+                                street,
+                                city,
+                                state,
+                                country,
+                                postalCode: postal,
+                            },
+                        },
+                    }
+                );
+        }
+
+        return {
+            success: true,
+        };
     }
 }
 
