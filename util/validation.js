@@ -18,11 +18,7 @@ function userDetailsAreValid(
     lastName,
     email,
     phoneNumber,
-    password,
-    street,
-    city,
-    country,
-    postal
+    password
 ) {
     return (
         userCredentialsAreValid(email, password, phoneNumber) &&
