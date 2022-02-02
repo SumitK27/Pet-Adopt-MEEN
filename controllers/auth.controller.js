@@ -14,10 +14,6 @@ function getSignup(req, res) {
             phoneNumber: "",
             password: "",
             confirmPassword: "",
-            street: "",
-            city: "",
-            country: "",
-            postal: "",
         };
     }
 
@@ -32,10 +28,6 @@ async function signup(req, res, next) {
         phoneNumber,
         password,
         confirmPassword,
-        street,
-        city,
-        country,
-        postal,
     } = req.body;
     const enteredData = {
         firstName,
@@ -44,10 +36,6 @@ async function signup(req, res, next) {
         phoneNumber,
         password,
         confirmPassword,
-        street,
-        city,
-        country,
-        postal,
     };
 
     // Validation
@@ -57,11 +45,7 @@ async function signup(req, res, next) {
             lastName,
             email,
             phoneNumber,
-            password,
-            street,
-            city,
-            country,
-            postal
+            password
         )
     ) {
         sessionFlash.flashDataToSession(
@@ -91,17 +75,7 @@ async function signup(req, res, next) {
         return;
     }
 
-    const user = new User(
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        password,
-        street,
-        city,
-        country,
-        postal
-    );
+    const user = new User(firstName, lastName, email, phoneNumber, password);
 
     // Error Handling
     try {
