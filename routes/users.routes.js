@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const userController = require("../controllers/user.controller");
 
-router.get("/dashboard", (req, res) => {
-    if (res.locals.isAdmin) {
-        res.render("admin/dashboard");
-    } else {
-        res.render("users/dashboard");
-    }
-});
+router.get("/dashboard", userController.getDashboard);
+
+router.get("/profile", userController.getMyProfile);
 
 module.exports = router;
