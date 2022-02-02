@@ -15,6 +15,7 @@ const addCsrfTokenMiddleware = require("./middlewares/csrf-token");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const checkAuthStatus = require("./middlewares/check-auth");
 const pageNotFoundMiddleware = require("./middlewares/page-not-found-handler");
+const urlPathMiddleware = require("./middlewares/url-path");
 
 // Route Imports
 const authRoutes = require("./routes/auth.routes");
@@ -40,6 +41,7 @@ app.use(csrf());
 // Distribute token to all routes and views
 app.use(addCsrfTokenMiddleware);
 app.use(checkAuthStatus);
+app.use(urlPathMiddleware);
 
 // Routes
 app.use(baseRoutes);
