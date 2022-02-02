@@ -1,0 +1,67 @@
+<div class="bg-white h-full border-transparent rounded-lg shadow-lg">
+    <nav class="p-3">
+       <ul>
+          <!-- Admin -->
+           <% if(locals.isAdmin) { %>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/dashboard" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="home"></i>
+                 <span class="align-middle">Dashboard</span>
+                 </a>
+              </li>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/users" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="users"></i>
+                 <span class="align-middle">Users</span>
+                 </a>
+              </li>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/pets" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="heart"></i>
+                 <span class="align-middle">Pets</span>
+                 </a>
+              </li>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/adoptions" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="file-text"></i>
+                 <span class="align-middle">Adoptions</span>
+                 </a>
+              </li>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/messages" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="message-square"></i>
+                 <span class="align-middle">Messages</span>
+                 </a>
+              </li>
+              <li class="border border-black rounded py-4 px-2 my-2">
+                 <a href="/settings" class="sidebar-nav-link">
+                 <i class="align-middle" data-feather="settings"></i>
+                 <span class="align-middle">Settings</span>
+                 </a>
+              </li>
+           <% } %> 
+
+           <!-- User -->
+           <% if(!locals.isAdmin) { %> 
+          <li class="border border-black rounded py-4 px-2 my-2">
+             <a href="/profile" class="sidebar-nav-link">
+             <i class="align-middle" data-feather="home"></i>
+             <span class="align-middle">Edit Profile</span>
+             </a>
+          </li>
+          <li class="border border-black rounded py-4 px-2 my-2">
+             <a href="/pet-profile" class="sidebar-nav-link">
+             <i class="align-middle" data-feather="home"></i>
+             <span class="align-middle">Pet Profiles</span>
+             </a>
+          </li>
+          <li class="border border-black rounded py-4 px-2 my-2">
+             <a href="/applications class="sidebar-nav-link">
+             <i class="align-middle" data-feather="home"></i>
+             <span class="align-middle">Applications</span>
+             </a>
+          </li>
+          <% } %> 
+       </ul>
+    </nav>
+ </div>
