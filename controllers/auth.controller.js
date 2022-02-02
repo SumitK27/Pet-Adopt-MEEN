@@ -21,7 +21,7 @@ function getSignup(req, res) {
         };
     }
 
-    res.render("shared/signup", { inputData: sessionData });
+    res.render("auth/signup", { inputData: sessionData });
 }
 
 async function signup(req, res, next) {
@@ -140,7 +140,7 @@ function getLogin(req, res, next) {
         };
     }
 
-    res.render("shared/login", { inputData: sessionData });
+    res.render("auth/login", { inputData: sessionData });
 }
 
 async function login(req, res) {
