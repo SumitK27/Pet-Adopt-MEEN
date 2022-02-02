@@ -1,109 +1,132 @@
-<%- include("../includes/head") %> 
-<%- include("../includes/navbar") %> 
-<title>Adopt Me - Login</title>
-</head>
-<body class="bg-slate-200">
-    <!-- Sign in -->
-    <main class="flex items-center min-h-screen bg-gray-50">
-        <div
-            class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl md:mx-4 lg:mx-auto"
-        >
-            <div class="flex flex-col lg:flex-row">
-                <div class="h-32 md:h-60 lg:h-auto md:w-full lg:w-1/2">
-                    <img
-                        class="object-cover w-full h-full"
-                        src="https://placedog.net/640/480?random"
-                        alt="img"
-                    />
-                </div>
-                <form
-                    method="POST"
-                    action="/login"
-                    class="flex items-center justify-center p-6 sm:p-12 lg:w-1/2"
-                >
-                    <div class="w-full">
-                        <div class="flex justify-center">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-20 h-20 text-blue-600"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                                <path
-                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-                                />
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="{2}"
-                                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                                />
-                            </svg>
-                        </div>
-                        <h1
-                            class="mb-4 text-2xl font-bold text-center text-gray-700"
-                        >
-                            Sign up
-                        </h1>
-                        <% if(inputData.errorMessage) { %>
-                            <div class="bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
-                                <div class="flex">
-                                  <div class="py-1"><svg class="fill-current h-6 w-6 text-red-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-                                  <div>
-                                    <p class="font-bold">Error Submitting Data</p>
-                                    <p class="text-sm"><%= inputData.errorMessage %></p>
-                                  </div>
-                                </div>
-                              </div>                            
-                        <% } %> 
-                        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
-                        <div class="mt-4">
-                            <label class="block text-sm">Email</label>
-                            <input
-                                type="email"
-                                name="email"
-                                value="<%= inputData.email %>"
-                                class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                placeholder="Email Address"
-                            />
-                        </div>
-                        <div>
-                            <label class="block mt-4 text-sm">
-                                Password
-                            </label>
-                            <input
-                                name="password"
-                                value="<%= inputData.password %>"
-                                class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                placeholder="Password"
-                                type="password"
-                            />
-                        </div>
-                        <button
-                            class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
-                            href="#"
-                        >
-                            Sign up
-                        </button>
-                        <div class="mt-4 text-center">
-                            <p class="text-sm">
-                                Don't have an account yet?
-                                <a
-                                    href="/signup"
-                                    class="text-blue-600 hover:underline"
-                                >
-                                    Sign up.
-                                </a>
-                            </p>
-                        </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("../includes/head") %> <%- include("../includes/navbar") %>
+        <title>Adopt Me - Login</title>
+    </head>
+    <body class="bg-slate-200">
+        <!-- Sign in -->
+        <main class="flex items-center min-h-screen bg-gray-50">
+            <div
+                class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl md:mx-4 lg:mx-auto"
+            >
+                <div class="flex flex-col lg:flex-row">
+                    <div class="h-32 md:h-60 lg:h-auto md:w-full lg:w-1/2">
+                        <img
+                            class="object-cover w-full h-full"
+                            src="https://placedog.net/640/480?random"
+                            alt="img"
+                        />
                     </div>
-                </form>
+                    <form
+                        method="POST"
+                        action="/login"
+                        class="flex items-center justify-center p-6 sm:p-12 lg:w-1/2"
+                    >
+                        <div class="w-full">
+                            <div class="flex justify-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-20 h-20 text-blue-600"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                                    <path
+                                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                                    />
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="{2}"
+                                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                                    />
+                                </svg>
+                            </div>
+                            <h1
+                                class="mb-4 text-2xl font-bold text-center text-gray-700"
+                            >
+                                Sign up
+                            </h1>
+                            <% if(inputData.errorMessage) { %>
+                            <div
+                                class="bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md"
+                                role="alert"
+                            >
+                                <div class="flex">
+                                    <div class="py-1">
+                                        <svg
+                                            class="fill-current h-6 w-6 text-red-500 mr-4"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path
+                                                d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">
+                                            Error Submitting Data
+                                        </p>
+                                        <p class="text-sm">
+                                            <%= inputData.errorMessage %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <input
+                                type="hidden"
+                                name="_csrf"
+                                value="<%= locals.csrfToken %>"
+                            />
+                            <div class="mt-4">
+                                <label class="block text-sm">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    value="<%= inputData.email %>"
+                                    class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    placeholder="Email Address"
+                                />
+                            </div>
+                            <div>
+                                <label class="block mt-4 text-sm">
+                                    Password
+                                </label>
+                                <input
+                                    name="password"
+                                    value="<%= inputData.password %>"
+                                    class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    placeholder="Password"
+                                    type="password"
+                                />
+                            </div>
+                            <button
+                                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                                href="#"
+                            >
+                                Sign up
+                            </button>
+                            <div class="mt-4 text-center">
+                                <p class="text-sm">
+                                    Don't have an account yet?
+                                    <a
+                                        href="/signup"
+                                        class="text-blue-600 hover:underline"
+                                    >
+                                        Sign up.
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </main>
-    <!-- End Sign In -->
-    <%- include("../includes/footer") %> 
+        </main>
+        <!-- End Sign In -->
+        <%- include("../includes/footer") %>
     </body>
 </html>
