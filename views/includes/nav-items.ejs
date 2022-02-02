@@ -66,11 +66,13 @@
                     href="/profile"
                     >Profile</a
                 >
+                <% if (locals.isAdmin) { %>
                 <a
                     class="block px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-lg w-full lg:w-auto hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="/dashboard"
                     >Dashboard</a
                 >
+                <% } %>
                 <a
                     class="block px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                     href="/logout"
