@@ -3,25 +3,33 @@
     class="flex-col items-center flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row md:border-white"
 >
     <a
-        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        href="./about"
-        >About</a
+        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-md hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
+        href="/about"
     >
+        <i class="fas fa-address-card text-xl mr-2"></i>
+        About
+    </a>
     <a
-        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        href="./Find%Pets"
-        >Find Pets</a
+        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-md hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
+        href="/find"
     >
+        <i class="fas fa-dog text-xl mr-2"></i>
+        Find Pets
+    </a>
     <a
-        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        href="./blog"
-        >Blog</a
+        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-md hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
+        href="/blog"
     >
+        <i class="fas fa-newspaper text-xl mr-2"></i>
+        Blog
+    </a>
     <a
-        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        href="./contact"
-        >Contact</a
+        class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold bg-transparent rounded-md hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
+        href="/contact"
     >
+        <i class="fas fa-at text-xl mr-2"></i>
+        Contact
+    </a>
 
     <!-- Logged In -->
     <% if(locals.isAuth) { %>
@@ -32,21 +40,16 @@
     >
         <button
             @click="open = !open"
-            class="flex flex-row items-center w-full justify-center pl-4 pr-2 py-2 my-2 mx-1 text-sm font-semibold bg-transparent rounded-lg text-center hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+            class="flex flex-row items-center w-full pl-4 pr-2 py-2 my-2 mx-1 text-sm font-semibold bg-transparent rounded-md text-center hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
         >
-            <span>Account</span>
-            <svg
-                fill="currentColor"
-                viewBox="0 0 20 20"
+            <span>
+                <i class="fas fa-user-circle text-xl mr-2"></i>
+            </span>
+            <i
                 :class="{'rotate-180': open, 'rotate-0': !open}"
-                class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+                class="fas fa-chevron-up inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
             >
-                <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                ></path>
-            </svg>
+            </i>
         </button>
         <div
             x-show="open"
@@ -56,25 +59,25 @@
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="absolute text-black right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
+            class="absolute text-black right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48 z-20"
         >
             <div
                 class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800"
             >
                 <a
-                    class="block px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-lg w-full lg:w-auto hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    class="px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-md w-full lg:w-auto hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
                     href="/profile"
                     >Profile</a
                 >
                 <% if (locals.isAdmin) { %>
                 <a
-                    class="block px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-lg w-full lg:w-auto hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    class="px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-md w-full lg:w-auto hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
                     href="/dashboard"
                     >Dashboard</a
                 >
                 <% } %>
                 <a
-                    class="block px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    class="px-4 py-2 my-2 text-sm font-semibold bg-transparent rounded-md hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline flex items-center"
                     href="/logout"
                     >Logout</a
                 >
@@ -87,12 +90,12 @@
     <% if(!locals.isAuth) { %>
     <div class="flex flex-col md:flex-row w-full lg:w-auto gap-2">
         <a
-            class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold text-indigo-600 bg-gray-200 rounded-lg md:ml-4 hover:text-gray-900 focus:text-gray-900 focus:outline-none focus:shadow-outline"
+            class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold text-indigo-600 bg-gray-200 rounded-md md:ml-4 hover:text-gray-900 focus:text-gray-900 focus:outline-none focus:shadow-outline flex items-center"
             href="/login"
             >Login</a
         >
         <a
-            class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold text-indigo-600 bg-gray-200 rounded-lg md:ml-4 hover:text-gray-900 focus:text-gray-900 focus:outline-none focus:shadow-outline"
+            class="px-4 py-2 my-2 text-center w-full lg:w-auto text-sm font-semibold text-indigo-600 bg-gray-200 rounded-md md:ml-4 hover:text-gray-900 focus:text-gray-900 focus:outline-none focus:shadow-outline flex items-center"
             href="/signup"
             >SignUp</a
         >
