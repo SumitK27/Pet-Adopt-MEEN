@@ -14,6 +14,16 @@ class Contact {
             message: this.message,
         });
     }
+
+    async getAll() {
+        const messages = await db
+            .getDb()
+            .collection("contacts")
+            .find({})
+            .toArray();
+
+        return messages;
+    }
 }
 
 module.exports = Contact;

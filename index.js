@@ -21,7 +21,7 @@ const urlPathMiddleware = require("./middlewares/url-path");
 const authRoutes = require("./routes/auth.routes");
 const baseRoutes = require("./routes/base.routes");
 const usersRoutes = require("./routes/users.routes");
-// const adminRoutes = require("./routes/admin.routes");
+const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 
@@ -47,7 +47,7 @@ app.use(urlPathMiddleware);
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(usersRoutes);
-// app.use("/admin", adminRoutes);
+app.use(adminRoutes);
 
 // Error Handling Middleware
 app.use(errorHandlerMiddleware);
