@@ -1,4 +1,5 @@
 const Contact = require("../models/contact.model");
+const User = require("../models/user.model");
 
 async function getAllMessages(req, res) {
     if (!res.locals.isAuth) {
@@ -86,8 +87,38 @@ async function deleteMessage(req, res) {
     res.redirect("/messages");
 }
 
+async function getAllUsers(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("shared/401");
+        return;
+    }
+
+    let users;
+    try {
+        const user = new User();
+        users = await user.getAllUsers();
+    } catch (error) {
+        console.log(error);
+        res.render("shared/500");
+        return;
+    }
+
+    res.render("admin/users", { users });
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
     deleteMessage,
+    getAllUsers,
 };

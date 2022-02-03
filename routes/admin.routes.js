@@ -7,4 +7,6 @@ router.get("/messages", AdminController.getAllMessages);
 router.get("/message/:id", AdminController.getMessage);
 router.get("/message/delete/:id", AdminController.deleteMessage);
 
+router.get("/users", AdminController.getAllUsers);
+
 module.exports = router;

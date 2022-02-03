@@ -147,6 +147,12 @@ class User {
             success: true,
         };
     }
+
+    async getAllUsers() {
+        const users = await db.getDb().collection("users").find({}).toArray();
+
+        return users;
+    }
 }
 
 module.exports = User;
