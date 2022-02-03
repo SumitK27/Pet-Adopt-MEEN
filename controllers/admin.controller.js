@@ -1,6 +1,6 @@
 const Contact = require("../models/contact.model");
 
-async function getMessages(req, res) {
+async function getAllMessages(req, res) {
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -87,7 +87,7 @@ async function deleteMessage(req, res) {
 }
 
 module.exports = {
-    getMessages,
+    getAllMessages,
     getMessage,
     deleteMessage,
 };
