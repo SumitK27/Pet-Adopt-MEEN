@@ -116,9 +116,103 @@ async function getAllUsers(req, res) {
     res.render("admin/users", { users });
 }
 
+async function getUserDetails(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("shared/401");
+        return;
+    }
+
+    let userData;
+    try {
+        const userId = req.params.id;
+        const user = new User();
+        userData = await user.getUserDetails(userId);
+    } catch (error) {
+        console.log(error);
+        res.render("shared/500");
+        return;
+    }
+
+    res.render("admin/user", { userData });
+}
+
+async function updateUserDetails(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("shared/401");
+        return;
+    }
+
+    let userData;
+    try {
+        const userId = req.params.id;
+        const user = new User();
+        userData = await user.getUserDetails(userId);
+
+        const {
+            firstName,
+            middleName,
+            lastName,
+            email,
+            phoneNumber,
+            oldPassword,
+            password,
+            confirmPassword,
+            street,
+            city,
+            state,
+            country,
+            postalCode,
+        } = req.body;
+
+        await user.updateUserDetails(
+            userId,
+            firstName,
+            middleName,
+            lastName,
+            email,
+            phoneNumber,
+            oldPassword,
+            password,
+            confirmPassword,
+            street,
+            city,
+            state,
+            country,
+            postalCode
+        );
+    } catch (error) {
+        console.log(error);
+        res.render("shared/500");
+        return;
+    }
+    res.redirect("/users");
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
     deleteMessage,
     getAllUsers,
+    getUserDetails,
+    updateUserDetails,
 };
