@@ -12,8 +12,7 @@ async function getMessages(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.redirect("/");
-        console.log("unauthorize");
+        res.render("shared/401");
         return;
     }
 

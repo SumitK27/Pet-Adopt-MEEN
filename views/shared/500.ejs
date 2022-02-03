@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <%- include("../includes/head", { pageTitle: "An Error Occurred" }) %>
+        <meta http-equiv="refresh" content="3;url=/" />
     </head>
     <body>
         <%- include("../includes/navbar") %>
@@ -22,6 +23,10 @@
 
                         <p class="mb-8 text-center text-gray-500 md:text-lg">
                             Something happened on our side.
+                        </p>
+
+                        <p class="mb-6">
+                            Redirecting back to Home in 5 seconds
                         </p>
 
                         <a
