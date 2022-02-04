@@ -10,5 +10,6 @@ router.post("/profile", userController.updateProfile);
 router.get("/pet-profile", petController.getPetProfiles);
 router.get("/pet-profile/add", petController.getPetAdd);
 router.post("/pet-profile/add", petController.addPet);
+router.get("/pet-profile/delete/:id", petController.deletePet);
 
 module.exports = router;

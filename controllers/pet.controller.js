@@ -104,8 +104,35 @@ async function addPet(req, res) {
     res.redirect("/pets");
 }
 
+async function deletePet(req, res) {
+    const petId = req.params.id;
+
+    const pet = new Pet();
+    const petData = await pet.getPetById(petId);
+
+    if (!petData) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    if (petData.uid !== res.locals.uid && !res.locals.isAdmin) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    pet.deletePet(petId);
+
+    if (!res.locals.isAdmin) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    res.redirect("/pets");
+}
+
 module.exports = {
     getPetProfiles,
     getPetAdd,
     addPet,
+    deletePet,
 };

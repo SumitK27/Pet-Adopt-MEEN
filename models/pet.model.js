@@ -50,6 +50,13 @@ class Pets {
     addPet(pet) {
         return db.getDb().collection("pets").insertOne(pet);
     }
+
+    deletePet(pid) {
+        return db
+            .getDb()
+            .collection("pets")
+            .deleteOne({ _id: ObjectId(pid) });
+    }
 }
 
 module.exports = Pets;
