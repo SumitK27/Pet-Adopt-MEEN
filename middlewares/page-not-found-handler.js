@@ -3,7 +3,7 @@ function handlePageNotFound(req, res, next) {
 
     // respond with html page
     if (req.accepts("html")) {
-        res.render("shared/404", { url: req.url });
+        res.render("error/404", { url: req.url });
         return;
     }
 

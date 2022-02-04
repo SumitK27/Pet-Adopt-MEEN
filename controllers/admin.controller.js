@@ -13,7 +13,7 @@ async function getAllMessages(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -23,7 +23,7 @@ async function getAllMessages(req, res) {
         messages = await contact.getAll();
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
 
@@ -42,7 +42,7 @@ async function getMessage(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -52,7 +52,7 @@ async function getMessage(req, res) {
         message = await contact.getById(req.params.id);
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
 
@@ -71,7 +71,7 @@ async function deleteMessage(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -80,7 +80,7 @@ async function deleteMessage(req, res) {
         await contact.delete(req.params.id);
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
 
@@ -99,7 +99,7 @@ async function getAllUsers(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -109,7 +109,7 @@ async function getAllUsers(req, res) {
         users = await user.getAllUsers();
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
 
@@ -128,7 +128,7 @@ async function getUserDetails(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -139,7 +139,7 @@ async function getUserDetails(req, res) {
         userData = await user.getUserDetails(userId);
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
 
@@ -158,7 +158,7 @@ async function updateUserDetails(req, res) {
     }
 
     if (!res.locals.isAdmin) {
-        res.render("shared/401");
+        res.render("error/401");
         return;
     }
 
@@ -202,7 +202,7 @@ async function updateUserDetails(req, res) {
         );
     } catch (error) {
         console.log(error);
-        res.render("shared/500");
+        res.render("error/500");
         return;
     }
     res.redirect("/users");
