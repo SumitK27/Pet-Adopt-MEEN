@@ -190,10 +190,6 @@ async function updateUserDetails(req, res) {
             image = uploadedImage.path;
         }
 
-        console.log(uploadedImage);
-        console.log(image);
-        console.log(req.body);
-
         await user.updateUserDetails(
             userId,
             firstName,
