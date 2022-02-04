@@ -25,7 +25,8 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [x] Profile Update
         -   [ ] Delete Profile
     -   [-] Pet Profile
-        -   [ ] Create Profile
+        -   [x] Create Profile
+        -   [x] View All Profile Created by User
         -   [ ] View Profile
     -   [ ] Applications
         -   [ ] Send Application

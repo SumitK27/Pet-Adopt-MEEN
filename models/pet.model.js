@@ -46,6 +46,10 @@ class Pets {
             .collection("pets")
             .findOne({ _id: ObjectId(pid) });
     }
+
+    addPet(pet) {
+        return db.getDb().collection("pets").insertOne(pet);
+    }
 }
 
 module.exports = Pets;
