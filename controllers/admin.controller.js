@@ -181,7 +181,7 @@ async function updateUserDetails(req, res) {
             city,
             state,
             country,
-            postalCode,
+            postal,
         } = req.body;
 
         await user.updateUserDetails(
@@ -198,7 +198,7 @@ async function updateUserDetails(req, res) {
             city,
             state,
             country,
-            postalCode
+            postal
         );
     } catch (error) {
         console.log(error);
