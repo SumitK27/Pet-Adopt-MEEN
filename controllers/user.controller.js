@@ -52,8 +52,6 @@ async function updateProfile(req, res) {
         postal,
     } = req.body;
 
-    console.log(req.body);
-
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -106,8 +104,8 @@ async function updateProfile(req, res) {
 
         res.redirect("/profile");
         return;
-    } catch (e) {
-        console.log(e);
+    } catch (error) {
+        console.log(error);
         return;
     }
 }
