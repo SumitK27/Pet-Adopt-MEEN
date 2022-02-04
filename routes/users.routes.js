@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+
 const userController = require("../controllers/user.controller");
 const petController = require("../controllers/pet.controller");
 
@@ -19,7 +20,7 @@ const upload = multer({
 
 router.get("/dashboard", userController.getDashboard);
 router.get("/profile", userController.getMyProfile);
-router.post("/profile", userController.updateProfile);
+router.post("/profile", upload.single("images"), userController.updateProfile);
 
 router.get("/pet-profile", petController.getPetProfiles);
 router.get("/pet-profile/add", petController.getPetAdd);

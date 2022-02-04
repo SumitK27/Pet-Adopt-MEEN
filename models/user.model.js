@@ -60,6 +60,7 @@ class User {
         firstName,
         middleName,
         lastName,
+        dob,
         email,
         phoneNumber,
         oldPassword,
@@ -69,7 +70,8 @@ class User {
         city,
         state,
         country,
-        postal
+        postal,
+        image
     ) {
         const userId = ObjectId(uid);
         const user = await db
@@ -105,6 +107,7 @@ class User {
                             firstName,
                             middleName,
                             lastName,
+                            dob,
                             email,
                             phoneNumber,
                             password: hashedPassword,
@@ -119,6 +122,31 @@ class User {
                     }
                 );
         } else {
+            if (!image) {
+                await db
+                    .getDb()
+                    .collection("users")
+                    .updateOne(
+                        { _id: userId },
+                        {
+                            $set: {
+                                firstName,
+                                middleName,
+                                lastName,
+                                dob,
+                                email,
+                                phoneNumber,
+                                address: {
+                                    street,
+                                    city,
+                                    state,
+                                    country,
+                                    postalCode: postal,
+                                },
+                            },
+                        }
+                    );
+            }
             await db
                 .getDb()
                 .collection("users")
@@ -129,6 +157,7 @@ class User {
                             firstName,
                             middleName,
                             lastName,
+                            dob,
                             email,
                             phoneNumber,
                             address: {
@@ -138,6 +167,7 @@ class User {
                                 country,
                                 postalCode: postal,
                             },
+                            image,
                         },
                     }
                 );

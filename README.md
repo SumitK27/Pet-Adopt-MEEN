@@ -67,7 +67,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 
 ## **TODO**
 
--   [ ] Allow user to enter Date of Birth.
+-   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
 -   [ ] Allow admin to change user's password.
 -   [ ] User Profile Deletion from user's side

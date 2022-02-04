@@ -26,13 +26,11 @@
                             </h5>
                         </div>
                         <div class="p-6">
-                            <form action="/profile" method="POST">
-                                <input
-                                    type="hidden"
-                                    name="_csrf"
-                                    value="<%= locals.csrfToken %>"
-                                />
-
+                            <form
+                                action="/profile?_csrf=<%= locals.csrfToken %>"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
                                 <!-- User Info Section -->
                                 <section class="flex flex-row flex-wrap">
                                     <!-- First Name -->
@@ -329,6 +327,11 @@
                                 </section>
                                 <!-- End Address Section -->
 
+                                <!-- Image Uploader -->
+                                <%- include("../includes/imageUploader", {
+                                multiple: false }) %>
+                                <!-- End Image Uploader -->
+
                                 <!-- Save Button Section -->
                                 <div class="flex items-center justify-between">
                                     <button
@@ -347,5 +350,7 @@
             </div>
         </div>
         <%- include("../includes/footer") %>
+        <script src="https://unpkg.com/create-file-list"></script>
+        <script src="/scripts/imagePreview.js"></script>
     </body>
 </html>

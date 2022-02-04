@@ -22,7 +22,7 @@
                             class="bg-blue-700 border-b-2 border-gray-400 rounded-tl-lg rounded-tr-lg p-2"
                         >
                             <h5 class="font-bold uppercase text-white">
-                                Your Profile
+                                User Profile - <%= userData.firstName %>
                             </h5>
                         </div>
                         <div class="p-6">
@@ -276,6 +276,12 @@
                                         />
                                     </div>
                                 </section>
+
+                                <!-- Image Uploader -->
+                                <%- include("../includes/imageUploader", {
+                                multiple: false }) %>
+                                <!-- End Image Uploader -->
+
                                 <div class="flex items-center justify-between">
                                     <button
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -292,5 +298,7 @@
             </div>
         </div>
         <%- include("../includes/footer") %>
+        <script src="https://unpkg.com/create-file-list"></script>
+        <script src="/scripts/imagePreview.js"></script>
     </body>
 </html>

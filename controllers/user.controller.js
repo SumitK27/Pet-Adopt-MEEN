@@ -40,6 +40,7 @@ async function updateProfile(req, res) {
         firstName,
         middleName,
         lastName,
+        dob,
         email,
         phoneNumber,
         oldPassword,
@@ -51,6 +52,11 @@ async function updateProfile(req, res) {
         country,
         postal,
     } = req.body;
+    const uploadedImage = req.file;
+    let image = null;
+    if (uploadedImage) {
+        image = uploadedImage.path;
+    }
 
     if (!res.locals.isAuth) {
         res.redirect("/login");
@@ -90,6 +96,7 @@ async function updateProfile(req, res) {
             firstName,
             middleName,
             lastName,
+            dob,
             email,
             phoneNumber,
             oldPassword,
@@ -99,7 +106,8 @@ async function updateProfile(req, res) {
             city,
             state,
             country,
-            postal
+            postal,
+            image || userData.image
         );
 
         res.redirect("/profile");

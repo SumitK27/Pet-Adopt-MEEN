@@ -172,6 +172,7 @@ async function updateUserDetails(req, res) {
             firstName,
             middleName,
             lastName,
+            dob,
             email,
             phoneNumber,
             oldPassword,
@@ -183,12 +184,22 @@ async function updateUserDetails(req, res) {
             country,
             postal,
         } = req.body;
+        const uploadedImage = req.file;
+        let image = null;
+        if (uploadedImage) {
+            image = uploadedImage.path;
+        }
+
+        console.log(uploadedImage);
+        console.log(image);
+        console.log(req.body);
 
         await user.updateUserDetails(
             userId,
             firstName,
             middleName,
             lastName,
+            dob,
             email,
             phoneNumber,
             oldPassword,
@@ -198,7 +209,8 @@ async function updateUserDetails(req, res) {
             city,
             state,
             country,
-            postal
+            postal,
+            image || userData.image
         );
     } catch (error) {
         console.log(error);
