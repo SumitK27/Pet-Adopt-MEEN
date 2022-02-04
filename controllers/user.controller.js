@@ -1,4 +1,6 @@
 const User = require("../models/user.model");
+const Pet = require("../models/pet.model");
+const authUtil = require("../util/authentication");
 
 function getDashboard(req, res) {
     if (res.locals.isAuth && res.locals.isAdmin) {
@@ -118,8 +120,41 @@ async function updateProfile(req, res) {
     }
 }
 
+async function deleteProfile(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    const user = new User();
+    const userData = await user.getUserDetails(res.locals.uid);
+
+    if (!userData) {
+        res.redirect("/login");
+    }
+
+    const pet = new Pet();
+    try {
+        await pet.deleteMyPets(res.locals.uid);
+        // TODO: Delete Applications
+        authUtil.destroyUserAuthSession(req);
+        await user.deleteUser(res.locals.uid);
+        return;
+    } catch (error) {
+        console.log(error);
+    }
+
+    res.redirect("/login");
+}
+
 module.exports = {
     getDashboard,
     getMyProfile,
     updateProfile,
+    deleteProfile,
 };

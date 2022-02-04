@@ -21,6 +21,7 @@ const upload = multer({
 router.get("/dashboard", userController.getDashboard);
 router.get("/profile", userController.getMyProfile);
 router.post("/profile", upload.single("images"), userController.updateProfile);
+router.get("/profile/delete", userController.deleteProfile);
 
 router.get("/pet-profile", petController.getPetProfiles);
 router.get("/pet-profile/add", petController.getPetAdd);

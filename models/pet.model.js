@@ -57,6 +57,33 @@ class Pets {
             .collection("pets")
             .deleteOne({ _id: ObjectId(pid) });
     }
+
+    updatePet(pid, pet) {
+        return db
+            .getDb()
+            .collection("pets")
+            .updateOne({ _id: ObjectId(pid) }, { $set: pet });
+    }
+
+    getAllPetsByType(type) {
+        return db.getDb().collection("pets").find({ type: type }).toArray();
+    }
+
+    getAllPetsByBreed(breed) {
+        return db.getDb().collection("pets").find({ breed: breed }).toArray();
+    }
+
+    deleteMyPets(uid) {
+        return db.getDb().collection("pets").deleteMany({ uid: uid });
+    }
+
+    getAllPetsByPrice(price) {
+        return db.getDb().collection("pets").find({ price: price }).toArray();
+    }
+
+    getAllPetsByGender(gender) {
+        return db.getDb().collection("pets").find({ gender: gender }).toArray();
+    }
 }
 
 module.exports = Pets;

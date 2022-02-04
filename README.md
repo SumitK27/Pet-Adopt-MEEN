@@ -19,15 +19,16 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [ ] Show Pet Profiles
     -   [ ] Recognize Animal Breed
 -   [-] User Side:
-    -   [-] User Profile
+    -   [x] User Profile
         -   [x] Sign up
         -   [x] Login
         -   [x] Profile Update
-        -   [ ] Delete Profile
+        -   [x] Delete Profile
     -   [-] Pet Profile
         -   [x] Create Profile
         -   [x] View All Profile Created by User
         -   [ ] View Profile
+        -   [ ] Update a Profile
         -   [x] Delete Profile
     -   [ ] Applications
         -   [ ] Send Application
@@ -39,11 +40,11 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [x] Check User Details
         -   [x] Update User Details
         -   [ ] Delete a User
-    -   [ ] Pets
+    -   [-] Pets
         -   [x] Show All Pet Profiles
         -   [ ] Check Pet Profile Details
         -   [ ] Update Pet Profile Details
-        -   [ ] Delete a Pet Profile
+        -   [x] Delete a Pet Profile
     -   [ ] Applications
         -   [ ] Show All Applications
         -   [ ] Show Approved Applications
@@ -70,5 +71,4 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 -   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
 -   [ ] Allow admin to change user's password.
--   [ ] User Profile Deletion from user's side
--   [ ] User Profile Deletion from admin's side
+-   [ ] User Profile Deletion from admin's side.

@@ -183,6 +183,35 @@ class User {
 
         return users;
     }
+
+    async deleteUser(uid) {
+        const userId = ObjectId(uid);
+        const user = await db
+            .getDb()
+            .collection("users")
+            .findOne({ _id: userId });
+
+        if (!user) {
+            return null;
+        }
+
+        try {
+            await db.getDb().collection("users").deleteOne({ _id: userId });
+        } catch (error) {
+            console.log(error);
+            return;
+        }
+
+        if (!res.locals.isAdmin) {
+            res.redirect("/");
+            return;
+        }
+
+        res.redirect("/users");
+        return {
+            success: true,
+        };
+    }
 }
 
 module.exports = User;
