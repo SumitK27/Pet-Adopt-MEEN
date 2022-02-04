@@ -15,6 +15,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 
 -   [x] Not Authenticated
     -   [x] Send Feedback
+    -   [ ] Show User Profiles
     -   [ ] Show Pet Profiles
     -   [ ] Recognize Animal Breed
 -   [-] User Side:
@@ -26,8 +27,10 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [-] Pet Profile
         -   [ ] Create Profile
         -   [ ] View Profile
+    -   [ ] Applications
         -   [ ] Send Application
         -   [ ] Check Application Status
+        -   [ ] Withdraw an Application
 -   [x] Admin Side:
     -   [-] Users
         -   [x] Show All Users
@@ -35,7 +38,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [x] Update User Details
         -   [ ] Delete a User
     -   [ ] Pets
-        -   [ ] Show All Pet Profiles
+        -   [x] Show All Pet Profiles
         -   [ ] Check Pet Profile Details
         -   [ ] Update Pet Profile Details
         -   [ ] Delete a Pet Profile
