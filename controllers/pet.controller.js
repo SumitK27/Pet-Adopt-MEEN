@@ -53,8 +53,8 @@ async function addPet(req, res) {
         characteristics,
         giveaway,
         price,
-        images,
     } = req.body;
+    const uploadedImages = req.files;
     const userId = res.locals.uid;
 
     const user = new User();
@@ -63,6 +63,11 @@ async function addPet(req, res) {
     if (!userData) {
         res.redirect("/login");
         return;
+    }
+
+    const images = [];
+    for (let image of uploadedImages) {
+        images.push(image.path);
     }
 
     const petData = {

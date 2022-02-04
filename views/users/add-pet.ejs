@@ -26,12 +26,11 @@
                             </h5>
                         </div>
                         <div class="p-6">
-                            <form action="/pet-profile/add" method="POST">
-                                <input
-                                    type="hidden"
-                                    name="_csrf"
-                                    value="<%= locals.csrfToken %>"
-                                />
+                            <form
+                                action="/pet-profile/add?_csrf=<%= locals.csrfToken %>"
+                                method="POST"
+                                enctype="multipart/form-data"
+                            >
                                 <section class="flex flex-row flex-wrap">
                                     <!-- Name -->
                                     <div
