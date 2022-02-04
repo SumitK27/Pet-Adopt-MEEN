@@ -83,13 +83,13 @@ class User {
 
         if (password && password !== confirmPassword) {
             return {
-                error: "Passwords do not match",
+                errorMessage: "Passwords do not match",
             };
         }
 
         if (oldPassword && !user.hasMatchingPassword(oldPassword)) {
             return {
-                error: "Old password is incorrect",
+                errorMessage: "Old password is incorrect",
             };
         }
 
