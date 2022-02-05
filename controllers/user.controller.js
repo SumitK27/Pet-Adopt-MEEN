@@ -37,6 +37,7 @@ async function getMyProfile(req, res) {
     res.render("shared/profile", { userData });
 }
 
+// TODO: REDO THIS METHOD
 async function updateProfile(req, res) {
     const {
         firstName,
@@ -70,6 +71,10 @@ async function updateProfile(req, res) {
         return;
     }
 
+    if (password && password !== confirmPassword) {
+        throw new Error("Passwords do not match");
+    }
+
     let user = new User();
     const userData = await user.getUserDetails(res.locals.uid);
 
@@ -85,10 +90,6 @@ async function updateProfile(req, res) {
         userData.password
     );
     try {
-        if (password && password !== confirmPassword) {
-            throw new Error("Passwords do not match");
-        }
-
         if (oldPassword && !user.hasMatchingPassword(oldPassword)) {
             throw new Error("Old password is incorrect");
         }

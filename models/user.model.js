@@ -55,6 +55,15 @@ class User {
         return user;
     }
 
+    async updateUser(uid, user) {
+        const userId = ObjectId(uid);
+        await db
+            .getDb()
+            .collection("users")
+            .updateOne({ _id: userId }, { $set: user });
+    }
+
+    // TODO: DELETE THIS AND CHANGE USER CONTROLLER
     async updateUserDetails(
         uid,
         firstName,
