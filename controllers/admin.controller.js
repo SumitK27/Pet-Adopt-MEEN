@@ -240,6 +240,10 @@ async function deleteUser(req, res) {
         await pet.deleteMyPets(req.params.id);
         await db
             .getDb()
+            .collection("sessions")
+            .deleteOne({ "session.uid": req.params.id });
+        await db
+            .getDb()
             .collection("users")
             .deleteOne({ _id: ObjectId(req.params.id) });
     } catch (error) {
