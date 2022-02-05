@@ -29,6 +29,7 @@ router.post(
     upload.single("images"),
     AdminController.updateUserDetails
 );
+router.get("/user/delete/:id", AdminController.deleteUser);
 
 router.get("/pets", PetController.getPetProfiles);
 

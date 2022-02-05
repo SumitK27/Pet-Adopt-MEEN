@@ -1,5 +1,8 @@
 const Contact = require("../models/contact.model");
 const User = require("../models/user.model");
+const Pet = require("../models/pet.model");
+const db = require("../data/database");
+const { ObjectId } = require("mongodb");
 
 async function getAllMessages(req, res) {
     if (!res.locals.isAuth) {
@@ -216,6 +219,38 @@ async function updateUserDetails(req, res) {
     res.redirect("/users");
 }
 
+async function deleteUser(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    try {
+        const pet = new Pet();
+        await pet.deleteMyPets(req.params.id);
+        await db
+            .getDb()
+            .collection("users")
+            .deleteOne({ _id: ObjectId(req.params.id) });
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.redirect("/users");
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
@@ -223,4 +258,5 @@ module.exports = {
     getAllUsers,
     getUserDetails,
     updateUserDetails,
+    deleteUser,
 };

@@ -39,7 +39,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [x] Show All Users
         -   [x] Check User Details
         -   [x] Update User Details
-        -   [ ] Delete a User
+        -   [x] Delete a User
     -   [-] Pets
         -   [x] Show All Pet Profiles
         -   [ ] Check Pet Profile Details
@@ -71,4 +71,4 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 -   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
 -   [ ] Allow admin to change user's password.
--   [ ] User Profile Deletion from admin's side.
+-   [ ] Clear Session data from user's side after admin deletes user profile.

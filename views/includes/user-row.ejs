@@ -43,9 +43,17 @@
     </td>
     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
         <a
-            href="/user/<%= user._id %> "
+            href="/user/<%= user._id %>"
             class="text-indigo-600 hover:text-indigo-900"
             >Edit</a
         >
+    </td>
+    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <a
+            href="/user/delete/<%= user._id %>"
+            class="text-indigo-600 hover:text-indigo-900"
+        >
+            <i class="far fa-trash-alt text-red-600 text-2xl"></i>
+        </a>
     </td>
 </tr>

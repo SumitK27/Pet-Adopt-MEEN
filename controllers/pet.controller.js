@@ -36,6 +36,14 @@ function getPetAdd(req, res) {
         return;
     }
 
+    const user = new User();
+    const userData = user.getUserDetails(res.locals.uid);
+
+    if (!userData.address) {
+        res.redirect("/profile");
+        return;
+    }
+
     res.render("users/add-pet");
 }
 
