@@ -185,32 +185,10 @@ class User {
     }
 
     async deleteUser(uid) {
-        const userId = ObjectId(uid);
-        const user = await db
+        await db
             .getDb()
             .collection("users")
-            .findOne({ _id: userId });
-
-        if (!user) {
-            return null;
-        }
-
-        try {
-            await db.getDb().collection("users").deleteOne({ _id: userId });
-        } catch (error) {
-            console.log(error);
-            return;
-        }
-
-        if (!res.locals.isAdmin) {
-            res.redirect("/");
-            return;
-        }
-
-        res.redirect("/users");
-        return {
-            success: true,
-        };
+            .deleteOne({ _id: ObjectId(uid) });
     }
 }
 

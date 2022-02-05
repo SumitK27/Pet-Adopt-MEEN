@@ -140,16 +140,16 @@ async function deleteProfile(req, res) {
 
     const pet = new Pet();
     try {
-        await pet.deleteMyPets(res.locals.uid);
+        await pet.deleteMyPets(userData._id);
         // TODO: Delete Applications
         authUtil.destroyUserAuthSession(req);
-        await user.deleteUser(res.locals.uid);
-        return;
+        await user.deleteUser(userData._id);
     } catch (error) {
         console.log(error);
     }
 
     res.redirect("/login");
+    return;
 }
 
 module.exports = {
