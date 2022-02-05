@@ -19,11 +19,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [ ] Show Pet Profiles
     -   [ ] Recognize Animal Breed
 -   [-] User Side:
-    -   [x] User Profile
-        -   [x] Sign up
-        -   [x] Login
-        -   [x] Profile Update
-        -   [x] Delete Profile
+    -   [x] User Profile: Sign up, Login, Update, Delete
     -   [-] Pet Profile
         -   [x] Create Profile
         -   [x] View All Profile Created by User
@@ -35,11 +31,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [ ] Check Application Status
         -   [ ] Withdraw an Application
 -   [x] Admin Side:
-    -   [-] Users
-        -   [x] Show All Users
-        -   [x] Check User Details
-        -   [x] Update User Details
-        -   [x] Delete a User
+    -   [x] Users: List All, Check & Update User Details, Delete User
     -   [-] Pets
         -   [x] Show All Pet Profiles
         -   [ ] Check Pet Profile Details
@@ -54,10 +46,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [ ] Update Application Status
         -   [ ] Check Application Score
     -   [ ] Adoption
-    -   [x] Messages
-        -   [x] Show all Messages
-        -   [x] Show specific Message
-        -   [x] Delete a Message
+    -   [x] Messages: List All, Display & Delete Message
 -   [ ] Backend
     -   [ ] Get Address from GeoLocation
     -   [ ] Find Pet Profiles Nearby
@@ -71,3 +60,4 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 -   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
 -   [ ] Allow admin to change user's password.
+-   [ ] Clean up model files.
