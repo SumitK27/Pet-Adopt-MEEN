@@ -1,3 +1,4 @@
+const fs = require("fs");
 const bcrypt = require("bcrypt");
 const { ObjectId } = require("mongodb");
 const db = require("../data/database");
@@ -70,6 +71,8 @@ class User {
     }
 
     async deleteUser(uid) {
+        const userData = await this.getUserDetails(uid);
+        fs.unlinkSync(userData.image);
         await db
             .getDb()
             .collection("users")

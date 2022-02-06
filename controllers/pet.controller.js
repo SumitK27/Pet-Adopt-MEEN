@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
 
@@ -25,7 +26,7 @@ async function getPetProfiles(req, res) {
     res.render("shared/pets", { pets: petData, isAdmin: true });
 }
 
-function getPetAdd(req, res) {
+async function getPetAdd(req, res) {
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -37,10 +38,10 @@ function getPetAdd(req, res) {
     }
 
     const user = new User();
-    const userData = user.getUserDetails(res.locals.uid);
+    const userData = await user.getUserDetails(res.locals.uid);
 
     if (!userData.address) {
-        res.redirect("/edit-profile", { error: "Please add your address" });
+        res.redirect("/edit-profile");
         return;
     }
 
@@ -131,6 +132,16 @@ async function deletePet(req, res) {
     if (petData.uid !== res.locals.uid && !res.locals.isAdmin) {
         res.redirect("/pet-profile");
         return;
+    }
+
+    const petDetails = await pet.getPetById(petId);
+
+    for (let image of petDetails.images) {
+        fs.unlink(image, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        });
     }
 
     pet.deletePet(petId);

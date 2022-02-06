@@ -277,10 +277,8 @@ async function deleteUser(req, res) {
             .getDb()
             .collection("sessions")
             .deleteOne({ "session.uid": req.params.id });
-        await db
-            .getDb()
-            .collection("users")
-            .deleteOne({ _id: ObjectId(req.params.id) });
+        const user = new User();
+        await user.deleteUser(req.params.id);
     } catch (error) {
         console.log(error);
         res.render("error/500");
