@@ -31,11 +31,28 @@ async function getMyProfile(req, res) {
         res.redirect("/login");
     }
 
-    if (!res.locals.isAdmin) {
-        res.render("shared/profile", { userData });
+    res.render("shared/profile", { userData });
+}
+
+async function getEditProfile(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
         return;
     }
-    res.render("shared/profile", { userData });
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    const user = new User();
+    const userData = await user.getUserDetails(res.locals.uid);
+
+    if (!userData) {
+        res.redirect("/login");
+    }
+
+    res.render("shared/edit-profile", { userData });
 }
 
 async function updateProfile(req, res) {
@@ -93,7 +110,7 @@ async function updateProfile(req, res) {
 
     if (password && password !== confirmPassword) {
         console.log("Passwords do not match");
-        res.render("shared/profile", {
+        res.render("shared/edit-profile", {
             error: "Passwords do not match.",
             userData: enteredData,
         });
@@ -130,7 +147,7 @@ async function updateProfile(req, res) {
 
     if (oldPassword && !passwordIsRight) {
         console.log("Old password does not match");
-        res.render("shared/profile", {
+        res.render("shared/edit-profile", {
             error: "Old password is incorrect.",
             userData: enteredData,
         });
@@ -149,7 +166,7 @@ async function updateProfile(req, res) {
         await user.updateUser(res.locals.uid, updatedUser);
         res.redirect("/profile");
     } catch (error) {
-        res.render("shared/profile", {
+        res.render("shared/edit-profile", {
             error: error.message,
             userData: enteredData,
         });
@@ -191,6 +208,7 @@ async function deleteProfile(req, res) {
 module.exports = {
     getDashboard,
     getMyProfile,
+    getEditProfile,
     updateProfile,
     deleteProfile,
 };

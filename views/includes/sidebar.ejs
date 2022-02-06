@@ -1,6 +1,30 @@
 <div class="bg-white h-full border-transparent rounded-lg shadow-lg">
     <nav class="p-3">
         <ul>
+            <!-- Common -->
+            <li class="border border-black rounded p-2 my-2 hover:bg-slate-200">
+                <a
+                    href="/profile"
+                    class="flex md:justify-center justify-between lg:justify-between"
+                >
+                    <span class="align-middle md:hidden lg:block"
+                        >My Profile</span
+                    >
+                    <i class="fas fa-user text-2xl"></i>
+                </a>
+            </li>
+            <li class="border border-black rounded p-2 my-2 hover:bg-slate-200">
+                <a
+                    href="/edit-profile"
+                    class="flex md:justify-center justify-between lg:justify-between"
+                >
+                    <span class="align-middle md:hidden lg:block"
+                        >Edit Profile</span
+                    >
+                    <i class="fas fa-user-edit text-2xl"></i>
+                </a>
+            </li>
+
             <!-- Admin -->
             <% if(locals.isAdmin) { %>
             <li class="border border-black rounded p-2 my-2 hover:bg-slate-200">
@@ -69,17 +93,6 @@
 
             <!-- User -->
             <% if(!locals.isAdmin) { %>
-            <li class="border border-black rounded p-2 my-2 hover:bg-slate-200">
-                <a
-                    href="/profile"
-                    class="flex md:justify-center justify-between lg:justify-between"
-                >
-                    <span class="align-middle md:hidden lg:block"
-                        >Edit Profile</span
-                    >
-                    <i class="fas fa-user-edit text-2xl"></i>
-                </a>
-            </li>
             <li class="border border-black rounded p-2 my-2 hover:bg-slate-200">
                 <a
                     href="/pet-profile"

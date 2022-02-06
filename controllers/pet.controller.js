@@ -40,7 +40,7 @@ function getPetAdd(req, res) {
     const userData = user.getUserDetails(res.locals.uid);
 
     if (!userData.address) {
-        res.redirect("/profile");
+        res.redirect("/edit-profile", { error: "Please add your address" });
         return;
     }
 

@@ -44,7 +44,6 @@
                                             First Name
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="firstName"
                                             id="firstName"
@@ -66,7 +65,6 @@
                                             Middle Name
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="middleName"
                                             id="middleName"
@@ -88,7 +86,6 @@
                                             Last Name
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="lastName"
                                             id="lastName"
@@ -110,7 +107,6 @@
                                             Date of Birth
                                         </label>
                                         <input
-                                            disabled
                                             type="date"
                                             name="dob"
                                             id="dob"
@@ -132,7 +128,6 @@
                                             Phone
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="phoneNumber"
                                             id="phoneNumber"
@@ -156,7 +151,6 @@
                                             Email
                                         </label>
                                         <input
-                                            disabled
                                             type="email"
                                             name="email"
                                             id="email"
@@ -168,6 +162,59 @@
                                     <!-- End Email -->
                                 </section>
                                 <!-- End User Info Section -->
+
+                                <!-- Password Section -->
+                                <section class="flex flex-row flex-wrap">
+                                    <div
+                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
+                                    >
+                                        <label
+                                            for="oldPassword"
+                                            class="block text-gray-700 text-sm font-bold mb-2"
+                                        >
+                                            Old Password
+                                        </label>
+                                        <input
+                                            type="password"
+                                            name="oldPassword"
+                                            id="oldPassword"
+                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        />
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
+                                    >
+                                        <label
+                                            for="password"
+                                            class="block text-gray-700 text-sm font-bold mb-2"
+                                        >
+                                            Password
+                                        </label>
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            id="password"
+                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        />
+                                    </div>
+                                    <div
+                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
+                                    >
+                                        <label
+                                            for="confirmPassword"
+                                            class="block text-gray-700 text-sm font-bold mb-2"
+                                        >
+                                            Confirm Password
+                                        </label>
+                                        <input
+                                            type="password"
+                                            name="confirmPassword"
+                                            id="confirmPassword"
+                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        />
+                                    </div>
+                                </section>
+                                <!-- End Password Section -->
 
                                 <!-- Address Section -->
                                 <section class="flex flex-row flex-wrap">
@@ -182,7 +229,6 @@
                                             Street
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="street"
                                             id="street"
@@ -204,7 +250,6 @@
                                             City
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="city"
                                             id="city"
@@ -226,7 +271,6 @@
                                             State
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="state"
                                             id="state"
@@ -248,7 +292,6 @@
                                             Country
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="country"
                                             id="country"
@@ -270,7 +313,6 @@
                                             Postal Code
                                         </label>
                                         <input
-                                            disabled
                                             type="text"
                                             name="postal"
                                             id="postal"
@@ -286,15 +328,27 @@
                                 <!-- End Address Section -->
 
                                 <!-- Image Uploader -->
-                                <% if(userData.image) { %> <img
-                                class="rounded-full w-36 h-36 object-cover"
-                                src="<%= userData.image.replace("public","") %>"
-                                alt="<%= userData.firstName %> <%=
-                                userData.lastName %> Profile Image" /> <% } else
-                                { %>
-                                <i class="fas fa-user text-2xl"></i>
-                                <% } %>
+                                <%- include("../includes/imageUploader", {
+                                multiple: false }) %>
                                 <!-- End Image Uploader -->
+
+                                <!-- Save Button Section -->
+                                <div class="flex items-center justify-between">
+                                    <a
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        href="/profile/delete"
+                                    >
+                                        <i class="fas fa-trash-alt"></i>
+                                        Delete
+                                    </a>
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                        type="submit"
+                                    >
+                                        Save
+                                    </button>
+                                </div>
+                                <!-- End Save Button -->
                             </form>
                         </div>
                     </div>
