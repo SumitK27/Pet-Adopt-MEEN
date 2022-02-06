@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
 const authUtil = require("../util/authentication");
+const bcrypt = require("bcrypt");
 
 function getDashboard(req, res) {
     if (res.locals.isAuth && res.locals.isAdmin) {
@@ -37,7 +38,6 @@ async function getMyProfile(req, res) {
     res.render("shared/profile", { userData });
 }
 
-// TODO: REDO THIS METHOD
 async function updateProfile(req, res) {
     const {
         firstName,
@@ -57,6 +57,26 @@ async function updateProfile(req, res) {
     } = req.body;
     const uploadedImage = req.file;
     let image = null;
+
+    const enteredData = {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        email,
+        phoneNumber,
+        oldPassword,
+        password,
+        confirmPassword,
+        address: {
+            street,
+            city,
+            state,
+            country,
+            postalCode: postal,
+        },
+    };
+
     if (uploadedImage) {
         image = uploadedImage.path;
     }
@@ -72,7 +92,12 @@ async function updateProfile(req, res) {
     }
 
     if (password && password !== confirmPassword) {
-        throw new Error("Passwords do not match");
+        console.log("Passwords do not match");
+        res.render("shared/profile", {
+            error: "Passwords do not match.",
+            userData: enteredData,
+        });
+        return;
     }
 
     let user = new User();
@@ -82,42 +107,52 @@ async function updateProfile(req, res) {
         res.redirect("/login");
     }
 
-    user = new User(
-        userData.firstName,
-        userData.lastName,
-        userData.email,
-        userData.phoneNumber,
-        userData.password
-    );
-    try {
-        if (oldPassword && !user.hasMatchingPassword(oldPassword)) {
-            throw new Error("Old password is incorrect");
-        }
-
-        await user.updateUserDetails(
-            res.locals.uid,
-            firstName,
-            middleName,
-            lastName,
-            dob,
-            email,
-            phoneNumber,
-            oldPassword,
-            password,
-            confirmPassword,
+    const updatedUser = {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        email,
+        phoneNumber,
+        address: {
             street,
             city,
             state,
             country,
-            postal,
-            image || userData.image
-        );
+            postalCode: postal,
+        },
+    };
 
+    const passwordIsRight = await bcrypt.compare(
+        oldPassword,
+        userData.password
+    );
+
+    if (oldPassword && !passwordIsRight) {
+        console.log("Old password does not match");
+        res.render("shared/profile", {
+            error: "Old password is incorrect.",
+            userData: enteredData,
+        });
+        return;
+    }
+
+    if (password) {
+        updatedUser.password = await bcrypt.hash(password, 12);
+    }
+
+    if (image) {
+        updatedUser.image = image;
+    }
+
+    try {
+        await user.updateUser(res.locals.uid, updatedUser);
         res.redirect("/profile");
-        return;
     } catch (error) {
-        console.log(error);
-        return;
+        res.render("shared/profile", {
+            error: error.message,
+            userData: enteredData,
+        });
     }
 }
 

@@ -59,5 +59,3 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 
 -   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
--   [ ] Allow admin to change user's password.
--   [ ] Clean up model files.

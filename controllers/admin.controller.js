@@ -3,6 +3,7 @@ const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
 const db = require("../data/database");
 const { ObjectId } = require("mongodb");
+const bcrypt = require("bcrypt");
 
 async function getAllMessages(req, res) {
     if (!res.locals.isAuth) {
@@ -150,6 +151,48 @@ async function getUserDetails(req, res) {
 }
 
 async function updateUserDetails(req, res) {
+    const userId = req.params.id;
+    const {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        email,
+        phoneNumber,
+        oldPassword,
+        password,
+        confirmPassword,
+        street,
+        city,
+        state,
+        country,
+        postal,
+    } = req.body;
+    const uploadedImage = req.file;
+    let image = null;
+
+    const enteredData = {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        email,
+        phoneNumber,
+        oldPassword,
+        password,
+        confirmPassword,
+        address: {
+            street,
+            city,
+            state,
+            country,
+            postalCode: postal,
+        },
+    };
+
+    if (uploadedImage) {
+        image = uploadedImage.path;
+    }
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -165,58 +208,50 @@ async function updateUserDetails(req, res) {
         return;
     }
 
-    let userData;
+    let user = new User();
+
+    if (password && password !== confirmPassword) {
+        console.log("Passwords do not match");
+        res.render("admin/user", {
+            error: "Passwords do not match.",
+            userData: enteredData,
+        });
+        return;
+    }
+
+    const updatedUser = {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        email,
+        phoneNumber,
+        address: {
+            street,
+            city,
+            state,
+            country,
+            postalCode: postal,
+        },
+    };
+
+    if (image) {
+        updatedUser.image = image;
+    }
+
+    if (password) {
+        updatedUser.password = await bcrypt.hash(password, 12);
+    }
+
     try {
-        const userId = req.params.id;
-        const user = new User();
-        userData = await user.getUserDetails(userId);
-
-        const {
-            firstName,
-            middleName,
-            lastName,
-            dob,
-            email,
-            phoneNumber,
-            oldPassword,
-            password,
-            confirmPassword,
-            street,
-            city,
-            state,
-            country,
-            postal,
-        } = req.body;
-        const uploadedImage = req.file;
-        let image = null;
-        if (uploadedImage) {
-            image = uploadedImage.path;
-        }
-
-        await user.updateUserDetails(
-            userId,
-            firstName,
-            middleName,
-            lastName,
-            dob,
-            email,
-            phoneNumber,
-            oldPassword,
-            password,
-            confirmPassword,
-            street,
-            city,
-            state,
-            country,
-            postal,
-            image || userData.image
-        );
+        user.updateUser(userId, updatedUser);
+        res.redirect("/users");
+        return;
     } catch (error) {
         console.log(error);
         res.render("error/500");
         return;
     }
-    res.redirect("/users");
 }
 
 async function deleteUser(req, res) {
