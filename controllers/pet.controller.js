@@ -48,6 +48,25 @@ async function getPetAdd(req, res) {
     res.render("users/add-pet");
 }
 
+async function getPetEdit(req, res) {
+    const petId = req.params.id;
+
+    const pet = new Pet();
+    const petData = await pet.getPetById(petId);
+
+    if (!petData) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    if (petData.uid !== res.locals.uid && !res.locals.isAdmin) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    res.render("users/edit-pet", { petData });
+}
+
 async function addPet(req, res) {
     const {
         name,
@@ -118,6 +137,88 @@ async function addPet(req, res) {
     res.redirect("/pets");
 }
 
+async function updatePet(req, res) {
+    const petId = req.params.id;
+    const {
+        name,
+        age,
+        gender,
+        type,
+        breed,
+        size,
+        coatLength,
+        trained,
+        health,
+        characteristics,
+        giveaway,
+        price,
+        street,
+        city,
+        state,
+        country,
+        postal
+    } = req.body;
+    const uploadedImages = req.files;
+    const userId = res.locals.uid;
+
+    const pet = new Pet();
+    const petData = await pet.getPetById(petId);
+
+    if (!petData) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    if (petData.uid !== userId && !res.locals.isAdmin) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    const images = [];
+    for (let image of uploadedImages) {
+        images.push(image.path);
+    }
+
+    const updatePet = {
+        name,
+        age,
+        gender,
+        type,
+        breed,
+        size,
+        coatLength,
+        trained,
+        health,
+        characteristics,
+        giveaway,
+        price,
+        address: {
+            street: street,
+            city: city,
+            state: state,
+            country: country,
+            postalCode: postal,
+        },
+    };
+
+    if (images.length > 0) {
+        updatePet.images = images;
+    }
+
+    try {
+        pet.updatePet(petData._id, updatePet);
+    } catch (err) {
+        console.log(err);
+    }
+
+    if (!res.locals.isAdmin) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    res.redirect("/pets");
+}
+
 async function deletePet(req, res) {
     const petId = req.params.id;
 
@@ -158,5 +259,7 @@ module.exports = {
     getPetProfiles,
     getPetAdd,
     addPet,
+    getPetEdit,
+    updatePet,
     deletePet,
 };
