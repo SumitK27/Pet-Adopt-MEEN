@@ -8,10 +8,11 @@
         <!-- Hero -->
         <section class="text-gray-600 body-font">
             <div
-                class="container mx-auto flex px-5 pt-8 pb-16 lg:flex-row-reverse flex-col items-center md:gap-y-5 lg:bg-[url('https://placedog.net/640/480?random')] lg:bg-cover bg-center lg:min-h-80"
+                class="container mx-auto flex px-5 pt-8 pb-16 lg:flex-row-reverse flex-col items-center md:gap-y-5 bg-[url('https://placedog.net/640/480?random')] bg-cover bg-center min-h-80"
             >
-                <div
-                    class="lg:flex-grow lg:1/2 w-5/6 lg:pr-18 flex flex-col md:items-start md:text-left mt-16 md:mt-0 items-center text-center text-white lg:px-28"
+                <!-- Hero Text -->
+                <section
+                    class="lg:flex-grow lg:1/2 w-5/6 lg:pr-18 flex flex-col md:items-start md:text-left mt-16 md:mt-0 items-center text-white lg:px-28"
                 >
                     <h1
                         class="title-font sm:text-4xl text-3xl mb-4 font-medium"
@@ -42,14 +43,7 @@
                             Others
                         </a>
                     </div>
-                </div>
-                <!-- <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img
-                    class="object-cover object-center rounded"
-                    alt="hero"
-                    src="https://placedog.net/640/480?random"
-                />
-            </div> -->
+                </section>
             </div>
         </section>
         <!-- End Hero -->
@@ -57,22 +51,21 @@
         <!-- Stats -->
         <section class="text-gray-600 bg-white body-font">
             <div class="container px-5 py-8 mx-auto">
-                <div class="flex flex-col text-center w-full mb-20">
+                <!-- Section Title -->
+                <section class="flex flex-col text-center w-full mb-8">
                     <h1
-                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"
                     >
-                        Master Cleanse Reliac Heirloom
+                        Find Adoptable Pets
                     </h1>
                     <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                        Whatever cardigan tote bag tumblr hexagon brooklyn
-                        asymmetrical gentrify, subway tile poke farm-to-table.
-                        Franzen you probably haven't heard of them man bun deep
-                        jianbing selfies heirloom prism food truck ugh squid
-                        celiac humblebrag.
+                        Search hundreds of thousands of adoptable pets at animal shelters and rescues across the world.
                     </p>
-                </div>
+                </section>
+
+                <!--  -->
                 <section class="text-gray-600 body-font">
-                    <div class="container px-5 py-24 mx-auto flex flex-wrap">
+                    <div class="container px-5 py-16 mx-auto flex flex-wrap">
                         <div
                             class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden"
                         >
@@ -83,159 +76,126 @@
                             />
                         </div>
                         <div
-                            class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center"
+                            class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left"
                         >
+                            <!-- Search for Pets -->
                             <div
-                                class="flex flex-col mb-10 lg:items-start items-center"
+                                class="flex lg:flex-row lg:gap-4 flex-col mb-10 lg:items-start items-center"
                             >
                                 <div
                                     class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5"
                                 >
-                                    <svg
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        class="w-6 h-6"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            d="M22 12h-4l-3 9L9 3l-3 9H2"
-                                        ></path>
-                                    </svg>
+                                    <i class="fas fa-search font-4xl rounded-full p-8"></i>
                                 </div>
-                                <div class="flex-grow">
+                                <div class="flex-grow w-full">
                                     <h2
                                         class="text-gray-900 text-lg title-font font-medium mb-3"
                                     >
-                                        Shooting Stars
+                                        Search for Pets
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        Blue bottle crucifix vinyl post-ironic
-                                        four dollar toast vegan taxidermy.
-                                        Gastropub indxgo juice poutine.
+                                        <strong>
+                                            Browse Pets:
+                                        </strong>
+                                        Such as dogs, cats, puppies, kittens, rabbits, birds, horses, fish & more.
                                     </p>
-                                    <a
-                                        class="mt-3 text-indigo-500 inline-flex items-center"
-                                        >Learn More
-                                        <svg
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            class="w-4 h-4 ml-2"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                d="M5 12h14M12 5l7 7-7 7"
-                                            ></path>
-                                        </svg>
-                                    </a>
+                                    <p>
+                                        <strong>
+                                            Filter Pet Results:
+                                        </strong>    
+                                        By breed, age, size, gender, care & behavior, coat length, color, and the shelter or rescue.
+                                    </p>
                                 </div>
                             </div>
+                            
+                            <!-- Read Pet Bios -->
                             <div
-                                class="flex flex-col mb-10 lg:items-start items-center"
+                                class="flex lg:flex-row lg:gap-4 flex-col mb-10 lg:items-start items-center"
                             >
                                 <div
                                     class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5"
                                 >
-                                    <svg
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        class="w-6 h-6"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle cx="6" cy="6" r="3"></circle>
-                                        <circle cx="6" cy="18" r="3"></circle>
-                                        <path
-                                            d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"
-                                        ></path>
-                                    </svg>
+                                    <i class="fab fa-readme font-4xl rounded-full p-8"></i>
                                 </div>
-                                <div class="flex-grow">
+                                <div class="flex-grow w-full">
                                     <h2
                                         class="text-gray-900 text-lg title-font font-medium mb-3"
                                     >
-                                        The Catalyzer
+                                        Read Pet Bios
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        Blue bottle crucifix vinyl post-ironic
-                                        four dollar toast vegan taxidermy.
-                                        Gastropub indxgo juice poutine.
+                                        <strong>
+                                            Review Pet Bios:
+                                        </strong>
+                                        To learn more about the pet's details.
                                     </p>
-                                    <a
-                                        class="mt-3 text-indigo-500 inline-flex items-center"
-                                        >Learn More
-                                        <svg
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            class="w-4 h-4 ml-2"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                d="M5 12h14M12 5l7 7-7 7"
-                                            ></path>
-                                        </svg>
-                                    </a>
+                                    <p>
+                                        <strong>
+                                            Like and Share Photos:
+                                        </strong>    
+                                        Share a pet’s bio with friends or family via email or social media.
+                                    </p>
                                 </div>
                             </div>
+                            
+                            <!-- Save and Alert -->
                             <div
-                                class="flex flex-col mb-10 lg:items-start items-center"
+                                class="flex lg:flex-row lg:gap-4 flex-col mb-10 lg:items-start items-center"
                             >
                                 <div
                                     class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5"
                                 >
-                                    <svg
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        class="w-6 h-6"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
-                                        ></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
+                                    <i class="fas fa-star font-4xl rounded-full p-8"></i>
                                 </div>
-                                <div class="flex-grow">
+                                <div class="flex-grow w-full">
                                     <h2
                                         class="text-gray-900 text-lg title-font font-medium mb-3"
                                     >
-                                        Neptune
+                                        Save Your Favorite Pets And Set Up Alerts
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        Blue bottle crucifix vinyl post-ironic
-                                        four dollar toast vegan taxidermy.
-                                        Gastropub indxgo juice poutine.
+                                        <strong>
+                                            Set Up Match Alerts:
+                                        </strong>
+                                        To notify you when available pets meet your criteria.
                                     </p>
-                                    <a
-                                        class="mt-3 text-indigo-500 inline-flex items-center"
-                                        >Learn More
-                                        <svg
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            class="w-4 h-4 ml-2"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                d="M5 12h14M12 5l7 7-7 7"
-                                            ></path>
-                                        </svg>
-                                    </a>
+                                    <p>
+                                        <strong>
+                                            Swipe Pet Favorites:
+                                        </strong>    
+                                        Browse, ‘Like,’ ‘Pass,’ swipe right to ‘Fav,’ and left to ‘Pass.’
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            
+                            <!-- Message The Shelter / Owner -->
+                            <div
+                                class="flex lg:flex-row lg:gap-4 flex-col mb-10 lg:items-start items-center"
+                            >
+                                <div
+                                    class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5"
+                                >
+                                    <i class="fas fa-envelope-open-text font-4xl rounded-full p-8"></i>
+                                </div>
+                                <div class="flex-grow w-full">
+                                    <h2
+                                        class="text-gray-900 text-lg title-font font-medium mb-3"
+                                    >
+                                        Message the Shelter/Owner
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        <strong>
+                                            Contact the Shelters/Owners Directly:
+                                        </strong>
+                                        To begin contact after that, set up a visit.
+                                    </p>
+                                    <p>
+                                        <strong>
+                                            Tens and Thousands of Adoption Organizations Searchable:
+                                        </strong>    
+                                        Search hundreds of thousands of adoptable pets at animal shelters and rescues across the world.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -247,23 +207,20 @@
 
         <!-- Precess Section -->
         <section class="text-gray-600 body-font">
-            <div class="container px-5 py-24 mx-auto flex flex-wrap">
-                <div class="flex flex-col text-center w-full mb-20">
+            <div class="container px-5 py-16 mx-auto flex flex-wrap">
+                <div class="flex flex-col w-full mb-20">
                     <h1
-                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"
                     >
-                        Master Cleanse Reliac Heirloom
+                        Your new Pet is Just a few steps away!
                     </h1>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                        Whatever cardigan tote bag tumblr hexagon brooklyn
-                        asymmetrical gentrify, subway tile poke farm-to-table.
-                        Franzen you probably haven't heard of them man bun deep
-                        jianbing selfies heirloom prism food truck ugh squid
-                        celiac humblebrag.
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-center">
+                        Find your future pet with simple steps.
                     </p>
                 </div>
                 <div class="flex flex-wrap w-full">
                     <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6">
+                        <!-- Step 1 -->
                         <div class="flex relative pb-12">
                             <div
                                 class="h-full w-10 absolute inset-0 flex items-center justify-center"
@@ -275,19 +232,7 @@
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"
                             >
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    class="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-                                    ></path>
-                                </svg>
+                                <i class="fas fa-mobile-alt text-2xl"></i>
                             </div>
                             <div class="flex-grow pl-4">
                                 <h2
@@ -296,12 +241,12 @@
                                     STEP 1
                                 </h2>
                                 <p class="leading-relaxed">
-                                    VHS cornhole pop-up, try-hard 8-bit iceland
-                                    helvetica. Kinfolk bespoke try-hard cliche
-                                    palo santo offal.
+                                    Scan an image to know the breed of the pet.
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Step 2 -->
                         <div class="flex relative pb-12">
                             <div
                                 class="h-full w-10 absolute inset-0 flex items-center justify-center"
@@ -313,17 +258,7 @@
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"
                             >
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    class="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                                </svg>
+                                <i class="fas fa-hand-pointer text-2xl"></i>
                             </div>
                             <div class="flex-grow pl-4">
                                 <h2
@@ -332,12 +267,12 @@
                                     STEP 2
                                 </h2>
                                 <p class="leading-relaxed">
-                                    Vice migas literally kitsch +1 pok pok.
-                                    Truffaut hot chicken slow-carb health goth,
-                                    vape typewriter.
+                                    Choose from all the pets with same breed available near you.
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Step 3 -->
                         <div class="flex relative pb-12">
                             <div
                                 class="h-full w-10 absolute inset-0 flex items-center justify-center"
@@ -349,20 +284,8 @@
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"
                             >
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    class="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle cx="12" cy="5" r="3"></circle>
-                                    <path
-                                        d="M12 22V8M5 12H2a10 10 0 0020 0h-3"
-                                    ></path>
-                                </svg>
+                                <i class="fas fa-book-reader text-2xl"></i>
+                                
                             </div>
                             <div class="flex-grow pl-4">
                                 <h2
@@ -371,12 +294,12 @@
                                     STEP 3
                                 </h2>
                                 <p class="leading-relaxed">
-                                    Coloring book nar whal glossier master
-                                    cleanse umami. Salvia +1 master cleanse blog
-                                    taiyaki.
+                                    Read the pet bio and choose the pet you want.
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Step 4 -->
                         <div class="flex relative pb-12">
                             <div
                                 class="h-full w-10 absolute inset-0 flex items-center justify-center"
@@ -388,20 +311,7 @@
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"
                             >
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    class="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
-                                    ></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                </svg>
+                                <i class="fas fa-receipt text-2xl"></i>
                             </div>
                             <div class="flex-grow pl-4">
                                 <h2
@@ -410,30 +320,17 @@
                                     STEP 4
                                 </h2>
                                 <p class="leading-relaxed">
-                                    VHS cornhole pop-up, try-hard 8-bit iceland
-                                    helvetica. Kinfolk bespoke try-hard cliche
-                                    palo santo offal.
+                                    Apply to adopt the pet you want and wait for the owner to verify your application.
                                 </p>
                             </div>
                         </div>
+
+                        <!-- Step 5 -->
                         <div class="flex relative">
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500 inline-flex items-center justify-center text-white relative z-10"
                             >
-                                <svg
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    class="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        d="M22 11.08V12a10 10 0 11-5.93-9.14"
-                                    ></path>
-                                    <path d="M22 4L12 14.01l-3-3"></path>
-                                </svg>
+                                <i class="far fa-check-circle text-2xl"></i>
                             </div>
                             <div class="flex-grow pl-4">
                                 <h2
@@ -442,8 +339,7 @@
                                     FINISH
                                 </h2>
                                 <p class="leading-relaxed">
-                                    Pitchfork ugh tattooed scenester echo park
-                                    gastropub whatever cold-pressed retro.
+                                    Set up a meet up with the owner & Take the pet home and enjoy the life.
                                 </p>
                             </div>
                         </div>
@@ -460,14 +356,14 @@
 
         <!-- Stats -->
         <section class="text-gray-600 body-font">
-            <div class="container px-5 py-24 mx-auto">
-                <div class="flex flex-col text-center w-full mb-20">
+            <div class="container px-5 py-16 mx-auto">
+                <div class="flex flex-col w-full mb-20">
                     <h1
-                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900"
+                        class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-center"
                     >
-                        Master Cleanse Reliac Heirloom
+                    We help animal shelters and rescue groups care for homeless pets in need.
                     </h1>
-                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                    <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-center">
                         Whatever cardigan tote bag tumblr hexagon brooklyn
                         asymmetrical gentrify, subway tile poke farm-to-table.
                         Franzen you probably haven't heard of them man bun deep
@@ -475,111 +371,47 @@
                         celiac humblebrag.
                     </p>
                 </div>
-                <div class="flex flex-wrap -m-4 text-center">
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                <div class="flex flex-wrap -m-4">
+                    <div class="p-4 md:w-1/3 sm:w-1/2 w-full text-center">
                         <div
                             class="border-2 border-gray-200 px-4 py-6 rounded-lg"
                         >
-                            <svg
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                class="text-indigo-500 w-12 h-12 mb-3 inline-block"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M8 17l4 4 4-4m-4-5v9"></path>
-                                <path
-                                    d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"
-                                ></path>
-                            </svg>
+                            <i class="far fa-money-bill-wave text-blue-500 text-6xl"></i>
                             <h2
                                 class="title-font font-medium text-3xl text-gray-900"
                             >
-                                2.7K
+                            $25 million
                             </h2>
-                            <p class="leading-relaxed">Downloads</p>
+                            <p class="leading-relaxed">in cash & product grants</p>
+                            <p class="leading-relaxed">awarded since 2003</p>
                         </div>
                     </div>
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="p-4 md:w-1/3 sm:w-1/2 w-full text-center">
                         <div
                             class="border-2 border-gray-200 px-4 py-6 rounded-lg"
                         >
-                            <svg
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                class="text-indigo-500 w-12 h-12 mb-3 inline-block"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"
-                                ></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path
-                                    d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"
-                                ></path>
-                            </svg>
+                            <i class="far fa-home text-blue-500 text-6xl"></i>
                             <h2
                                 class="title-font font-medium text-3xl text-gray-900"
                             >
-                                1.3K
+                            10,000+
                             </h2>
-                            <p class="leading-relaxed">Users</p>
+                            <p class="leading-relaxed">adoption groups</p>
+                            <p class="leading-relaxed">have received our grants</p>
                         </div>
                     </div>
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="p-4 md:w-1/3 sm:w-1/2 w-full text-center">
                         <div
                             class="border-2 border-gray-200 px-4 py-6 rounded-lg"
                         >
-                            <svg
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                class="text-indigo-500 w-12 h-12 mb-3 inline-block"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M3 18v-6a9 9 0 0118 0v6"></path>
-                                <path
-                                    d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"
-                                ></path>
-                            </svg>
+                            <i class="far fa-dog text-blue-500 text-6xl"></i>
                             <h2
                                 class="title-font font-medium text-3xl text-gray-900"
                             >
-                                74
+                                92,000
                             </h2>
-                            <p class="leading-relaxed">Files</p>
-                        </div>
-                    </div>
-                    <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-                        <div
-                            class="border-2 border-gray-200 px-4 py-6 rounded-lg"
-                        >
-                            <svg
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                class="text-indigo-500 w-12 h-12 mb-3 inline-block"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
-                                ></path>
-                            </svg>
-                            <h2
-                                class="title-font font-medium text-3xl text-gray-900"
-                            >
-                                46
-                            </h2>
-                            <p class="leading-relaxed">Places</p>
+                            <p class="leading-relaxed">Pets helped</p>
+                            <p class="leading-relaxed">in 2021</p>
                         </div>
                     </div>
                 </div>
