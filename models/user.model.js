@@ -12,6 +12,11 @@ class User {
         this.password = password;
     }
 
+    async getCount() {
+        const collection = await db.getDb().collection("users");
+        return await collection.countDocuments({ isAdmin: false });
+    }
+
     getUserWithSameEmail() {
         return db.getDb().collection("users").findOne({ email: this.email });
     }
@@ -65,7 +70,7 @@ class User {
     }
 
     async getAllUsers() {
-        const users = await db.getDb().collection("users").find({}).toArray();
+        const users = await db.getDb().collection("users").find({ isAdmin: false }).toArray();
 
         return users;
     }

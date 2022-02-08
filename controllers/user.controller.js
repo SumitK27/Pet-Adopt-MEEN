@@ -3,9 +3,15 @@ const Pet = require("../models/pet.model");
 const authUtil = require("../util/authentication");
 const bcrypt = require("bcrypt");
 
-function getDashboard(req, res) {
+async function getDashboard(req, res) {
     if (res.locals.isAuth && res.locals.isAdmin) {
-        res.render("admin/dashboard");
+        const user = new User();
+        const userCount = await user.getCount();
+
+        const pet = new Pet();
+        const petCount = await pet.getCount();
+        
+        res.render("admin/dashboard", { userCount, petCount });
     } else if (res.locals.isAuth) {
         res.render("users/dashboard");
     } else {

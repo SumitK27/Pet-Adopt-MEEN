@@ -32,6 +32,11 @@ class Pets {
         this.image = image;
     }
 
+    async getCount() {
+        const collection = await db.getDb().collection("pets");
+        return await collection.countDocuments();
+    }
+
     getAllPets() {
         return db.getDb().collection("pets").find({}).toArray();
     }
