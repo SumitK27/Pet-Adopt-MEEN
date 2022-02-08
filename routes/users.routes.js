@@ -19,7 +19,7 @@ const upload = multer({
 });
 
 router.get("/dashboard", userController.getDashboard);
-router.get("/profile", userController.getMyProfile);
+router.get("/my-profile", userController.getMyProfile);
 router.get("/edit-profile", userController.getEditProfile);
 router.post(
     "/edit-profile",

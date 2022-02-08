@@ -2,7 +2,6 @@ const Contact = require("../models/contact.model");
 const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
 const db = require("../data/database");
-const { ObjectId } = require("mongodb");
 const bcrypt = require("bcrypt");
 
 async function getAllMessages(req, res) {

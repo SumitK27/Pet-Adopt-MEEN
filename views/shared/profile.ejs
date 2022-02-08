@@ -14,7 +14,7 @@
                 <!-- End Sidebar -->
 
                 <!-- Main -->
-                <section class="w-full md:w-5/6 lg:w-3/4 p-4">
+                <section class="w-full h-full md:w-5/6 lg:w-3/4 p-4">
                     <div
                         class="bg-white border-transparent rounded-lg shadow-lg"
                     >
@@ -26,276 +26,134 @@
                             </h5>
                         </div>
                         <div class="p-6">
-                            <form
-                                action="/edit-profile?_csrf=<%= locals.csrfToken %>"
-                                method="POST"
-                                enctype="multipart/form-data"
-                            >
-                                <!-- User Info Section -->
-                                <section class="flex flex-row flex-wrap">
-                                    <!-- First Name -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="firstName"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            First Name
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="firstName"
-                                            id="firstName"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.firstName !== undefined ? userData.firstName : null %>"
-                                        />
-                                    </div>
-                                    <!-- End First Name -->
-
-                                    <!-- Middle Name -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="middleName"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Middle Name
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="middleName"
-                                            id="middleName"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.middleName !== undefined ? userData.middleName : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Middle Name -->
-
-                                    <!-- Last Name -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="lastName"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Last Name
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="lastName"
-                                            id="lastName"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.lastName !== undefined ? userData.lastName : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Last Name -->
-
-                                    <!-- DOB -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="dob"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Date of Birth
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="date"
-                                            name="dob"
-                                            id="dob"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.dob !== undefined ? userData.dob : null %>"
-                                        />
-                                    </div>
-                                    <!-- End DOB -->
-
-                                    <!-- Phone Number -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="phoneNumber"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Phone
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="phoneNumber"
-                                            id="phoneNumber"
-                                            required
-                                            minlength="10"
-                                            maxlength="10"
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.phoneNumber !== undefined ? userData.phoneNumber : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Phone Number -->
-
-                                    <!-- Email -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="email"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Email
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="email"
-                                            name="email"
-                                            id="email"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.email !== undefined ? userData.email : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Email -->
-                                </section>
-                                <!-- End User Info Section -->
-
-                                <!-- Address Section -->
-                                <section class="flex flex-row flex-wrap">
-                                    <!-- Street -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="street"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Street
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="street"
-                                            id="street"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.address !== undefined ? userData.address.street : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Street -->
-
-                                    <!-- City -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="city"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            City
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="city"
-                                            id="city"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.address !== undefined ? userData.address.city : null %>"
-                                        />
-                                    </div>
-                                    <!-- End City -->
-
-                                    <!-- State -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="state"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            State
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="state"
-                                            id="state"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.address !== undefined ? userData.address.state : null %>"
-                                        />
-                                    </div>
-                                    <!-- End State -->
-
-                                    <!-- Country -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="country"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Country
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="country"
-                                            id="country"
-                                            required
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.address !== undefined ? userData.address.country : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Country -->
-
-                                    <!-- Postal Code -->
-                                    <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
-                                    >
-                                        <label
-                                            for="postal"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Postal Code
-                                        </label>
-                                        <input
-                                            disabled
-                                            type="text"
-                                            name="postal"
-                                            id="postal"
-                                            required
-                                            minlength="5"
-                                            maxlength="6"
-                                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%- userData.address !== undefined ? userData.address.postalCode : null %>"
-                                        />
-                                    </div>
-                                    <!-- End Postal Code -->
-                                </section>
-                                <!-- End Address Section -->
-
+                            <!-- User Info Section -->
+                            <section class="flex flex-row flex-wrap gap-8 md:gap-12 lg:gap-16 items-center mb-4">
                                 <!-- Image Uploader -->
-                                <% if(userData.image) { %> <img
-                                class="rounded-full w-36 h-36 object-cover"
-                                src="<%= userData.image.replace("public","") %>"
-                                alt="<%= userData.firstName %> <%=
-                                userData.lastName %> Profile Image" /> <% } else
-                                { %>
-                                <i class="fas fa-user text-2xl"></i>
+                                <% if(userData.image) { %> 
+                                    <img class="rounded-full w-36 h-36 object-cover border-4 shadow-lg border-black" src="<%= userData.image.replace("public","") %>" alt="<%= userData.firstName %> <%= userData.lastName %> Profile Image" /> 
+                                <% } else { %>
+                                    <i class="fas fa-user text-2xl"></i>
                                 <% } %>
                                 <!-- End Image Uploader -->
-                            </form>
+                                <!-- Name -->
+                                <div
+                                    class="flex flex-wrap flex-col flex-grow px-2 w-1/2 lg:w-1/3"
+                                >
+                                    <span class="text-4xl mb-4">
+                                        <%= userData.firstName !== undefined ? userData.firstName : null %>
+                                        <%= userData.middleName !== undefined ? userData.middleName : null %>
+                                        <%= userData.lastName !== undefined ? userData.lastName : null %>
+                                    </span>
+                                    <span class="text-lg mb-2">
+                                        <strong>Email: </strong>
+                                        <%= userData.email !== undefined ? userData.email : null %>
+                                    </span>
+                                    <span class="text-lg mb-2">
+                                        <strong>Phone Number: </strong>
+                                        <%= userData.phoneNumber !== undefined ? userData.phoneNumber : null %>
+                                    </span>
+                                    <span class="text-lg mb-2">
+                                        <strong>DOB: </strong>
+                                        <%= userData.dob !== undefined ? userData.dob : null %>
+                                    </span>
+                                </div>
+                                <!-- End Name -->
+                            </section>
+                            <!-- End User Info Section -->
+                            <hr>
+                            <!-- Address Section -->
+                            <section class="flex flex-row flex-wrap my-4">
+                                <table class="w-full">
+                                    <tr class="flex flex-wrap">
+                                        <td class="w-full lg:w-1/4 md:w-1/2">
+                                            <strong>
+                                                Street :
+                                            </strong>
+                                        </td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2"><%= userData.address !== undefined ? userData.address.street : null %></td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2">
+                                            <strong>
+                                                City :
+                                            </strong>
+                                        </td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2"><%= userData.address !== undefined ? userData.address.city : null %></td>
+                                    </tr>
+                                    <tr class="flex flex-wrap">
+                                        <td class="w-full lg:w-1/4 md:w-1/2">
+                                            <strong>
+                                                State :
+                                            </strong>
+                                        </td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2"><%= userData.address !== undefined ? userData.address.state : null %></td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2">
+                                            <strong>
+                                                Country :
+                                            </strong>
+                                        </td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2"><%= userData.address !== undefined ? userData.address.country : null %></td>
+                                    </tr>
+                                    <tr class="flex flex-wrap">
+                                        <td class="w-full lg:w-1/4 md:w-1/2">
+                                            <strong>
+                                                Postal Code :
+                                            </strong>
+                                        </td>
+                                        <td class="w-full lg:w-1/4 md:w-1/2"><%= userData.address !== undefined ? userData.address.postalCode : null %></td>
+                                    </tr>
+                                </table>
+                            </section>
+                            <!-- End Address Section -->
+                            <hr>
+                            <!-- Pet Section -->
+                            <% if(!locals.isAdmin) { %> 
+                            <section class="flex flex-row flex-wrap my-4">
+                                <% for(let pet of petData) { %> 
+                                    <div class="w-full xl:w-1/3 md:w-1/2 p-4">
+                                        <div class="bg-white border-transparent rounded-lg shadow-lg">
+                                            <% if(pet.images) { %> 
+                                                <img class="w-full rounded-t-lg h-36 object-cover" src="<%= pet.images[0].replace('public','') %>" alt="<%= pet.name %> Profile Image" /> 
+                                            <% } else { %>
+                                                <i class="fas fa-dog rounded-t-lg text-6xl p-8 w-full h-36 object-cover bg-gray-800 text-white text-center"></i>
+                                            <% } %>
+                                            <div class="p-6">
+                                                <div class="flex flex-row flex-wrap gap-8 md:gap-12 lg:gap-16 items-center mb-4">
+                                                    <div
+                                                        class="flex flex-wrap flex-col flex-grow px-2 w-1/2 lg:w-1/3"
+                                                    >
+                                                        <span class="text-2xl mb-4">
+                                                            <%= pet.name !== undefined ? pet.name : null %>
+                                                        </span>
+                                                        <section class="flex flex-wrap">
+                                                            <span class="text-lg mb-1 w-full sm:w-1/2 md:w-full lg:w-1/2">
+                                                                <strong>Breed: </strong>
+                                                                <%= pet.breed !== undefined ? pet.breed : null %>
+                                                            </span>
+                                                            <span class="text-lg mb-1 w-full sm:w-1/2 md:w-full lg:w-1/2">
+                                                                <strong>Age: </strong>
+                                                                <%= pet.age !== undefined ? pet.age : null %>
+                                                            </span>
+                                                            <span class="text-lg mb-1 w-full sm:w-1/2 md:w-full lg:w-1/2">
+                                                                <strong>
+                                                                    Giveaway
+                                                                </strong>
+                                                                <%= pet.giveaway !== undefined ? pet.giveaway : null %>
+                                                            </span>
+                                                            <span class="text-lg mb-1 w-full sm:w-1/2 md:w-full lg:w-1/2">
+                                                                <strong>
+                                                                    Gender
+                                                                </strong>
+                                                                <%= pet.gender !== undefined ? pet.gender : null %>
+                                                            </span>
+                                                        </section>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% } %> 
+                            </section>
+                            <% } %> 
+                            <!-- End Pet Section -->
                         </div>
                     </div>
                 </section>

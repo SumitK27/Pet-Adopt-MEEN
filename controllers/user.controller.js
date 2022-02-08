@@ -31,7 +31,13 @@ async function getMyProfile(req, res) {
         res.redirect("/login");
     }
 
-    res.render("shared/profile", { userData });
+    if(!userData.isAdmin) {
+        const pet = new Pet();
+        const petData = await pet.getMyPets(res.locals.uid);
+        res.render("shared/profile", { userData, petData });
+    }
+
+    res.render("shared/profile", { userData, petData: null });
 }
 
 async function getEditProfile(req, res) {
@@ -164,7 +170,7 @@ async function updateProfile(req, res) {
 
     try {
         await user.updateUser(res.locals.uid, updatedUser);
-        res.redirect("/profile");
+        res.redirect("/my-profile");
     } catch (error) {
         res.render("shared/edit-profile", {
             error: error.message,
