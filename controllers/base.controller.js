@@ -16,6 +16,18 @@ async function getSearch(req, res) {
     res.render("users/search", { petData });
 }
 
+async function getDogs(req, res) {
+    const pet = new Pet();
+    const petData = await pet.getAllPetsByType("dog");
+    res.render("users/search", { petData });
+}
+
+async function getCats(req, res) {
+    const pet = new Pet();
+    const petData = await pet.getAllPetsByType("cat");
+    res.render("users/search", { petData });
+}
+
 function getDetails(req, res) {
     res.render("users/pet-details");
 }
@@ -72,5 +84,7 @@ module.exports = {
     getContact,
     postContact,
     getSearch,
+    getDogs,
+    getCats,
     getDetails,
 };
