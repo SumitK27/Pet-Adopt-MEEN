@@ -198,7 +198,7 @@ async function updateUserDetails(req, res) {
     }
 
     if (!res.locals.uid) {
-        redirect("/login");
+        res.redirect("/login");
         return;
     }
 
@@ -243,7 +243,7 @@ async function updateUserDetails(req, res) {
     }
 
     try {
-        user.updateUser(userId, updatedUser);
+        await user.updateUser(userId, updatedUser);
         res.redirect("/users");
         return;
     } catch (error) {

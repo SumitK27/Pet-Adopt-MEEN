@@ -116,7 +116,7 @@ async function updateProfile(req, res) {
     }
 
     if (!res.locals.uid) {
-        redirect("/login");
+        res.redirect("/login");
         return;
     }
 
