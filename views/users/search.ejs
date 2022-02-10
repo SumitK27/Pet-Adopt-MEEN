@@ -1345,121 +1345,56 @@
                                     <div
                                         class="grid grid-cols-1 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8"
                                     >
-                                        <div class="relative group">
-                                            <div
-                                                class="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none"
-                                            >
-                                                <img
-                                                    src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                                                    alt="Front of men&#039;s Basic Tee in black."
-                                                    class="object-cover object-center w-full h-full lg:w-full lg:h-full"
-                                                />
-                                            </div>
-                                            <div
-                                                class="flex justify-between mt-4"
-                                            >
-                                                <div>
-                                                    <h3
-                                                        class="text-sm text-gray-700"
-                                                    >
-                                                        <a href="#">
-                                                            <span
-                                                                aria-hidden="true"
-                                                                class="absolute inset-0"
-                                                            ></span>
-                                                            Basic Tee
-                                                        </a>
-                                                    </h3>
+                                        <% if(!petData || petData.length === 0) { %>
+                                            No Pets Found
+                                        <% } else { %>
+                                            <!-- Loop all pets -->
+                                            <% for(let pet of petData) { %>
+                                            <div class="relative group">
+                                                <div
+                                                    class="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none"
+                                                >
+                                                    <% if(!pet.images || pet.images.length === 0) { %> 
+                                                        <i class="fas fa-paw text-9xl flex justify-center items-center"></i>
+                                                    <% } else { %> 
+                                                        <img
+                                                            src="<%= pet.images[0].replace("public", "") %>"
+                                                            alt="<%= pet.name %>"
+                                                            class="object-cover object-center w-full h-full lg:w-full lg:h-full"
+                                                        />
+                                                    <% } %>
+                                                </div>
+                                                <div
+                                                    class="flex justify-between mt-4"
+                                                >
+                                                    <div>
+                                                        <h3
+                                                            class="text-sm text-gray-700"
+                                                        >
+                                                            <a href="/pet-detail/<%= pet._id %>">
+                                                                <span
+                                                                    aria-hidden="true"
+                                                                    class="absolute inset-0"
+                                                                ></span>
+                                                                <%= pet.name %> 
+                                                            </a>
+                                                        </h3>
+                                                        <p
+                                                            class="mt-1 text-sm text-gray-500"
+                                                        >
+                                                            <%= pet.breed %>
+                                                        </p>
+                                                    </div>
                                                     <p
-                                                        class="mt-1 text-sm text-gray-500"
+                                                        class="text-sm font-medium text-gray-900"
                                                     >
-                                                        Black
+                                                        $<%= pet.price %>
                                                     </p>
                                                 </div>
-                                                <p
-                                                    class="text-sm font-medium text-gray-900"
-                                                >
-                                                    $35
-                                                </p>
                                             </div>
-                                        </div>
-                                        <div class="relative group">
-                                            <div
-                                                class="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none"
-                                            >
-                                                <img
-                                                    src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                                                    alt="Front of men&#039;s Basic Tee in black."
-                                                    class="object-cover object-center w-full h-full lg:w-full lg:h-full"
-                                                />
-                                            </div>
-                                            <div
-                                                class="flex justify-between mt-4"
-                                            >
-                                                <div>
-                                                    <h3
-                                                        class="text-sm text-gray-700"
-                                                    >
-                                                        <a href="#">
-                                                            <span
-                                                                aria-hidden="true"
-                                                                class="absolute inset-0"
-                                                            ></span>
-                                                            Basic Tee
-                                                        </a>
-                                                    </h3>
-                                                    <p
-                                                        class="mt-1 text-sm text-gray-500"
-                                                    >
-                                                        Black
-                                                    </p>
-                                                </div>
-                                                <p
-                                                    class="text-sm font-medium text-gray-900"
-                                                >
-                                                    $35
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="relative group">
-                                            <div
-                                                class="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none"
-                                            >
-                                                <img
-                                                    src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
-                                                    alt="Front of men&#039;s Basic Tee in black."
-                                                    class="object-cover object-center w-full h-full lg:w-full lg:h-full"
-                                                />
-                                            </div>
-                                            <div
-                                                class="flex justify-between mt-4"
-                                            >
-                                                <div>
-                                                    <h3
-                                                        class="text-sm text-gray-700"
-                                                    >
-                                                        <a href="#">
-                                                            <span
-                                                                aria-hidden="true"
-                                                                class="absolute inset-0"
-                                                            ></span>
-                                                            Basic Tee
-                                                        </a>
-                                                    </h3>
-                                                    <p
-                                                        class="mt-1 text-sm text-gray-500"
-                                                    >
-                                                        Black
-                                                    </p>
-                                                </div>
-                                                <p
-                                                    class="text-sm font-medium text-gray-900"
-                                                >
-                                                    $35
-                                                </p>
-                                            </div>
-                                        </div>
-
+                                            <% } %> 
+                                            <!-- Loop Ends -->
+                                        <% } %> 
                                         <!-- More products... -->
                                     </div>
                                     <!-- /End replace -->

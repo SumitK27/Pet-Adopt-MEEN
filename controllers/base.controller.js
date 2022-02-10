@@ -1,4 +1,5 @@
 const Contact = require("../models/contact.model");
+const Pet = require("../models/pet.model");
 const sessionFlash = require("../util/session-flash");
 
 function getHome(req, res) {
@@ -9,8 +10,10 @@ function getAbout(req, res) {
     res.render("shared/about");
 }
 
-function getSearch(req, res) {
-    res.render("users/search");
+async function getSearch(req, res) {
+    const pet = new Pet();
+    const petData = await pet.getAllPets();
+    res.render("users/search", { petData });
 }
 
 function getDetails(req, res) {
