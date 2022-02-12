@@ -30,6 +30,8 @@ With the help of Artificial Intelligence this system will make the pet adoption 
         -   [ ] Send Application
         -   [ ] Check Application Status
         -   [ ] Withdraw an Application
+        -   [ ] Check Received Application
+        -   [ ] Review and Approve/Reject Application
 -   [x] Admin Side:
     -   [x] Users: List All, Check & Update User Details, Delete User
     -   [-] Pets
