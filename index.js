@@ -22,6 +22,7 @@ const authRoutes = require("./routes/auth.routes");
 const baseRoutes = require("./routes/base.routes");
 const usersRoutes = require("./routes/users.routes");
 const adminRoutes = require("./routes/admin.routes");
+const sampleRoute = require("./routes/api/sample.route");
 
 const app = express();
 
@@ -48,6 +49,7 @@ app.use(baseRoutes);
 app.use(authRoutes);
 app.use(usersRoutes);
 app.use(adminRoutes);
+app.use("/api", sampleRoute);
 
 // Error Handling Middleware
 app.use(errorHandlerMiddleware);
