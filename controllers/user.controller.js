@@ -10,7 +10,7 @@ async function getDashboard(req, res) {
 
         const pet = new Pet();
         const petCount = await pet.getCount();
-        
+
         res.render("admin/dashboard", { userCount, petCount });
     } else if (res.locals.isAuth) {
         res.render("users/dashboard");
@@ -37,7 +37,7 @@ async function getMyProfile(req, res) {
         res.redirect("/login");
     }
 
-    if(!userData.isAdmin) {
+    if (!userData.isAdmin) {
         const pet = new Pet();
         const petData = await pet.getMyPets(res.locals.uid);
         res.render("shared/profile", { userData, petData });
@@ -217,10 +217,20 @@ async function deleteProfile(req, res) {
     return;
 }
 
+async function getUser(req, res) {
+    const user = new User();
+    const pet = new Pet();
+    const userData = await user.getUserDetails(req.params.id);
+    const petData = await pet.getMyPets(req.params.id);
+
+    res.render("shared/user-profile", { userData, petData });
+}
+
 module.exports = {
     getDashboard,
     getMyProfile,
     getEditProfile,
     updateProfile,
     deleteProfile,
+    getUser,
 };

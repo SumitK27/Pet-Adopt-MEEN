@@ -23,9 +23,9 @@ router.get("/message/:id", AdminController.getMessage);
 router.get("/message/delete/:id", AdminController.deleteMessage);
 
 router.get("/users", AdminController.getAllUsers);
-router.get("/user/:id", AdminController.getUserDetails);
+router.get("/user/:id/edit", AdminController.getUserDetails);
 router.post(
-    "/user/:id",
+    "/user/:id/edit",
     upload.single("images"),
     AdminController.updateUserDetails
 );
