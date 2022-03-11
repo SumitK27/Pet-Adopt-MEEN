@@ -1,45 +1,39 @@
-<div class="w-full lg:w-1/2 px-4 mb-16 lg:mb-0">
+<div
+    class="flex flex-wrap items-center justify-between lg:items-start xl:items-center"
+>
     <div
-        class="flex -mx-4 flex-wrap items-center justify-between lg:justify-start lg:items-start xl:items-center"
+        class="w-2/12 px-4 text-center flex sm:flex-col items-center justify-center"
     >
-        <div
-            class="w-full sm:w-auto min-w-max px-4 text-center flex sm:flex-col items-center justify-center"
+        <a
+            class="inline-block sm:mb-2 mr-4 sm:mr-0 sm:transform-none hover:text-gray-400"
+            href="#"
         >
+            <i class="text-md fas fa-chevron-up"></i>
+        </a>
+        <div id="image-container">
+            <% if(images) { %> <% for(let image of images) { %>
             <a
-                class="inline-block sm:mb-2 mr-4 sm:mr-0 sm:transform-none hover:text-gray-400"
-                href="#"
+                class="h-16 block mb-2 mr-2 sm:mr-0 border-4 rounded-2xl p-1 hover:border-indigo-500"
+                href="#selected-img"
             >
-                <i class="text-md fas fa-chevron-up"></i>
+                <img class="h-full w-full rounded-xl" src="<%=
+                image.replace("public", "") %>" alt="" />
             </a>
-            <div id="image-container">
-                <% for(let image of images) { %>
-                <a
-                    class="h-32 block mb-2 mr-2 sm:mr-0 border-4 rounded-2xl p-1 hover:border-indigo-500"
-                    href="#selected-img"
-                >
-                    <img
-                        class="h-full w-full rounded-xl"
-                        src="<%= image %>"
-                        alt=""
-                    />
-                </a>
-                <% } %>
-            </div>
-            <a
-                class="inline-block sm:mb-2 mr-4 sm:mr-0 sm:transform-none hover:text-gray-400"
-                href="#"
-            >
-                <i class="text-md fas fa-chevron-down"></i>
-            </a>
+            <% } %> <% } %>
         </div>
-        <div class="w-full sm:w-9/12 rounded-xl px-4 overflow-hidden">
-            <img
-                class="w-full h-full mb-5 hover:scale-110 transition-all"
-                src="<%= images[0] %>"
-                alt=""
-                id="selected-img"
-            />
-            <p class="text-sm text-gray-300">Roll over image to zoom in</p>
+        <a
+            class="inline-block sm:mb-2 mr-4 sm:mr-0 sm:transform-none hover:text-gray-400"
+            href="#"
+        >
+            <i class="text-md fas fa-chevron-down"></i>
+        </a>
+    </div>
+    <div class="w-10/12 px-4 overflow-hidden">
+        <div class="w-full h-full mb-5">
+            <img class="rounded-xl hover:scale-110 transition-all" src="<%=
+            images != null ? images[0].replace("public", "") : "" %>" alt=""
+            id="selected-img" />
         </div>
+        <p class="text-sm text-gray-300">Roll over image to zoom in</p>
     </div>
 </div>

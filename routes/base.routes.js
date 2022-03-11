@@ -8,7 +8,6 @@ router.get("/about", baseController.getAbout);
 router.get("/find", baseController.getSearch);
 router.get("/find/dogs", baseController.getDogs);
 router.get("/find/cats", baseController.getCats);
-router.get("/details", baseController.getDetails);
 router.get("/contact", baseController.getContact);
 router.post("/contact", baseController.postContact);
 

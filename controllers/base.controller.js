@@ -28,10 +28,6 @@ async function getCats(req, res) {
     res.render("users/search", { petData });
 }
 
-function getDetails(req, res) {
-    res.render("users/pet-details");
-}
-
 function getContact(req, res) {
     let sessionData = sessionFlash.getSessionData(req);
 
@@ -86,5 +82,4 @@ module.exports = {
     getSearch,
     getDogs,
     getCats,
-    getDetails,
 };

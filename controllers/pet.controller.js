@@ -156,7 +156,7 @@ async function updatePet(req, res) {
         city,
         state,
         country,
-        postal
+        postal,
     } = req.body;
     const uploadedImages = req.files;
     const userId = res.locals.uid;
@@ -255,8 +255,23 @@ async function deletePet(req, res) {
     res.redirect("/pets");
 }
 
+async function getPetDetails(req, res) {
+    const petId = req.params.id;
+
+    const pet = new Pet();
+    const petData = await pet.getPetById(petId);
+
+    if (!petData) {
+        res.redirect("/pet-profile");
+        return;
+    }
+
+    res.render("users/pet-details", { petData: petData });
+}
+
 module.exports = {
     getPetProfiles,
+    getPetDetails,
     getPetAdd,
     addPet,
     getPetEdit,
