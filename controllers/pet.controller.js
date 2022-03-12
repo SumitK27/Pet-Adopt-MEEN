@@ -152,6 +152,7 @@ async function updatePet(req, res) {
         characteristics,
         giveaway,
         price,
+        description,
         street,
         city,
         state,
@@ -192,6 +193,7 @@ async function updatePet(req, res) {
         characteristics,
         giveaway,
         price,
+        description,
         address: {
             street: street,
             city: city,

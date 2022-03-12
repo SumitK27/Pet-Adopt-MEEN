@@ -13,7 +13,7 @@
                         <div class="container px-4 mx-auto">
                             <div class="flex flex-wrap -mx-4">
                                 <%- include("../includes/breadcrumb", {type:
-                                petData.type}) %>
+                                petData.type, breed: petData.breed}) %>
                                 <div class="w-1/2 px-4 py-8">
                                     <%- include("../includes/image-gallery", {
                                     images: petData.images}) %>
@@ -27,7 +27,7 @@
                                         </h2>
                                         <p class="flex items-center mb-6">
                                             <span
-                                                class="mr-2 text-3xl text-indigo-500 font-medium"
+                                                class="mr-2 text-3xl text-gray-600 font-medium"
                                                 >$</span
                                             >
                                             <span
@@ -37,7 +37,7 @@
                                             </span>
                                         </p>
                                         <p
-                                            class="text-lg text-gray-400 text-justify"
+                                            class="text-lg text-blue-400 underline text-justify"
                                         >
                                             <a href="/user/<%= petData.uid %>">
                                                 Owner
@@ -46,14 +46,29 @@
                                         <p
                                             class="text-lg text-gray-400 text-justify"
                                         >
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Eius
-                                            quaerat velit atque, dolores nostrum
-                                            quas architecto at accusantium,
-                                            reiciendis laudantium saepe
-                                            eligendi, ut nulla soluta nobis
-                                            quidem fuga quisquam neque!
+                                            <%= petData.description %>
                                         </p>
+                                    </div>
+                                    <div class="flex flex-wrap">
+                                        <span
+                                            class="mb-3 text-lg w-full lg:w-1/2"
+                                        >
+                                            <span>Age:</span>
+                                            <span class="text-gray-400"
+                                                ><%= petData.age %>
+                                            </span>
+                                        </span>
+                                        <span
+                                            class="mb-3 text-lg w-full lg:w-1/2"
+                                        >
+                                            <span>Gender:</span>
+                                            <span class="text-gray-400"
+                                                ><%- petData.gender
+                                                === "male" ? "<i class='fas fa-male'</i>" :
+                                                "<i class='fas fa-female'</i>" %>
+                                                </i>
+                                            </span>
+                                        </h4>
                                     </div>
                                     <div class="mb-6">
                                         <h4
@@ -73,7 +88,7 @@
                                                 class="block py-2 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 hover:bg-indigo-600 rounded-xl"
                                                 href="#"
                                             >
-                                                <%= petData.price !== 0 ? "Buy"
+                                                <%= petData.price !== "0" ? "Buy"
                                                 : "Adopt" %>
                                             </a>
                                         </div>
@@ -103,35 +118,25 @@
                                                 <summary
                                                     class="text-lg font-heading font-medium"
                                                 >
-                                                    Shipping &amp; returns
+                                                    Characteristics
                                                 </summary>
                                                 <span
                                                     class="pl-6 text-justify border-t-2 border-gray-400"
                                                 >
-                                                    Lorem, ipsum dolor sit amet
-                                                    consectetur adipisicing
-                                                    elit. Culpa fugiat
-                                                    repellendus nemo dicta
-                                                    officiis aut assumenda
-                                                    error, harum quis, itaque
-                                                    quae fuga hic iure
-                                                    perferendis quam, quibusdam
-                                                    id eius ipsum quos neque
-                                                    amet aliquid aliquam at?
-                                                    Numquam doloremque accusamus
-                                                    natus ratione ducimus omnis
-                                                    reiciendis aspernatur quam
-                                                    repellendus, ea obcaecati
-                                                    accusantium deserunt beatae
-                                                    eius cumque sint neque
-                                                    dolores nesciunt voluptas.
-                                                    Praesentium ullam fuga fugit
-                                                    sint dolores ea quas unde
-                                                    ducimus quos nihil dolorem
-                                                    neque voluptate asperiores
-                                                    saepe incidunt dolorum sed
-                                                    sequi odio rem, magni
-                                                    mollitia perferendis.
+                                                    <%
+                                                    if(petData.characteristics)
+                                                    { for(let characteristic of
+                                                    petData.characteristics) {
+                                                    %> <%=
+                                                    characteristic.charAt(0).toUpperCase()
+                                                    + characteristic.slice(1) %>
+                                                    <br />
+
+                                                    <% } %> <% } else { %>
+                                                    <span class="text-gray-400">
+                                                        No information
+                                                    </span>
+                                                    <% } %>
                                                 </span>
                                             </details>
                                             <details
