@@ -123,14 +123,14 @@
                                             class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                             value="<%= petData.type %>"
                                         >
-                                        <option value="" disabled selected>
-                                            Select Type
-                                        </option>
-                                        <option value="dog" <%= petData.type == "dog" ? "selected" : "" %>>Dog</option>
-                                        <option value="cat" <%= petData.type == "cat" ? "selected" : "" %>>Cat</option>
-                                        <option value="fish" <%= petData.type == "fish" ? "selected" : "" %>>Bird</option>
-                                        <option value="bird" <%= petData.type == "bird" ? "selected" : "" %>>Bird</option>
-                                        <option value="Other" <%= petData.type == "other" ? "selected" : "" %>>Other</option>
+                                            <option value="" disabled selected>
+                                                Select Type
+                                            </option>
+                                            <option value="dog" <%= petData.type == "dog" ? "selected" : "" %>>Dog</option>
+                                            <option value="cat" <%= petData.type == "cat" ? "selected" : "" %>>Cat</option>
+                                            <option value="fish" <%= petData.type == "fish" ? "selected" : "" %>>Bird</option>
+                                            <option value="bird" <%= petData.type == "bird" ? "selected" : "" %>>Bird</option>
+                                            <option value="other" <%= petData.type == "other" ? "selected" : "" %>>Other</option>
                                         </select>
                                     </div>
                                     <!-- End Type -->
@@ -267,29 +267,126 @@
                                     <!-- End Health -->
 
                                     <!-- Characteristics -->
+                                    <div
+                                        class="flex flex-wrap mb-6 px-2 w-full lg:w-1/2">
+                                        <label
+                                            for="characteristics"
+                                            class="block text-gray-700 text-sm font-bold mb-2">
+                                            Characteristics
+                                        </label>
+                                        <section class="flex flex-wrap pl-2">
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="friendly" id="char-friendly">
+                                                <label for="char-friendly">Friendly</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="intelligent" id="char-intelligent">
+                                                <label for="char-intelligent">Intelligent</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="protective" id="char-protective">
+                                                <label for="char-protective">Protective</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="devoted" id="char-devoted">
+                                                <label for="char-devoted">Devoted</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="responsive" id="char-responsive">
+                                                <label for="char-responsive">Responsive</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="charming" id="char-charming">
+                                                <label for="char-charming">Charming</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="playful" id="char-playful">
+                                                <label for="char-playful">Playful</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="companion" id="char-companion">
+                                                <label for="char-companion">Companion</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="stubborn" id="char-stubborn">
+                                                <label for="char-stubborn">Stubborn</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="gentle" id="char-gentle">
+                                                <label for="char-gentle">Gentle</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="loyal" id="char-loyal">
+                                                <label for="char-loyal">Loyal</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="affectionate" id="char-affectionate">
+                                                <label for="char-affectionate">Affectionate</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="curious" id="char-curious">
+                                                <label for="char-curious">Curious</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="courageous" id="char-courageous">
+                                                <label for="char-courageous">Courageous</label>
+                                            </section>
+                                            <section class="w-full md:w-1/2 lg:w-1/3">
+                                                <input type="checkbox" name="characteristics" value="companionable" id="char-companionable">
+                                                <label for="char-companionable">Companionable</label>
+                                            </section>
+
+                                        </section>
+                                    </div>
                                     <!-- End Characteristics -->
 
                                     <!-- Giveaway / Sell -->
                                     <div
-                                        class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
+                                        class="flex flex-wrap mb-6 px-2 w-full lg:w-1/2"
                                     >
-                                        <label
-                                            for="giveaway"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Giveaway / Sell
-                                        </label>
-                                        <select
-                                            required
-                                            name="giveaway"
-                                            id="giveaway"
-                                            class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        >
-                                            <option value="true" <%= petData.giveaway === "true" ? "selected" : "" %>>
-                                                Giveaway
-                                            </option>
-                                            <option value="false" <%= petData.giveaway === "false" ? "selected" : "" %>>Sell</option>
-                                        </select>
+                                        <div class="flex flex-col w-full">
+                                            <section>
+                                                <label
+                                                    for="giveaway"
+                                                    class="block text-gray-700 text-sm font-bold mb-2"
+                                                >
+                                                    Giveaway / Sell
+                                                </label>
+                                                <select
+                                                    required
+                                                    name="giveaway"
+                                                    id="giveaway"
+                                                    class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                >
+                                                    <option value="true" <%= petData.giveaway === "true" ? "selected" : "" %>>
+                                                        Giveaway
+                                                    </option>
+                                                    <option value="false" <%= petData.giveaway === "false" ? "selected" : "" %>>Sell</option>
+                                                </select>
+                                            </section>
+
+                                            <section>
+                                                <label
+                                                    for="price"
+                                                    class="block text-gray-700 text-sm font-bold my-2"
+                                                >
+                                                    Price
+                                                </label>
+                                                <div
+                                                    class="flex items-center shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight"
+                                                >
+                                                    <i class="fas fa-dollar-sign"></i>
+                                                    <input
+                                                        required
+                                                        name="price"
+                                                        id="price"
+                                                        type="number"
+                                                        class="rounded-r ml-2 w-full text-gray-700 focus:outline-none focus:shadow-outline"
+                                                        value="<%= petData.price %>"
+                                                    />
+                                                </div>
+                                            </section>
+                                        </div>
                                     </div>
                                     <!-- End Giveaway / Sell -->
 
@@ -297,25 +394,6 @@
                                     <div
                                         class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
                                     >
-                                        <label
-                                            for="price"
-                                            class="block text-gray-700 text-sm font-bold mb-2"
-                                        >
-                                            Price
-                                        </label>
-                                        <div
-                                            class="flex items-center shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight"
-                                        >
-                                            <i class="fas fa-dollar-sign"></i>
-                                            <input
-                                                required
-                                                name="price"
-                                                id="price"
-                                                type="number"
-                                                class="rounded-r ml-2 w-full text-gray-700 focus:outline-none focus:shadow-outline"
-                                                value="<%= petData.price %>"
-                                            />
-                                        </div>
                                     </div>
                                     <!-- End Price -->
                                 </section>
@@ -358,7 +436,7 @@
                                             name="city"
                                             id="city"
                                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value="<%= petData.address.city %> "
+                                            value="<%= petData.address.city %>"
                                         />
                                     </div>
                                     <div
