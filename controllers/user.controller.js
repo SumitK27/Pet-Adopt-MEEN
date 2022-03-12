@@ -41,6 +41,7 @@ async function getMyProfile(req, res) {
         const pet = new Pet();
         const petData = await pet.getMyPets(res.locals.uid);
         res.render("shared/profile", { userData, petData });
+        return;
     }
 
     res.render("shared/profile", { userData, petData: null });
