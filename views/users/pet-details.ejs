@@ -1,24 +1,25 @@
 <html>
     <head>
-        <%- include("../includes/head") %> <%- include("../includes/navbar") %>
+        <%- include("../includes/head") %> 
         <title>Adopt Me - Pet Details</title>
         <script src="/scripts/imageGallerySelector.js" defer></script>
     </head>
     <body class="bg-slate-200">
+        <%- include("../includes/navbar") %>
         <!-- Details -->
         <section class="text-gray-600 body-font overflow-hidden">
-            <div class="container px-5 mx-auto">
+            <div class="container mx-auto">
                 <div class="lg:w-4/5 mx-auto flex flex-wrap">
                     <section class="pt-12 rounded-b-10xl overflow-hidden">
                         <div class="container px-4 mx-auto">
                             <div class="flex flex-wrap -mx-4">
                                 <%- include("../includes/breadcrumb", {type:
                                 petData.type, breed: petData.breed}) %>
-                                <div class="w-1/2 px-4 py-8">
+                                <div class="w-full lg:w-1/2 px-4 py-8">
                                     <%- include("../includes/image-gallery", {
                                     images: petData.images}) %>
                                 </div>
-                                <div class="w-1/2 px-4">
+                                <div class="w-full lg:w-1/2 px-4">
                                     <div class="max-w-md mb-6">
                                         <h2
                                             class="mt-6 mb-4 text-xl md:text-2xl lg:text-3xl font-heading font-medium"
@@ -64,8 +65,8 @@
                                             <span>Gender:</span>
                                             <span class="text-gray-400"
                                                 ><%- petData.gender
-                                                === "male" ? "<i class='fas fa-male'</i>" :
-                                                "<i class='fas fa-female'</i>" %>
+                                                === "male" ? "<i class='fas fa-mars'</i>" :
+                                                "<i class='fas fa-venus'</i>" %>
                                                 </i>
                                             </span>
                                         </h4>
@@ -105,7 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full">
+                                <div class="w-full px-4">
                                     <div>
                                         <h4 class="mb-6 text-2xl">
                                             More information

@@ -7,6 +7,10 @@ images.forEach((image) => {
     image.addEventListener("mouseover", clickedImage);
 });
 
+images.forEach((image) => {
+    image.addEventListener("click", clickedImage);
+});
+
 function clickedImage(e) {
     images.forEach((image) => {
         const parent = image.parentNode;
