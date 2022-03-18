@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Adoption Form</title>
+    </head>
+    <body>
+        <form action="/adopt" method="post">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
+
+            <section>
+                <label for="applicant-name">Applicant Name</label>
+                <input type="text" id="applicant-name" name="applicant-name" />
+            </section>
+            <section>
+                <label for="address-city">City</label>
+                <input type="text" id="address-city" name="address-city" />
+            </section>
+            <section>
+                <label for="address-state">State</label>
+                <input type="text" id="address-state" name="address-state" />
+            </section>
+            <section>
+                <label for="address-country">Country</label>
+                <input
+                    type="text"
+                    id="address-country"
+                    name="address-country"
+                />
+            </section>
+            <section>
+                <label for="address-zip">Zip</label>
+                <input
+                    type="text"
+                    id="address-zip"
+                    name="address-zip"
+                    min="5"
+                    max="max"
+                />
+            </section>
+            <section>
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" />
+            </section>
+            <section>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" />
+            </section>
+            <section>
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" />
+            </section>
+            <section>
+                <label for="housing"
+                    >In what type of housing do you reside?</label
+                >
+                <input
+                    type="radio"
+                    name="housing"
+                    id="apt-condo"
+                    value="apt-condo"
+                />
+                <label for="apt-condo">Apt/Condo</label>
+                <input type="radio" name="housing" id="house" value="house" />
+                <label for="house">House</label>
+                <input type="radio" name="housing" id="other" value="other" />
+                <label for="other">Other</label>
+            </section>
+            <section>
+                <label for="rent">Do you rent this property?</label>
+                <input type="radio" name="rent" id="rent-yes" value="yes" />
+                <label for="rent-yes">Yes</label>
+                <input type="radio" name="rent" id="rent-no" value="no" />
+                <label for="rent-no">No</label>
+            </section>
+            <section>
+                <label for="landlord-name">If you rent: </label>
+                <label for="landlord-name">Landlord's Name</label>
+                <input type="text" id="landlord-name" name="landlord-name" />
+                <label for="landlord-phone">Landlord's Phone</label>
+                <input
+                    type="tel"
+                    id="landlord-phone"
+                    name="landlord-phone"
+                    min="10"
+                    max="12"
+                />
+            </section>
+            <section>
+                <label for="moving"
+                    >Do you plan on moving in the next 12 months?</label
+                >
+                <input type="radio" name="moving" id="moving-yes" value="yes" />
+                <label for="moving-yes">Yes</label>
+                <input type="radio" name="moving" id="moving-no" value="no" />
+                <label for="moving-no">No</label>
+            </section>
+            <section>
+                <label for="after-moving"
+                    >If yes, what do you plan to do with the animal?</label
+                >
+                <input type="text" name="after-moving" id="after-moving" />
+            </section>
+            <section>
+                <label for="reason">Why do you want to adopt this pet?</label>
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="companion-for-child"
+                    value="companion-for-child"
+                />
+                <label for="companion-for-child">Companion for a child</label>
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="companion-for-other-pet"
+                    value="companion-for-other-pet"
+                />
+                <label for="companion-for-other-pet"
+                    >Companion for other pet</label
+                >
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="companion-for-self"
+                    value="companion-for-self"
+                />
+                <label for="companion-for-self">Companion for self</label>
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="security"
+                    value="security"
+                />
+                <label for="security">Security</label>
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="house-pet"
+                    value="house-pet"
+                />
+                <label for="house-pet">House pet</label>
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="working-dog-mouse-chaser"
+                    value="working-dog-mouse-chaser"
+                />
+                <label for="working-dog-mouse-chaser"
+                    >Working dog mouse chaser</label
+                >
+                <input
+                    type="checkbox"
+                    name="reason"
+                    id="breeding"
+                    value="breeding"
+                />
+                <label for="breeding">Breeding</label>
+                <input type="checkbox" name="reason" id="other" value="other" />
+                <label for="other">Other</label>
+            </section>
+            <section>
+                <label for="other-need-reason">If other, please explain</label>
+                <input
+                    type="text"
+                    name="other-need-reason"
+                    id="other-need-reason"
+                />
+            </section>
+            <section>
+                <label for="gift">Is this pet a gift for someone?</label>
+                <input type="radio" name="isGift" id="gift-yes" value="yes" />
+                <label for="gift-yes">Yes</label>
+                <input type="radio" name="isGift" id="gift-no" value="no" />
+                <label for="gift-no">No</label>
+            </section>
+            <section>
+                <label for="gift-for">If yes, who?</label>
+                <input type="text" name="giftFor" id="gift-for" />
+            </section>
+            <section>
+                <label for="owned-pets">Is this pet a gift for someone?</label>
+                <input
+                    type="radio"
+                    name="petOwned"
+                    id="owned-pets-yes"
+                    value="yes"
+                />
+                <label for="owned-pets-yes">Yes</label>
+                <input
+                    type="radio"
+                    name="petOwned"
+                    id="owned-pets-no"
+                    value="no"
+                />
+                <label for="owned-pets-no">No</label>
+            </section>
+            <section>
+                <label for="previous-pets"
+                    >List all current animals and animals you have had in the
+                    last 10 years.</label
+                >
+
+                <section>
+                    <label for="pet-name">Name</label>
+                    <input type="text" name="petName" id="pet-name" />
+                    <label for="pet-breed">Breed</label>
+                    <input type="text" name="petBreed" id="pet-breed" />
+                    <label for="pet-gender">Gender</label>
+                    <select name="petGender" id="pet-gender">
+                        <option value="Select a gender" hidden selected>
+                            Select a Gender
+                        </option>
+                        <option value="male">Male</option>
+                        <option value="female">female</option>
+                    </select>
+                    <label for="pet-vaccination">Current on Vaccination?</label>
+                    <input
+                        type="text"
+                        name="petVaccination"
+                        id="pet-vaccination"
+                    />
+                    <label for="pet-still-own"
+                        >Do you still own it? If not, why?</label
+                    >
+                    <input type="text" name="petStillOwn" id="pet-still-own" />
+                </section>
+            </section>
+            <section>
+                <label for="veterinarians"
+                    >List all veterinarians you have taken your pets to in the
+                    last 10 years and the veterinarian that you plan on using
+                    for this pet.</label
+                >
+                <label for="vet-name">Veterinarian</label>
+                <input type="radio" name="vetName" id="vet-name" />
+                <label for="vet-phone">Phone</label>
+                <input type="radio" name="vetPhone" id="vet-phone" />
+            </section>
+            <section>
+                <label for="fdra-contact"
+                    >Do you grant permission to FDRA to contact your
+                    vet(s)?</label
+                >
+                <input
+                    type="radio"
+                    name="vetContactPermission"
+                    id="fdra-contact-yes"
+                    value="yes"
+                />
+                <label for="fdra-contact-yes">Yes</label>
+                <input
+                    type="radio"
+                    name="vetContactPermission"
+                    id="fdra-contact-no"
+                    value="no"
+                />
+                <label for="fdra-contact-no">No</label>
+            </section>
+        </form>
+    </body>
+</html>

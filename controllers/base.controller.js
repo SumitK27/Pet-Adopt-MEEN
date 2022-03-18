@@ -93,6 +93,11 @@ async function getBreed(req, res) {
     res.render("users/animal", { animalData });
 }
 
+// TODO: Remove this function
+function getAdoptForm(req, res) {
+    res.render("users/adoption-form");
+}
+
 module.exports = {
     getHome,
     getAbout,
@@ -104,4 +109,5 @@ module.exports = {
     getAnimals,
     getAnimal,
     getBreed,
+    getAdoptForm,
 };

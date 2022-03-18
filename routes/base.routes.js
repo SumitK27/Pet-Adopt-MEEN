@@ -15,6 +15,9 @@ router.get("/find/dogs", baseController.getDogs);
 router.get("/find/cats", baseController.getCats);
 // router.get("/find/breed/:breed", baseController.getBreed);
 
+// TODO: Remove this function
+router.get("/adoption-form", baseController.getAdoptForm);
+
 // * Animal Information
 router.get("/info/animals", baseController.getAnimals);
 router.get("/info/animal/:id", baseController.getAnimal);
