@@ -1,5 +1,6 @@
 const Contact = require("../models/contact.model");
 const Pet = require("../models/pet.model");
+const Animal = require("../models/animal.model");
 const sessionFlash = require("../util/session-flash");
 
 function getHome(req, res) {
@@ -74,6 +75,24 @@ async function postContact(req, res) {
     }
 }
 
+async function getAnimals(req, res) {
+    const animal = new Animal();
+    const animalData = await animal.getAllAnimals();
+    res.render("users/animals", { animalData });
+}
+
+async function getAnimal(req, res) {
+    const animal = new Animal();
+    const animalData = await animal.getAnimal(req.params.id);
+    res.render("users/animal", { animalData });
+}
+
+async function getBreed(req, res) {
+    const animal = new Animal();
+    const animalData = await animal.getBreed(req.params.breed);
+    res.render("users/animal", { animalData });
+}
+
 module.exports = {
     getHome,
     getAbout,
@@ -82,4 +101,7 @@ module.exports = {
     getSearch,
     getDogs,
     getCats,
+    getAnimals,
+    getAnimal,
+    getBreed,
 };

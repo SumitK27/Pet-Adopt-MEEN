@@ -54,3 +54,10 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 
 -   [ ] Update user Avatar from Admin-side.
 -   [ ] Add Pagination to Admin Dashboard.
+-   [ ] View for Animals (Card List, Details, Search by Breed)
+-   [ ] Adoption Form
+-   [ ] Application Status
+-   [ ] Animal Recommendation
+-   [ ] Animal Recognition
+-   [ ] GeoLocation - Get Lat & Log from Address
+-   [ ] APIs for all operations

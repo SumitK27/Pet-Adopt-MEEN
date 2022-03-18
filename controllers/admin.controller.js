@@ -1,6 +1,7 @@
 const Contact = require("../models/contact.model");
 const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
+const Animal = require("../models/animal.model");
 const db = require("../data/database");
 const bcrypt = require("bcrypt");
 
@@ -287,6 +288,214 @@ async function deleteUser(req, res) {
     res.redirect("/users");
 }
 
+async function getAllAnimals(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    let animals;
+    try {
+        let animalObj = new Animal();
+        animals = await animalObj.getAllAnimals();
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.render("admin/animals", { animalData: animals });
+}
+
+async function getAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    let animal;
+    try {
+        const animalObj = new Animal();
+        animal = await animalObj.getAnimal(req.params.id);
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.render("admin/animal", { animalData: animal });
+}
+
+function getAddAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    res.render("admin/add-animal");
+}
+
+async function addAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    const { name, species, breed, age } = req.body;
+
+    const animal = {
+        name,
+        species,
+        breed,
+        age,
+    };
+
+    try {
+        const animalObj = new Animal();
+        await animalObj.addAnimal(animal);
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.redirect("/animals");
+}
+
+async function getUpdateAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    let animal;
+    try {
+        const animalObj = new Animal();
+        animal = await animalObj.getAnimal(req.params.id);
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.render("admin/animal", { animalData: animal });
+}
+
+async function updateAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    const { name, species, breed, age } = req.body;
+
+    const animal = {
+        name,
+        species,
+        breed,
+        age,
+    };
+
+    try {
+        const animalObj = new Animal();
+        await animalObj.updateAnimal(req.params.id, animal);
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.redirect("/animals");
+}
+
+async function deleteAnimal(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    try {
+        const animalObj = new Animal();
+        await animalObj.deleteAnimal(req.params.id);
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.redirect("/animals");
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
@@ -295,4 +504,11 @@ module.exports = {
     getUserDetails,
     updateUserDetails,
     deleteUser,
+    getAllAnimals,
+    getAnimal,
+    getAddAnimal,
+    addAnimal,
+    getUpdateAnimal,
+    updateAnimal,
+    deleteAnimal,
 };
