@@ -2,6 +2,7 @@ const Contact = require("../models/contact.model");
 const Pet = require("../models/pet.model");
 const Animal = require("../models/animal.model");
 const sessionFlash = require("../util/session-flash");
+const pagination = require("../util/pagination");
 
 function getHome(req, res) {
     res.render("shared/index");
@@ -12,9 +13,13 @@ function getAbout(req, res) {
 }
 
 async function getSearch(req, res) {
+    const currentPage = req.query.page;
     const pet = new Pet();
-    const petData = await pet.getAllPets();
-    res.render("users/search", { petData });
+    const count = await pet.getCount();
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+    const petData = await pet.getAllPets(startFrom, perPage);
+    res.render("users/search", { petData, pages, currentPage });
 }
 
 async function getDogs(req, res) {

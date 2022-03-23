@@ -4,8 +4,11 @@ const Pet = require("../models/pet.model");
 const Animal = require("../models/animal.model");
 const db = require("../data/database");
 const bcrypt = require("bcrypt");
+const pagination = require("../util/pagination");
 
 async function getAllMessages(req, res) {
+    const currentPage = req.query.page;
+
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -22,16 +25,21 @@ async function getAllMessages(req, res) {
     }
 
     let messages;
+    let totalPages;
     try {
         const contact = new Contact();
-        messages = await contact.getAll();
+        const count = await contact.getCount();
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 1);
+
+        messages = await contact.getAll(startFrom, perPage);
+        totalPages = pages;
     } catch (error) {
         console.log(error);
         res.render("error/500");
         return;
     }
 
-    res.render("admin/messages", { messages });
+    res.render("admin/messages", { messages, pages: totalPages, currentPage });
 }
 
 async function getMessage(req, res) {
@@ -92,6 +100,8 @@ async function deleteMessage(req, res) {
 }
 
 async function getAllUsers(req, res) {
+    const currentPage = req.query.page;
+
     if (!res.locals.isAuth) {
         res.redirect("/login");
         return;
@@ -108,16 +118,21 @@ async function getAllUsers(req, res) {
     }
 
     let users;
+    let totalPages;
     try {
         const user = new User();
-        users = await user.getAllUsers();
+        const count = await user.getCount();
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 4);
+
+        users = await user.getAllUsers(startFrom, perPage);
+        totalPages = pages;
     } catch (error) {
         console.log(error);
         res.render("error/500");
         return;
     }
 
-    res.render("admin/users", { users });
+    res.render("admin/users", { users, pages: totalPages, currentPage });
 }
 
 async function getUserDetails(req, res) {

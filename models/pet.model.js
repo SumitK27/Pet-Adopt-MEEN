@@ -37,8 +37,15 @@ class Pets {
         return await collection.countDocuments();
     }
 
-    getAllPets() {
-        return db.getDb().collection("pets").find({}).toArray();
+    getAllPets(startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({})
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
     getMyPets(uid) {

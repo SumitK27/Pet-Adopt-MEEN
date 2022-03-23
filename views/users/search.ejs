@@ -344,9 +344,21 @@
                                     <% } %>
                                     <!-- Loop Ends -->
                                     <% } %>
-                                    <!-- More products... -->
                                 </div>
-                                <!-- /End replace -->
+
+                                <% currentPage == null ? currentPage = 1 :
+                                currentPage %> <% if(pages > 1) { %>
+                                <div class="my-2 flex justify-center">
+                                    <% for (let i = 1; i <= pages; i++) { %>
+                                    <a
+                                        href="?page=<%= i %>"
+                                        class="m-2 px-4 py-2 rounded-md outline-none <%= currentPage == i ? 'bg-indigo-600 text-white' : 'border-2 border-transparent hover:border-indigo-400 hover:text-indigo-400' %>"
+                                    >
+                                        <%= i %>
+                                    </a>
+                                    <% } %>
+                                </div>
+                                <% } %>
                             </div>
                         </div>
                     </section>

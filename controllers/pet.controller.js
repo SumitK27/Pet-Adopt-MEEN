@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
+const pagination = require("../util/pagination");
 
 async function getPetProfiles(req, res) {
     if (!res.locals.isAuth) {
@@ -13,17 +14,32 @@ async function getPetProfiles(req, res) {
         return;
     }
 
+    const currentPage = req.query.page;
+
     const pet = new Pet();
+    const count = await pet.getCount();
+
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 4);
 
     if (!res.locals.isAdmin) {
         const petData = await pet.getMyPets(res.locals.uid);
 
-        res.render("shared/pets", { pets: petData, isAdmin: false });
+        res.render("shared/pets", {
+            pets: petData,
+            pages: pages,
+            currentPage,
+            isAdmin: false,
+        });
         return;
     }
 
-    const petData = await pet.getAllPets();
-    res.render("shared/pets", { pets: petData, isAdmin: true });
+    const petData = await pet.getAllPets(startFrom, perPage);
+    res.render("shared/pets", {
+        pets: petData,
+        pages: pages,
+        currentPage,
+        isAdmin: true,
+    });
 }
 
 async function getPetAdd(req, res) {

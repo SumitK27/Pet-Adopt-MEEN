@@ -17,11 +17,17 @@ class Contact {
         });
     }
 
-    async getAll() {
+    async getCount() {
+        return await db.getDb().collection("contacts").countDocuments();
+    }
+
+    async getAll(startFrom, perPage) {
         const messages = await db
             .getDb()
             .collection("contacts")
             .find({})
+            .skip(startFrom)
+            .limit(perPage)
             .toArray();
 
         return messages;

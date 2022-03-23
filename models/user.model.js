@@ -14,7 +14,7 @@ class User {
 
     async getCount() {
         const collection = await db.getDb().collection("users");
-        return await collection.countDocuments({ isAdmin: false });
+        return await collection.countDocuments();
     }
 
     getUserWithSameEmail() {
@@ -69,10 +69,15 @@ class User {
             .updateOne({ _id: userId }, { $set: user });
     }
 
-    async getAllUsers() {
-        const users = await db.getDb().collection("users").find({ isAdmin: false }).toArray();
-
-        return users;
+    async getAllUsers(startFrom, perPage) {
+        return await db
+            .getDb()
+            .collection("users")
+            .find()
+            .sort({ firstName: 1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
     async deleteUser(uid) {
