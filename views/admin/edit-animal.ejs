@@ -23,12 +23,12 @@
                             class="bg-blue-700 border-b-2 border-gray-400 rounded-tl-lg rounded-tr-lg p-2"
                         >
                             <h5 class="font-bold uppercase text-white">
-                                Add Pet Profile
+                                Edit Pet Profile - <%= animalData._id %>
                             </h5>
                         </div>
                         <div class="p-6">
                             <form
-                                action="/animal/add?_csrf=<%= locals.csrfToken %>"
+                                action="/animal/<%= animalData._id %>/edit?_csrf=<%= locals.csrfToken %>"
                                 method="POST"
                                 enctype="multipart/form-data"
                             >
@@ -50,7 +50,7 @@
                                             name="breedName"
                                             id="breed-name"
                                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            value=""
+                                            value="<%= animalData.breedName %>"
                                         />
                                     </div>
                                     <!-- End Name -->
@@ -74,6 +74,7 @@
                                                 name="isMixBreed"
                                                 id="is-mix-breed-yes"
                                                 value="yes"
+                                                <%= animalData.isMixBreed == "yes" ? "checked" : "" %>
                                             />
                                             <label for="is-mix-breed-yes"
                                                 >Yes</label
@@ -88,6 +89,7 @@
                                                 name="isMixBreed"
                                                 id="is-mix-breed-no"
                                                 value="no"
+                                                <%= animalData.isMixBreed == "no" ? "checked" : "" %>
                                             />
                                             <label for="is-mix-breed-no"
                                                 >No</label
@@ -112,6 +114,7 @@
                                             id="animal-origin"
                                             class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                             list="origin-list"
+                                            value="<%= animalData.animalOrigin %>"
                                         />
                                         <datalist id="origin-list">
                                             <option value="" disabled selected>
@@ -145,11 +148,11 @@
                                             <option value="" disabled selected>
                                                 Select Type
                                             </option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="fish">Bird</option>
-                                            <option value="bird">Bird</option>
-                                            <option value="other">Other</option>
+                                            <option value="dog" <%= animalData.type == "dog" ? "selected" : "" %>>Dog</option>
+                                            <option value="cat" <%= animalData.type == "cat" ? "selected" : "" %>>Cat</option>
+                                            <option value="fish" <%= animalData.type == "fish" ? "selected" : "" %>>Bird</option>
+                                            <option value="bird" <%= animalData.type == "bird" ? "selected" : "" %>>Bird</option>
+                                            <option value="other" <%= animalData.type == "other" ? "selected" : "" %>>Other</option>
                                         </select>
                                     </div>
                                     <!-- End Type -->
@@ -174,11 +177,11 @@
                                             <option value="" disabled selected>
                                                 Select category
                                             </option>
-                                            <option value="dog">Dog</option>
-                                            <option value="cat">Cat</option>
-                                            <option value="fish">Bird</option>
-                                            <option value="bird">Bird</option>
-                                            <option value="other">Other</option>
+                                            <option value="dog" <%= animalData.type == "dog" ? "selected" : "" %>>Dog</option>
+                                            <option value="cat" <%= animalData.type == "cat" ? "selected" : "" %>>Cat</option>
+                                            <option value="fish" <%= animalData.type == "fish" ? "selected" : "" %>>Bird</option>
+                                            <option value="bird" <%= animalData.type == "bird" ? "selected" : "" %>>Bird</option>
+                                            <option value="other" <%= animalData.type == "other" ? "selected" : "" %>>Other</option>
                                         </select>
                                     </div>
                                     <!-- End category -->
@@ -202,38 +205,41 @@
                                                     name="color"
                                                     value="black"
                                                     id="color-black"
-                                                />
-                                                <label for="color-black"
+                                                    <%= animalData.color?.includes("black") ? "checked" : "" %>
+                                                    />
+                                                    <label for="color-black"
                                                     >Black</label
-                                                >
+                                                    >
                                             </section>
                                             <section
-                                                class="w-full md:w-1/2 lg:w-1/3"
+                                            class="w-full md:w-1/2 lg:w-1/3"
                                             >
                                                 <input
                                                     type="checkbox"
                                                     name="color"
                                                     value="white"
                                                     id="color-white"
+                                                    <%= animalData.color?.includes("white") ? "checked" : "" %>
                                                 />
                                                 <label for="color-white"
-                                                    >White</label
-                                                >
-                                            </section>
+                                            >White</label
+                                            >
+                                        </section>
                                             <section
-                                                class="w-full md:w-1/2 lg:w-1/3"
+                                            class="w-full md:w-1/2 lg:w-1/3"
                                             >
                                                 <input
                                                     type="checkbox"
                                                     name="color"
                                                     value="red"
                                                     id="color-red"
+                                                    <%= animalData.color?.includes("red") ? "checked" : "" %>
                                                 />
                                                 <label for="color-red"
-                                                    >Red</label
-                                                >
-                                            </section>
-                                            <section
+                                            >Red</label
+                                            >
+                                        </section>
+                                        <section
                                                 class="w-full md:w-1/2 lg:w-1/3"
                                             >
                                                 <input
@@ -241,8 +247,9 @@
                                                     name="color"
                                                     value="brown"
                                                     id="color-brown"
-                                                />
-                                                <label for="color-brown"
+                                                    <%= animalData.color?.includes("brown") ? "checked" : "" %>
+                                                    />
+                                                    <label for="color-brown"
                                                     >Brown</label
                                                 >
                                             </section>
@@ -254,6 +261,7 @@
                                                     name="color"
                                                     value="gray"
                                                     id="color-gray"
+                                                    <%= animalData.color?.includes("gray") ? "checked" : "" %>
                                                 />
                                                 <label for="color-gray"
                                                     >Gray</label
@@ -267,6 +275,7 @@
                                                     name="color"
                                                     value="pink"
                                                     id="color-pink"
+                                                    <%= animalData.color?.includes("pink") ? "checked" : "" %>
                                                 />
                                                 <label for="color-pink"
                                                     >Pink</label
@@ -280,6 +289,7 @@
                                                     name="color"
                                                     value="cream"
                                                     id="color-cream"
+                                                    <%= animalData.color?.includes("cream") ? "checked" : "" %>
                                                 />
                                                 <label for="color-cream"
                                                     >Cream</label
@@ -293,6 +303,7 @@
                                                     name="color"
                                                     value="golden"
                                                     id="color-golden"
+                                                    <%= animalData.color?.includes("golden") ? "checked" : "" %>
                                                 />
                                                 <label for="color-golden"
                                                     >Golden</label
@@ -329,6 +340,7 @@
                                                     max="5"
                                                     name="shredding_lvl"
                                                     id="phy-shredding_lvl"
+                                                    value="<%= animalData.physical.shredding_lvl %>"
                                                 />
                                             </section>
                                             <section
@@ -347,6 +359,7 @@
                                                     max="5"
                                                     name="drolling_lvl"
                                                     id="phy-drolling_lvl"
+                                                    value="<%= animalData.physical.drolling_lvl %>"
                                                 />
                                             </section>
                                             <section
@@ -365,6 +378,7 @@
                                                     max="5"
                                                     name="coat_grooming_frequency"
                                                     id="phy-coat_grooming_frequency"
+                                                    value="<%= animalData.physical.coat_grooming_frequency %>"
                                                 />
                                             </section>
                                             <section
@@ -389,16 +403,16 @@
                                                     >
                                                         Select Coat Length
                                                     </option>
-                                                    <option value="short">
+                                                    <option value="short" <%= animalData.physical.coat_length == "short" ? "selected" : "" %>>
                                                         Short
                                                     </option>
-                                                    <option value="medium">
+                                                    <option value="medium" <%= animalData.physical.coat_length == "medium" ? "selected" : "" %>>
                                                         Medium
                                                     </option>
-                                                    <option value="long">
+                                                    <option value="long" <%= animalData.physical.coat_length == "long" ? "selected" : "" %>>
                                                         Long
                                                     </option>
-                                                    <option value="extraLong">
+                                                    <option value="extraLong" <%= animalData.physical.coat_length == "extraLong" ? "selected" : "" %>>
                                                         Extra Long
                                                     </option>
                                                 </select>
@@ -423,21 +437,23 @@
                                                             name="coat_type"
                                                             value="double"
                                                             id="coat_type-double"
-                                                        />
-                                                        <label
+                                                            <%= animalData.physical.coat_type?.includes("double") ? "checked" : "" %>
+                                                            />
+                                                            <label
                                                             for="coat_type-double"
-                                                        >
+                                                            >
                                                             Double
                                                         </label>
                                                     </section>
                                                     <section
-                                                        class="w-full md:w-1/2 lg:w-1/3"
+                                                    class="w-full md:w-1/2 lg:w-1/3"
                                                     >
                                                         <input
                                                             type="checkbox"
                                                             name="coat_type"
                                                             value="smooth"
                                                             id="coat_type-smooth"
+                                                            <%= animalData.physical.coat_type?.includes("smooth") ? "checked" : "" %>
                                                         />
                                                         <label
                                                             for="coat_type-smooth"
@@ -470,12 +486,12 @@
                                             <option value="" disabled selected>
                                                 Select Size
                                             </option>
-                                            <option value="small">Small</option>
-                                            <option value="medium">
+                                            <option value="small" <%= animalData.size == "small" ? "selected" : "" %>>Small</option>
+                                            <option value="medium" <%= animalData.size == "medium" ? "selected" : "" %>>
                                                 Medium
                                             </option>
-                                            <option value="large">Large</option>
-                                            <option value="extraLarge">
+                                            <option value="large" <%= animalData.size == "large" ? "selected" : "" %>>Large</option>
+                                            <option value="extraLarge" <%= animalData.size == "extraLarge" ? "selected" : "" %>>
                                                 Extra Large
                                             </option>
                                         </select>
@@ -509,6 +525,7 @@
                                                     max="5"
                                                     name="playfulness"
                                                     id="qual-playfulness"
+                                                    value="<%= animalData.qualities.playfulness %>"
                                                 />
                                             </section>
                                             <section
@@ -527,6 +544,7 @@
                                                     max="5"
                                                     name="vocality"
                                                     id="qual-vocality"
+                                                    value="<%= animalData.qualities.vocality %>"
                                                 />
                                             </section>
                                             <section
@@ -545,6 +563,7 @@
                                                     max="5"
                                                     name="heat_sensitivity"
                                                     id="qual-heat_sensitivity"
+                                                    value="<%= animalData.qualities.heat_sensitivity %>"
                                                 />
                                             </section>
                                             <section
@@ -563,6 +582,7 @@
                                                     max="5"
                                                     name="training"
                                                     id="qual-training"
+                                                    value="<%= animalData.qualities.training %>"
                                                 />
                                             </section>
                                             <section
@@ -581,6 +601,7 @@
                                                     max="5"
                                                     name="energy_lvl"
                                                     id="qual-energy_lvl"
+                                                    value="<%= animalData.qualities.energy_lvl %>"
                                                 />
                                             </section>
                                             <section
@@ -599,6 +620,7 @@
                                                     max="5"
                                                     name="barking_lvl"
                                                     id="qual-barking_lvl"
+                                                    value="<%= animalData.qualities.barking_lvl %>"
                                                 />
                                             </section>
                                             <section
@@ -617,6 +639,7 @@
                                                     max="5"
                                                     name="exercise_needs"
                                                     id="qual-exercise_needs"
+                                                    value="<%= animalData.qualities.exercise_needs %>"
                                                 />
                                             </section>
                                             <section
@@ -635,6 +658,7 @@
                                                     max="5"
                                                     name="friendliness_to_dog"
                                                     id="qual-friendliness_to_dog"
+                                                    value="<%= animalData.qualities.friendliness_to_dog %>"
                                                 />
                                             </section>
                                             <section
@@ -653,6 +677,7 @@
                                                     max="5"
                                                     name="friendliness_to_children"
                                                     id="qual-friendliness_to_children"
+                                                    value="<%= animalData.qualities.friendliness_to_children %>"
                                                 />
                                             </section>
                                             <section
@@ -671,6 +696,7 @@
                                                     max="5"
                                                     name="affectionate_with_family"
                                                     id="qual-affectionate_with_family"
+                                                    value="<%= animalData.qualities.affectionate_with_family %>"
                                                 />
                                             </section>
                                             <section
@@ -689,6 +715,7 @@
                                                     max="5"
                                                     name="openness_to_stranger"
                                                     id="qual-openness_to_stranger"
+                                                    value="<%= animalData.qualities.openness_to_stranger %>"
                                                 />
                                             </section>
                                             <section
@@ -707,6 +734,7 @@
                                                     max="5"
                                                     name="watch_or_protective"
                                                     id="qual-watch_or_protective"
+                                                    value="<%= animalData.qualities.watch_or_protective %>"
                                                 />
                                             </section>
                                             <section
@@ -725,6 +753,7 @@
                                                     max="5"
                                                     name="adaptability_lvl"
                                                     id="qual-adaptability_lvl"
+                                                    value="<%= animalData.qualities.adaptability_lvl %>"
                                                 />
                                             </section>
                                         </section>
@@ -758,6 +787,7 @@
                                                             id="avg_life"
                                                             type="number"
                                                             class="rounded-r ml-2 w-full text-gray-700 focus:outline-none focus:shadow-outline"
+                                                            value="<%= animalData.avg_life %>"
                                                         />
                                                     </div>
                                                 </section>
@@ -785,6 +815,7 @@
                                                             id="avg_height"
                                                             type="number"
                                                             class="rounded-r ml-2 w-full text-gray-700 focus:outline-none focus:shadow-outline"
+                                                            value="<%= animalData.avg_height %>"
                                                         />
                                                     </div>
                                                 </section>
@@ -812,6 +843,7 @@
                                                             id="avg_weight"
                                                             type="number"
                                                             class="rounded-r ml-2 w-full text-gray-700 focus:outline-none focus:shadow-outline"
+                                                            value="<%= animalData.avg_weight %>"
                                                         />
                                                     </div>
                                                 </section>
@@ -834,7 +866,9 @@
                                             id="description"
                                             rows="2"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.description %></textarea
+                                        >
                                     </div>
                                     <!-- End Description -->
 
@@ -852,7 +886,9 @@
                                             id="caring_health"
                                             rows="3"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.caring.health %></textarea
+                                        >
                                     </div>
                                     <!-- End Health -->
 
@@ -870,7 +906,9 @@
                                             id="caring_grooming"
                                             rows="3"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.caring.grooming %></textarea
+                                        >
                                     </div>
                                     <!-- End Grooming -->
 
@@ -888,7 +926,9 @@
                                             id="caring_exercise"
                                             rows="3"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.caring.exercise %></textarea
+                                        >
                                     </div>
                                     <!-- End Exercise -->
 
@@ -906,7 +946,9 @@
                                             id="caring_training"
                                             rows="3"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.caring.training %>"</textarea
+                                        >
                                     </div>
                                     <!-- End Training -->
 
@@ -924,7 +966,9 @@
                                             id="caring_nutrition"
                                             rows="3"
                                             class="w-full resize-none border rounded-md shadow focus:outline-none p-6"
-                                        ></textarea>
+                                        >
+<%= animalData.caring.nutrition %></textarea
+                                        >
                                     </div>
                                     <!-- End Nutrition -->
                                 </section>

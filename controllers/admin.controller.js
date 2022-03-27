@@ -358,7 +358,7 @@ async function getAnimal(req, res) {
         return;
     }
 
-    res.render("admin/animal", { animalData: animal });
+    res.render("shared/animal-details", { animalData: animal });
 }
 
 function getAddAnimal(req, res) {
@@ -396,13 +396,88 @@ async function addAnimal(req, res) {
         return;
     }
 
-    const { name, species, breed, age } = req.body;
+    const {
+        breedName,
+        isMixBreed,
+        animalOrigin,
+        type,
+        category,
+        size,
+        shredding_lvl,
+        drolling_lvl,
+        coat_grooming_frequency,
+        coat_type,
+        coat_length,
+        color,
+        playfulness,
+        vocality,
+        heat_sensitivity,
+        training,
+        energy_lvl,
+        barking_lvl,
+        exercise_needs,
+        friendliness_to_dog,
+        friendliness_to_children,
+        affectionate_with_family,
+        openness_to_stranger,
+        watch_or_protective,
+        adaptability_lvl,
+        avg_life,
+        avg_height,
+        avg_weight,
+        description,
+        images,
+        health,
+        caring_health,
+        caring_grooming,
+        caring_exercise,
+        caring_training,
+        caring_nutrition,
+    } = req.body;
 
     const animal = {
-        name,
-        species,
-        breed,
-        age,
+        type,
+        breedName,
+        isMixBreed,
+        category,
+        animalOrigin,
+        size,
+        color,
+        qualities: {
+            playfulness,
+            vocality,
+            heat_sensitivity,
+            training,
+            energy_lvl,
+            barking_lvl,
+            exercise_needs,
+            friendliness_to_dog,
+            friendliness_to_children,
+            affectionate_with_family,
+            openness_to_stranger,
+            watch_or_protective,
+            adaptability_lvl,
+        },
+        physical: {
+            shredding_lvl,
+            drolling_lvl,
+            coat_grooming_frequency,
+            coat_type,
+            coat_length,
+        },
+        avg_life,
+        avg_height,
+        avg_weight,
+        description,
+        images,
+        health,
+        caring: {
+            health: caring_health,
+            grooming: caring_grooming,
+            exercise: caring_exercise,
+            training: caring_training,
+            nutrition: caring_nutrition,
+        },
     };
 
     try {
@@ -443,7 +518,7 @@ async function getUpdateAnimal(req, res) {
         return;
     }
 
-    res.render("admin/animal", { animalData: animal });
+    res.render("admin/edit-animal", { animalData: animal });
 }
 
 async function updateAnimal(req, res) {
@@ -462,13 +537,88 @@ async function updateAnimal(req, res) {
         return;
     }
 
-    const { name, species, breed, age } = req.body;
+    const {
+        breedName,
+        isMixBreed,
+        animalOrigin,
+        type,
+        category,
+        size,
+        shredding_lvl,
+        drolling_lvl,
+        coat_grooming_frequency,
+        coat_type,
+        coat_length,
+        color,
+        playfulness,
+        vocality,
+        heat_sensitivity,
+        training,
+        energy_lvl,
+        barking_lvl,
+        exercise_needs,
+        friendliness_to_dog,
+        friendliness_to_children,
+        affectionate_with_family,
+        openness_to_stranger,
+        watch_or_protective,
+        adaptability_lvl,
+        avg_life,
+        avg_height,
+        avg_weight,
+        description,
+        images,
+        health,
+        caring_health,
+        caring_grooming,
+        caring_exercise,
+        caring_training,
+        caring_nutrition,
+    } = req.body;
 
     const animal = {
-        name,
-        species,
-        breed,
-        age,
+        type,
+        breedName,
+        isMixBreed,
+        category,
+        animalOrigin,
+        size,
+        color,
+        qualities: {
+            playfulness,
+            vocality,
+            heat_sensitivity,
+            training,
+            energy_lvl,
+            barking_lvl,
+            exercise_needs,
+            friendliness_to_dog,
+            friendliness_to_children,
+            affectionate_with_family,
+            openness_to_stranger,
+            watch_or_protective,
+            adaptability_lvl,
+        },
+        physical: {
+            shredding_lvl,
+            drolling_lvl,
+            coat_grooming_frequency,
+            coat_type,
+            coat_length,
+        },
+        avg_life,
+        avg_height,
+        avg_weight,
+        description,
+        images,
+        health,
+        caring: {
+            health: caring_health,
+            grooming: caring_grooming,
+            exercise: caring_exercise,
+            training: caring_training,
+            nutrition: caring_nutrition,
+        },
     };
 
     try {

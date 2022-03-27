@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const db = require("../data/database");
 
 class Animal {
@@ -12,7 +13,7 @@ class Animal {
         let animal = await db
             .getDb()
             .collection("animals")
-            .findOne({ _id: id });
+            .findOne({ _id: ObjectId(id) });
         return animal;
     }
 
@@ -25,7 +26,7 @@ class Animal {
         let result = await db
             .getDb()
             .collection("animals")
-            .updateOne({ _id: id }, { $set: animal });
+            .updateOne({ _id: ObjectId(id) }, { $set: animal });
         return result;
     }
 
@@ -33,7 +34,7 @@ class Animal {
         let result = await db
             .getDb()
             .collection("animals")
-            .deleteOne({ _id: id });
+            .deleteOne({ _id: ObjectId(id) });
         return result;
     }
 

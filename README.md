@@ -30,6 +30,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 -   [x] Admin Side:
     -   [x] Users: List All, Check & Update User Details, Delete User
     -   [x] Pets: Show All Pet Profiles, Check Pet Profile Details, Update Pet Profile Details, Delete a Pet Profile
+    -   [x] Animals: Show All Animals Profiles, Check Animal Profile Details, Update Animal Profile Details, Delete a Animal Profile
     -   [ ] Applications
         -   [ ] Show All Applications
         -   [ ] Show Approved Applications
@@ -45,7 +46,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [ ] Find Pet Profiles Nearby
     -   [ ] Analyzing Sentiment Value of Application
     -   [ ] Auto Application Validation
-    -   [ ] Uploading Image
+    -   [ ] Uploading Image for Recognition
     -   [ ] Get Breed name from Image
     -   [ ] Add Populate Sample Data Endpoint
     -   [ ] Add APIs for User and Pet related routes
@@ -53,8 +54,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
 ## **TODO**
 
 -   [ ] Update user Avatar from Admin-side.
--   [ ] Add Pagination to Admin Dashboard.
--   [ ] View for Animals (Card List, Details, Search by Breed)
+-   [ ] View for Animals (Search by Breed)
 -   [ ] Adoption Form
 -   [ ] Application Status
 -   [ ] Animal Recommendation

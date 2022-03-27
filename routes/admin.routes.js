@@ -34,9 +34,9 @@ router.get("/user/delete/:id", AdminController.deleteUser);
 router.get("/pets", PetController.getPetProfiles);
 
 router.get("/animals", AdminController.getAllAnimals);
-router.get("/animal/:id", AdminController.getAnimal);
-router.get("/animal/add", AdminController.addAnimal);
+router.get("/animal/add", AdminController.getAddAnimal);
 router.post("/animal/add", upload.array("images"), AdminController.addAnimal);
+router.get("/animal/:id", AdminController.getAnimal);
 router.get("/animal/:id/edit", AdminController.getUpdateAnimal);
 router.post(
     "/animal/:id/edit",
