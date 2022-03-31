@@ -23,6 +23,7 @@ const baseRoutes = require("./routes/base.routes");
 const usersRoutes = require("./routes/users.routes");
 const adminRoutes = require("./routes/admin.routes");
 const petsRoutes = require("./routes/pets.routes");
+const animalsRoutes = require("./routes/animals.routes");
 const sampleRoute = require("./routes/api/sample.route");
 
 const app = express();
@@ -51,6 +52,7 @@ app.use(authRoutes);
 app.use(usersRoutes);
 app.use(adminRoutes);
 app.use(petsRoutes);
+app.use(animalsRoutes);
 app.use("/api", sampleRoute);
 
 // Error Handling Middleware

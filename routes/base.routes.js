@@ -9,26 +9,7 @@ router.get("/about", baseController.getAbout);
 router.get("/contact", baseController.getContact);
 router.post("/contact", baseController.postContact);
 
-// * Find Pages
-router.get("/find", baseController.getSearch);
-router.get("/find/dogs", baseController.getDogs);
-router.get("/find/cats", baseController.getCats);
-// router.get("/find/breed/:breed", baseController.getBreed);
-
 // TODO: Remove this function
 router.get("/adoption-form", baseController.getAdoptForm);
-
-// * Animal Information
-router.get("/info/animals", baseController.getAnimals);
-router.get("/info/animal/:id", baseController.getAnimal);
-router.get("/info/breed/:breed", baseController.getBreed);
-// router.get("/info/species/:species", baseController.getSpeciesInfo);
-
-// * Pet Recommendation
-// router.get("/recommend", baseController.getRecommend);
-
-// * Animal Recognition
-// router.get("/scan", baseController.getScan);
-// router.post("/scan", baseController.postScan);
 
 module.exports = router;

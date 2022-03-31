@@ -1,8 +1,5 @@
 const Contact = require("../models/contact.model");
-const Pet = require("../models/pet.model");
-const Animal = require("../models/animal.model");
 const sessionFlash = require("../util/session-flash");
-const pagination = require("../util/pagination");
 
 function getHome(req, res) {
     res.render("shared/index");
@@ -10,28 +7,6 @@ function getHome(req, res) {
 
 function getAbout(req, res) {
     res.render("shared/about");
-}
-
-async function getSearch(req, res) {
-    const currentPage = req.query.page;
-    const pet = new Pet();
-    const count = await pet.getCount();
-    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
-
-    const petData = await pet.getAllPets(startFrom, perPage);
-    res.render("users/search", { petData, pages, currentPage });
-}
-
-async function getDogs(req, res) {
-    const pet = new Pet();
-    const petData = await pet.getAllPetsByType("dog");
-    res.render("users/search", { petData });
-}
-
-async function getCats(req, res) {
-    const pet = new Pet();
-    const petData = await pet.getAllPetsByType("cat");
-    res.render("users/search", { petData });
 }
 
 function getContact(req, res) {
@@ -80,24 +55,6 @@ async function postContact(req, res) {
     }
 }
 
-async function getAnimals(req, res) {
-    const animal = new Animal();
-    const animalData = await animal.getAllAnimals();
-    res.render("users/animals", { animalData });
-}
-
-async function getAnimal(req, res) {
-    const animal = new Animal();
-    const animalData = await animal.getAnimal(req.params.id);
-    res.render("users/animal", { animalData });
-}
-
-async function getBreed(req, res) {
-    const animal = new Animal();
-    const animalData = await animal.getBreed(req.params.breed);
-    res.render("users/animal", { animalData });
-}
-
 // TODO: Remove this function
 function getAdoptForm(req, res) {
     res.render("users/adoption-form");
@@ -108,11 +65,5 @@ module.exports = {
     getAbout,
     getContact,
     postContact,
-    getSearch,
-    getDogs,
-    getCats,
-    getAnimals,
-    getAnimal,
-    getBreed,
     getAdoptForm,
 };

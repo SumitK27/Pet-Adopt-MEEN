@@ -3,6 +3,34 @@ const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
 const pagination = require("../util/pagination");
 
+async function getSearch(req, res) {
+    const currentPage = req.query.page;
+    const pet = new Pet();
+    const count = await pet.getCount();
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+    const petData = await pet.getAllPets(startFrom, perPage);
+    res.render("users/search", { petData, pages, currentPage });
+}
+
+async function getDogs(req, res) {
+    const pet = new Pet();
+    const petData = await pet.getAllPetsByType("dog");
+    res.render("users/search", { petData });
+}
+
+async function getCats(req, res) {
+    const pet = new Pet();
+    const petData = await pet.getAllPetsByType("cat");
+    res.render("users/search", { petData });
+}
+
+async function getBreed(req, res) {
+    const animal = new Animal();
+    const animalData = await animal.getBreed(req.params.breed);
+    res.render("users/animal", { animalData });
+}
+
 async function getPetProfiles(req, res) {
     if (!res.locals.isAuth) {
         res.redirect("/login");
@@ -287,7 +315,48 @@ async function getPetDetails(req, res) {
     res.render("users/pet-details", { petData: petData });
 }
 
+async function getAdopt(req, res) {
+    const petId = req.params.id;
+
+    // Fetch Pet Details
+    // Fetch Adopter Information
+    // Populate data on Adoption Form
+}
+
+async function adoptPet(req, res) {
+    const userId = res.locals.uid;
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    if (!userData) {
+        res.redirect("/login");
+        return;
+    }
+
+    // Store adoption form data on database
+    // Notify Success to adopter
+    // Add the form to his dashboard
+    // Auto verify the form submitted
+    // Show the form on owner's dashboard
+}
+
+async function getScheduleMeet(req, res) {
+    // Get Adopter details
+    // Show the time when owner is available
+}
+
+async function scheduleMeet(req, res) {
+    // Get Adopter details
+    // Show the time when owner is available
+    // Send the data to owner for confirmation
+}
+
 module.exports = {
+    getSearch,
+    getDogs,
+    getCats,
+    getBreed,
     getPetProfiles,
     getPetDetails,
     getPetAdd,
@@ -295,4 +364,8 @@ module.exports = {
     getPetEdit,
     updatePet,
     deletePet,
+    getAdopt,
+    adoptPet,
+    getScheduleMeet,
+    scheduleMeet,
 };

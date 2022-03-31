@@ -77,24 +77,52 @@ class Pets {
             .updateOne({ _id: ObjectId(pid) }, { $set: pet });
     }
 
-    getAllPetsByType(type) {
-        return db.getDb().collection("pets").find({ type: type }).toArray();
+    getAllPetsByType(type, startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ type: type })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
-    getAllPetsByBreed(breed) {
-        return db.getDb().collection("pets").find({ breed: breed }).toArray();
+    getAllPetsByBreed(breed, startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ breed: breed })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
     deleteMyPets(uid) {
         return db.getDb().collection("pets").deleteMany({ uid: uid });
     }
 
-    getAllPetsByPrice(price) {
-        return db.getDb().collection("pets").find({ price: price }).toArray();
+    getAllPetsByPrice(price, startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ price: price })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
-    getAllPetsByGender(gender) {
-        return db.getDb().collection("pets").find({ gender: gender }).toArray();
+    getAllPetsByGender(gender, startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ gender: gender })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 }
 
