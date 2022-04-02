@@ -426,7 +426,6 @@ async function addAnimal(req, res) {
         avg_height,
         avg_weight,
         description,
-        images,
         health,
         caring_health,
         caring_grooming,
@@ -434,6 +433,12 @@ async function addAnimal(req, res) {
         caring_training,
         caring_nutrition,
     } = req.body;
+
+    const uploadedImages = req.files;
+    const images = [];
+    for (let image of uploadedImages) {
+        images.push(image.path);
+    }
 
     const animal = {
         type,
@@ -567,7 +572,6 @@ async function updateAnimal(req, res) {
         avg_height,
         avg_weight,
         description,
-        images,
         health,
         caring_health,
         caring_grooming,
@@ -575,6 +579,13 @@ async function updateAnimal(req, res) {
         caring_training,
         caring_nutrition,
     } = req.body;
+
+    const uploadedImages = req.files;
+
+    const images = [];
+    for (let image of uploadedImages) {
+        images.push(image.path);
+    }
 
     const animal = {
         type,
@@ -620,6 +631,10 @@ async function updateAnimal(req, res) {
             nutrition: caring_nutrition,
         },
     };
+
+    if (images.length > 0) {
+        animal.images = images;
+    }
 
     try {
         const animalObj = new Animal();
