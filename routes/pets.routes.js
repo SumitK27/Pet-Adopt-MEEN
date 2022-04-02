@@ -6,7 +6,7 @@ const Pet = require("../controllers/pet.controller");
 router.get("/find", Pet.getSearch);
 
 router.get("/find/:type", Pet.getByType);
-// router.get("/find/breed/:breed", Pet.getBreed);
+router.get("/find/breed/:breed", Pet.getByBreed);
 
 // * Pet Recommendation
 // router.get("/recommend", baseController.getRecommend);

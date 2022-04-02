@@ -45,6 +45,14 @@ class Pets {
         return await collection.count();
     }
 
+    async getCountByBreed(breed) {
+        const collection = await db
+            .getDb()
+            .collection("pets")
+            .find({ breed: breed });
+        return await collection.count();
+    }
+
     getAllPets(startFrom, perPage) {
         return db
             .getDb()
