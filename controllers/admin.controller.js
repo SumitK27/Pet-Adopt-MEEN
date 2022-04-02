@@ -333,20 +333,20 @@ async function getAllAnimals(req, res) {
 }
 
 async function getAnimal(req, res) {
-    if (!res.locals.isAuth) {
-        res.redirect("/login");
-        return;
-    }
+    // if (!res.locals.isAuth) {
+    //     res.redirect("/login");
+    //     return;
+    // }
 
-    if (!res.locals.uid) {
-        redirect("/login");
-        return;
-    }
+    // if (!res.locals.uid) {
+    //     redirect("/login");
+    //     return;
+    // }
 
-    if (!res.locals.isAdmin) {
-        res.render("error/401");
-        return;
-    }
+    // if (!res.locals.isAdmin) {
+    //     res.render("error/401");
+    //     return;
+    // }
 
     let animal;
     try {
