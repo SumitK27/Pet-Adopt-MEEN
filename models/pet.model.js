@@ -37,6 +37,14 @@ class Pets {
         return await collection.countDocuments();
     }
 
+    async getCountByType(type) {
+        const collection = await db
+            .getDb()
+            .collection("pets")
+            .find({ type: type });
+        return await collection.count();
+    }
+
     getAllPets(startFrom, perPage) {
         return db
             .getDb()

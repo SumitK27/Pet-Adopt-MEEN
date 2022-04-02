@@ -13,16 +13,15 @@ async function getSearch(req, res) {
     res.render("users/search", { petData, pages, currentPage });
 }
 
-async function getDogs(req, res) {
+async function getByType(req, res) {
+    const type = req.params.type;
+    const currentPage = req.query.page;
     const pet = new Pet();
-    const petData = await pet.getAllPetsByType("dog");
-    res.render("users/search", { petData });
-}
+    const count = await pet.getCountByType(type);
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
-async function getCats(req, res) {
-    const pet = new Pet();
-    const petData = await pet.getAllPetsByType("cat");
-    res.render("users/search", { petData });
+    const petData = await pet.getAllPetsByType(type, startFrom, perPage);
+    res.render("users/search", { petData, pages, currentPage });
 }
 
 async function getBreed(req, res) {
@@ -354,8 +353,7 @@ async function scheduleMeet(req, res) {
 
 module.exports = {
     getSearch,
-    getDogs,
-    getCats,
+    getByType,
     getBreed,
     getPetProfiles,
     getPetDetails,

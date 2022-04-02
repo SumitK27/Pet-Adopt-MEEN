@@ -5,9 +5,7 @@ const Pet = require("../controllers/pet.controller");
 // * Find Pages
 router.get("/find", Pet.getSearch);
 
-// ! Pagination Error
-// router.get("/find/dogs", Pet.getDogs);
-// router.get("/find/cats", Pet.getCats);
+router.get("/find/:type", Pet.getByType);
 // router.get("/find/breed/:breed", Pet.getBreed);
 
 // * Pet Recommendation
