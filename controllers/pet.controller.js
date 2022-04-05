@@ -316,7 +316,15 @@ async function getPetDetails(req, res) {
         return;
     }
 
-    res.render("users/pet-details", { petData: petData });
+    const similarPets = await pet.getSimilarCharacteristics(
+        petData._id,
+        petData.characteristics
+    );
+
+    res.render("users/pet-details", {
+        petData: petData,
+        similarPets: similarPets,
+    });
 }
 
 async function getAdopt(req, res) {

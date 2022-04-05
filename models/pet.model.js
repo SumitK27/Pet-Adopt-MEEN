@@ -140,6 +140,23 @@ class Pets {
             .limit(perPage)
             .toArray();
     }
+
+    getSimilarCharacteristics(currentId, characteristics) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find(
+                {
+                    $and: [
+                        { characteristics: { $in: characteristics } },
+                        { _id: { $ne: ObjectId(currentId) } },
+                    ],
+                },
+                { $orderby: { characteristics: -1 } }
+            )
+            .limit(3)
+            .toArray();
+    }
 }
 
 module.exports = Pets;
