@@ -2,11 +2,19 @@ const { ObjectId } = require("mongodb");
 const db = require("../data/database");
 
 class Animal {
-    constructor() {}
+    async getCount() {
+        return await db.getDb().collection("animals").countDocuments();
+    }
 
-    async getAllAnimals() {
-        let animals = await db.getDb().collection("animals").find().toArray();
-        return animals;
+    async getAllAnimals(startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("animals")
+            .find({})
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
     async getAnimal(id) {
@@ -50,7 +58,7 @@ class Animal {
         let animal = await db
             .getDb()
             .collection("animals")
-            .findOne({ breed: breed });
+            .findOne({ breedName: breed });
         return animal;
     }
 

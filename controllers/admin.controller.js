@@ -319,17 +319,27 @@ async function getAllAnimals(req, res) {
         return;
     }
 
-    let animals;
+    const currentPage = req.query.page;
+    let animalData;
+    let totalPages;
     try {
-        let animalObj = new Animal();
-        animals = await animalObj.getAllAnimals();
+        const animal = new Animal();
+        const count = await animal.getCount();
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+        animalData = await animal.getAllAnimals(startFrom, perPage);
+        totalPages = pages;
     } catch (error) {
         console.log(error);
         res.render("error/500");
         return;
     }
 
-    res.render("admin/animals", { animalData: animals });
+    res.render("admin/animals", {
+        animalData: animalData,
+        pages: totalPages,
+        currentPage,
+    });
 }
 
 async function getAnimal(req, res) {

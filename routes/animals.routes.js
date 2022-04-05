@@ -4,7 +4,7 @@ const router = express.Router();
 
 // * Animal Information
 router.get("/info/animals", animalController.getAnimals);
-router.get("/info/animal/:id", animalController.getAnimal);
+router.get("/info/animal/:breed", animalController.getAnimal);
 // router.get("/info/species/:species", animalController.getSpeciesInfo);
 
 // * Animal Recognition

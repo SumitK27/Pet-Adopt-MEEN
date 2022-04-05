@@ -48,8 +48,6 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [ ] Auto Application Validation
     -   [ ] Uploading Image for Recognition
     -   [ ] Get Breed name from Image
-    -   [ ] Add Populate Sample Data Endpoint
-    -   [ ] Add APIs for User and Pet related routes
 
 ## **TODO**
 
