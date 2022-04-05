@@ -125,7 +125,7 @@
                                                     class="pl-6 text-justify border-t-2 border-gray-400"
                                                 >
                                                     <%
-                                                    if(petData.characteristics)
+                                                    if(petData.characteristics && petData.characteristics.length > 0) 
                                                     { for(let characteristic of
                                                     petData.characteristics) {
                                                     %> <%=

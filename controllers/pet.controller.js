@@ -116,7 +116,7 @@ async function getPetEdit(req, res) {
 }
 
 async function addPet(req, res) {
-    const {
+    let {
         name,
         age,
         gender,
@@ -130,6 +130,7 @@ async function addPet(req, res) {
         giveaway,
         price,
     } = req.body;
+    characteristics = characteristics ? characteristics : [];
     const uploadedImages = req.files;
     const userId = res.locals.uid;
 
@@ -187,7 +188,7 @@ async function addPet(req, res) {
 
 async function updatePet(req, res) {
     const petId = req.params.id;
-    const {
+    let {
         name,
         age,
         gender,
@@ -207,6 +208,8 @@ async function updatePet(req, res) {
         country,
         postal,
     } = req.body;
+    characteristics = characteristics != null ? characteristics : [];
+
     const uploadedImages = req.files;
     const userId = res.locals.uid;
 

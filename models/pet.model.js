@@ -142,6 +142,16 @@ class Pets {
     }
 
     getSimilarCharacteristics(currentId, characteristics) {
+        if (characteristics.length === 0) {
+            return db
+                .getDb()
+                .collection("pets")
+                .find({ _id: { $ne: ObjectId(currentId) } })
+                .sort({ _id: -1 })
+                .limit(3)
+                .toArray();
+        }
+
         return db
             .getDb()
             .collection("pets")
