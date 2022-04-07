@@ -31,7 +31,6 @@ router.get("/profile/delete", userController.deleteProfile);
 router.get("/user/:id", userController.getUser);
 
 router.get("/pet-profile", petController.getPetProfiles);
-
 router.get("/pet-profile/add", petController.getPetAdd);
 router.post("/pet-profile/add", upload.array("images"), petController.addPet);
 
@@ -41,7 +40,8 @@ router.post(
     upload.array("images"),
     petController.updatePet
 );
-
 router.get("/pet-profile/delete/:id", petController.deletePet);
+
+router.get("/wishlist", petController.getWishlist);
 
 module.exports = router;

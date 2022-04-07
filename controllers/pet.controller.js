@@ -330,6 +330,76 @@ async function getPetDetails(req, res) {
     });
 }
 
+async function getWishlist(req, res) {
+    const userId = res.locals.uid;
+    const currentPage = req.query.page;
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    if (!userData) {
+        res.redirect("/login");
+    }
+
+    const pet = new Pet();
+    const wishlistPets = [];
+
+    for (let petId of userData.wishlist) {
+        const petProfile = await pet.getPetById(petId);
+        wishlistPets.push(petProfile);
+    }
+
+    const count = wishlistPets.length;
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+    res.render("users/wishlist", {
+        wishlist: wishlistPets,
+        pages,
+        currentPage,
+    });
+}
+
+async function addToWishlist(req, res) {
+    const petId = req.params.id;
+    const userId = res.locals.uid;
+
+    if (!userId) {
+        return res.redirect("/login");
+    }
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    if (!userData.wishlist) {
+        userData.wishlist = [petId];
+    } else {
+        userData.wishlist.push(petId);
+    }
+
+    user.updateUser(userId, userData);
+
+    return res.redirect("/wishlist");
+}
+
+async function removeFromWishlist(req, res) {
+    const petId = req.params.id;
+    const userId = res.locals.uid;
+
+    if (!userId) {
+        return res.redirect("/login");
+    }
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    const index = userData.wishlist.indexOf(petId);
+    userData.wishlist.splice(index, 1);
+
+    user.updateUser(userId, userData);
+
+    return res.redirect("/wishlist");
+}
+
 async function getAdopt(req, res) {
     const petId = req.params.id;
 
@@ -378,6 +448,9 @@ module.exports = {
     getPetEdit,
     updatePet,
     deletePet,
+    getWishlist,
+    addToWishlist,
+    removeFromWishlist,
     getAdopt,
     adoptPet,
     getScheduleMeet,
