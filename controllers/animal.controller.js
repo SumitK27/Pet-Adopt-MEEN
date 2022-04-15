@@ -23,7 +23,25 @@ async function getAnimal(req, res) {
     res.render("shared/animal-details", { animalData });
 }
 
+async function getScan(req, res) {
+    res.render("shared/scan");
+}
+
+async function postScan(req, res) {
+    const animal = new Animal();
+    const animalData = await animal.getAnimalByBreed(req.body.breed);
+
+    if (!animalData) {
+        res.redirect("/info/animals");
+        return;
+    }
+
+    res.render("shared/animal-details", { animalData });
+}
+
 module.exports = {
     getAnimals,
     getAnimal,
+    getScan,
+    postScan,
 };

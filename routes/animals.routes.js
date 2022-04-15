@@ -8,7 +8,7 @@ router.get("/info/animal/:breed", animalController.getAnimal);
 // router.get("/info/species/:species", animalController.getSpeciesInfo);
 
 // * Animal Recognition
-// router.get("/scan", animalController.getScan);
-// router.post("/scan", animalController.postScan);
+router.get("/scan", animalController.getScan);
+router.post("/scan", animalController.postScan);
 
 module.exports = router;
