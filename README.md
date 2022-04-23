@@ -17,7 +17,7 @@ With the help of Artificial Intelligence this system will make the pet adoption 
     -   [x] Send Feedback
     -   [x] Show User Profiles
     -   [x] Show Pet Profiles
-    -   [ ] Recognize Animal Breed
+    -   [x] Recognize Animal Breed
 -   [-] User Side:
     -   [x] User Profile: Sign up, Login, My Profile, Update, Delete Profile
     -   [x] Pet Profile: Create Profile, View All Profile Created by User, View Profile, Update a Profile, Delete Profile
