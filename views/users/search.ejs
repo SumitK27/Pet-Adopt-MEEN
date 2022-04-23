@@ -12,6 +12,8 @@
             src="https://tailwindui.com/js/iframe.js?id=165e0af3d723efd6d5d8"
             defer=""
         ></script>
+        <script src="/scripts/getGeoCode.js"></script>
+        <script src="/scripts/findNearby.js" defer></script>
     </head>
     <body class="font-sans antialiased bg-gray-200">
         <%- include("../includes/navbar") %>
@@ -98,6 +100,13 @@
                         >
                             Search New Pet
                         </h1>
+                        <input
+                            class="block border border-gray-300 rounded-lg mx-2 pl-8 pr-12 py-3"
+                            placeholder="Enter City Name"
+                            type="search"
+                            name="search"
+                            id="search"
+                        />
 
                         <div class="flex items-center">
                             <div
@@ -306,8 +315,8 @@
                                             pet.images[0].replace("public", "")
                                             %>" alt="<%= pet.name %>"
                                             class="object-cover object-center
-                                            w-full h-full lg:w-full lg:h-full"
-                                            /> <% } %>
+                                            w-full h-96 lg:w-full lg:h-full" />
+                                            <% } %>
                                         </div>
                                         <div class="flex justify-between mt-4">
                                             <div>
