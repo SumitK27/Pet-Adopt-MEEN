@@ -6,8 +6,8 @@ let model;
 
 // Load the model.
 async function init() {
-    const modelURL = "./model/model.json";
-    const metadataURL = "./model/metadata.json";
+    const modelURL = "../model/model.json";
+    const metadataURL = "../model/metadata.json";
     model = await tmImage.load(modelURL, metadataURL);
     console.log("%cModel Loaded!", "color: #7FDBFF; font-weight: bold;");
 }
@@ -22,7 +22,7 @@ breedInput.addEventListener("change", async (e) => {
 
         // Detect Breed from image
         const breedName = await classify(imagePreview);
-        // console.log(breedName);
+        console.log(breedName);
 
         // Display Breed
         if (breedName) {

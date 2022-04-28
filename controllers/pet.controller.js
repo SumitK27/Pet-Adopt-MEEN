@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
+const Adoption = require("../models/adoptionForm.model");
 const pagination = require("../util/pagination");
 
 async function getSearch(req, res) {
@@ -402,10 +403,22 @@ async function removeFromWishlist(req, res) {
 
 async function getAdopt(req, res) {
     const petId = req.params.id;
+    const userId = res.locals.uid;
+
+    if (!userId) {
+        return res.redirect("/login");
+    }
 
     // Fetch Pet Details
+    const pet = new Pet();
+    const petData = await pet.getPetById(petId);
+
     // Fetch Adopter Information
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
     // Populate data on Adoption Form
+    res.render("users/adoption-form", { petData, userData });
 }
 
 async function adoptPet(req, res) {
@@ -420,10 +433,17 @@ async function adoptPet(req, res) {
     }
 
     // Store adoption form data on database
+    const form = req.body;
+    form.adopterId = userId;
+
+    const adoption = new Adoption();
+    adoption.createForm(form);
+
     // Notify Success to adopter
     // Add the form to his dashboard
     // Auto verify the form submitted
     // Show the form on owner's dashboard
+    res.redirect("/applications");
 }
 
 async function getScheduleMeet(req, res) {
