@@ -21,23 +21,17 @@ breedInput.addEventListener("change", async (e) => {
         imagePreview.src = src;
 
         // Detect Breed from image
-        const breedName = await classify(imagePreview);
-        console.log(breedName);
+        let breedName = await classify(imagePreview);
+        breedName = await classify(imagePreview);
 
-        // Display Breed
-        if (breedName) {
-            breedOutput.classList.remove("hidden");
-            breedOutput.classList.remove("bg-red-500");
-            breedOutput.classList.add("block");
-            breedOutput.href = `/info/animal/${breedName}`;
-            breedOutput.innerText = breedName;
-        } else {
-            breedOutput.classList.add("bg-red-500");
-            breedOutput.innerText = "No breed detected";
-            breedOutput.href = "";
-        }
+        breedOutput.classList.remove("hidden");
+        breedOutput.classList.remove("bg-red-500");
+        breedOutput.classList.add("block");
+        breedOutput.href = `/info/animal/${breedName}`;
+        breedOutput.innerText = breedName;
     } else {
         imagePreview.classList.add("hidden");
+        breedOutput.classList.add("hidden");
     }
 });
 
