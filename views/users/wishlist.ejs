@@ -42,9 +42,13 @@
                                             </p>
                                         </div>
                                         <% } else { %> <% for(let pet of
-                                        wishlist) { %> <img src="<%=
-                                        pet.images[0].replace("public", "") %>"
-                                        alt="<%= pet.name %>"> <%= pet.name %>
+                                        wishlist) { %>
+                                        <a href="/pet-details/<%= pet._id %>">
+                                            <img src="<%=
+                                            pet.images[0].replace("public", "")
+                                            %>" alt="<%= pet.name %>"> <%=
+                                            pet.name %>
+                                        </a>
                                         <a
                                             href="/wishlist/<%= pet._id %>/remove"
                                             >Remove</a
