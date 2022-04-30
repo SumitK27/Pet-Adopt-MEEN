@@ -44,4 +44,3 @@
 
 -   User Avatar updating is not working on Admin-side.
 -   Find Page isn't loading if not logged in.
--   Animal Recognition working on developer tools but not directly.

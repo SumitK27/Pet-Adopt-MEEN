@@ -325,7 +325,18 @@ async function getPetDetails(req, res) {
         petData.characteristics
     );
 
+    let isWishlisted;
+
+    if (res.locals.uid) {
+        const user = new User();
+        const userData = await user.getUserDetails(res.locals.uid);
+        isWishlisted = userData.wishlist.includes(petData._id.toString())
+            ? true
+            : false;
+    }
+
     res.render("users/pet-details", {
+        isWishlisted: isWishlisted,
         petData: petData,
         similarPets: similarPets,
     });
@@ -374,7 +385,11 @@ async function addToWishlist(req, res) {
     if (!userData.wishlist) {
         userData.wishlist = [petId];
     } else {
-        userData.wishlist.push(petId);
+        if (userData.wishlist.includes(petId)) {
+            userData.wishlist.splice(userData.wishlist.indexOf(petId), 1);
+        } else {
+            userData.wishlist.push(petId);
+        }
     }
 
     user.updateUser(userId, userData);
