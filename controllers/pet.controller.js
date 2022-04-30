@@ -3,6 +3,7 @@ const Pet = require("../models/pet.model");
 const User = require("../models/user.model");
 const Adoption = require("../models/adoptionForm.model");
 const pagination = require("../util/pagination");
+const { getSentiment } = require("../util/sentiment-analysis");
 
 async function getSearch(req, res) {
     const currentPage = req.query.page;
@@ -450,6 +451,18 @@ async function adoptPet(req, res) {
     // Store adoption form data on database
     const form = req.body;
     form.adopterId = userId;
+    form.adoptionDate = new Date();
+    form.status = "Pending";
+    form.petId = req.params.id;
+
+    const aboutYou = form.aboutYou;
+    const adoptReasonBrief = form.adoptReasonBrief;
+
+    form.score =
+        (getSentiment(aboutYou).analysis4 +
+            getSentiment(adoptReasonBrief).analysis4) /
+        2;
+    console.log(form.score);
 
     const adoption = new Adoption();
     adoption.createForm(form);
