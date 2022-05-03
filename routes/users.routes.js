@@ -44,4 +44,11 @@ router.get("/pet-profile/delete/:id", petController.deletePet);
 
 router.get("/wishlist", petController.getWishlist);
 
+router.get("/applications/sent", petController.getSentApplications);
+router.get("/applications/received", petController.getReceivedApplications);
+router.get("/application/:id/approve", petController.acceptApplication);
+router.get("/application/:id/reject", petController.rejectApplication);
+router.get("/application/:id/delete", petController.deleteApplication);
+router.get("/application/:id", petController.getApplication);
+
 module.exports = router;

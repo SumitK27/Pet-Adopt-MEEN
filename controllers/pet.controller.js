@@ -4,6 +4,7 @@ const User = require("../models/user.model");
 const Adoption = require("../models/adoptionForm.model");
 const pagination = require("../util/pagination");
 const { getSentiment } = require("../util/sentiment-analysis");
+const { ObjectId } = require("mongodb");
 
 async function getSearch(req, res) {
     const currentPage = req.query.page;
@@ -417,6 +418,166 @@ async function removeFromWishlist(req, res) {
     return res.redirect("/wishlist");
 }
 
+async function getApplication(req, res) {
+    const formId = req.params.id;
+    const adoptionForm = new Adoption();
+    const application = await adoptionForm.getFormById(formId);
+
+    if (!application) {
+        res.redirect("/dashboard");
+    }
+
+    res.render("users/application", {
+        petData: [],
+        application: application,
+    });
+}
+
+async function deleteApplication(req, res) {
+    const formId = req.params.id;
+    const userId = res.locals.uid;
+
+    const adoptionForm = new Adoption();
+    const application = await adoptionForm.getFormById(formId);
+
+    if (!application) {
+        res.redirect("/dashboard");
+    }
+
+    if (
+        application.adopterId !== userId ||
+        application.ownerId !== userId ||
+        !res.locals.isAdmin
+    ) {
+        res.redirect("/dashboard");
+    }
+
+    adoptionForm.deleteApplication(formId);
+    res.redirect("/dashboard");
+}
+
+async function acceptApplication(req, res) {
+    const formId = req.params.id;
+    const userId = res.locals.uid;
+    const adoptionForm = new Adoption();
+    const application = await adoptionForm.getFormById(formId);
+
+    if (!application) {
+        res.redirect("/dashboard");
+    }
+
+    if (application.ownerId !== userId) {
+        res.redirect("/dashboard");
+    }
+
+    // const pet = new Pet();
+    // const petData = await pet.getPetById(application.petId);
+
+    // if (!petData) {
+    //     res.redirect("/dashboard");
+    // }
+
+    // const user = new User();
+    // const userData = await user.getUserDetails(application.userId);
+
+    // if (!userData) {
+    //     res.redirect("/dashboard");
+    // }
+
+    adoptionForm.acceptApplication(formId);
+
+    // Send email to user
+    // const email = new Email();
+    // email.sendAcceptedEmail(userData.email, petData.name);
+
+    res.redirect("/dashboard");
+}
+
+async function rejectApplication(req, res) {
+    const formId = req.params.id;
+    const userId = res.locals.uid;
+    const adoptionForm = new Adoption();
+    const application = await adoptionForm.getFormById(formId);
+
+    if (!application) {
+        res.redirect("/dashboard");
+    }
+
+    if (application.ownerId !== userId) {
+        res.redirect("/dashboard");
+    }
+
+    // const pet = new Pet();
+    // const petData = await pet.getPetById(application.petId);
+
+    // if (!petData) {
+    //     res.redirect("/dashboard");
+    // }
+
+    // const user = new User();
+    // const userData = await user.getUserDetails(application.userId);
+
+    // if (!userData) {
+    //     res.redirect("/dashboard");
+    // }
+
+    adoptionForm.rejectApplication(formId);
+
+    // Send email to user
+    // const email = new Email();
+    // email.sendRejectedEmail(userData.email, petData.name);
+
+    res.redirect("/dashboard");
+}
+
+async function getSentApplications(req, res) {
+    const userId = res.locals.uid;
+    const currentPage = req.query.page;
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    if (!userData) {
+        res.redirect("/login");
+    }
+
+    const adoptionForm = new Adoption();
+    const applications = await adoptionForm.getMySubmittedForms(userId);
+
+    const count = applications.length;
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+    res.render("users/applications-sent", {
+        applications: applications,
+        pages,
+        currentPage,
+    });
+}
+
+async function getReceivedApplications(req, res) {
+    const userId = res.locals.uid;
+    const currentPage = req.query.page;
+
+    const user = new User();
+    const userData = await user.getUserDetails(userId);
+
+    if (!userData) {
+        res.redirect("/login");
+    }
+
+    const adoptionForm = new Adoption();
+    const applications = await adoptionForm.getMyReceivedForms(userId);
+
+    const count = applications.length;
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+    res.render("users/applications-received", {
+        applications: applications,
+        pages,
+        currentPage,
+    });
+}
+
 async function getAdopt(req, res) {
     const petId = req.params.id;
     const userId = res.locals.uid;
@@ -439,6 +600,7 @@ async function getAdopt(req, res) {
 
 async function adoptPet(req, res) {
     const userId = res.locals.uid;
+    const petId = req.params.id;
 
     const user = new User();
     const userData = await user.getUserDetails(userId);
@@ -452,26 +614,43 @@ async function adoptPet(req, res) {
     const form = req.body;
     form.adopterId = userId;
     form.adoptionDate = new Date();
-    form.status = "Pending";
-    form.petId = req.params.id;
+    form.userStatus = "Pending";
+    form.petId = petId;
+    const pet = new Pet();
+    const { uid: ownerId, adoptionForms } = await pet.getPetById(petId);
+    form.ownerId = ownerId;
 
     const aboutYou = form.aboutYou;
     const adoptReasonBrief = form.adoptReasonBrief;
 
+    // Auto verify the form submitted
     form.score =
         (getSentiment(aboutYou).analysis4 +
             getSentiment(adoptReasonBrief).analysis4) /
         2;
-    console.log(form.score);
+
+    if (form.score < 0.5) {
+        form.autoStatus = "Rejected";
+    } else {
+        form.autoStatus = "Approved";
+    }
 
     const adoption = new Adoption();
-    adoption.createForm(form);
+    const formId = await adoption.createForm(form);
 
-    // Notify Success to adopter
-    // Add the form to his dashboard
-    // Auto verify the form submitted
     // Show the form on owner's dashboard
-    res.redirect("/applications");
+    if (form.autoStatus === "Approved") {
+        const pet = new Pet();
+        const petData = await pet.getPetById(form.petId);
+        if (!adoptionForms || adoptionForms.length === 0) {
+            adoptionForms = [formId];
+        } else {
+            adoptionForms.push(formId);
+        }
+        pet.updatePet(form.petId, petData);
+    }
+
+    res.redirect("/applications/sent");
 }
 
 async function getScheduleMeet(req, res) {
@@ -499,6 +678,12 @@ module.exports = {
     getWishlist,
     addToWishlist,
     removeFromWishlist,
+    getApplication,
+    deleteApplication,
+    acceptApplication,
+    rejectApplication,
+    getSentApplications,
+    getReceivedApplications,
     getAdopt,
     adoptPet,
     getScheduleMeet,

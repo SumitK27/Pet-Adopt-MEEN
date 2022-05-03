@@ -8,12 +8,7 @@
 -   [-] User Side:
     -   [x] User Profile: Sign up, Login, My Profile, Update, Delete Profile
     -   [x] Pet Profile: Create Profile, View All Profile Created by User, View Profile, Update a Profile, Delete Profile
-    -   [ ] Applications
-        -   [ ] Send Application
-        -   [ ] Check Application Status
-        -   [ ] Withdraw an Application
-        -   [ ] Check Received Application
-        -   [ ] Review and Approve/Reject Application
+    -   [x] Applications: Send Application, Check Application Status, Withdraw an Application, Check Received Application, Review and Approve/Reject Application
 -   [x] Admin Side:
     -   [x] Users: List All, Check & Update User Details, Delete User
     -   [x] Pets: Show All Pet Profiles, Check Pet Profile Details, Update Pet Profile Details, Delete a Pet Profile
@@ -38,9 +33,10 @@
 
 ## **TODO**
 
--   [ ] Application Status
+-   [ ] Improve Views for Application Pages
 
 ## **Bugs**
 
 -   User Avatar updating is not working on Admin-side.
 -   Find Page isn't loading if not logged in.
+-   `ErrorCaptureStackTrace` for Approving, Rejecting and Deleting (with owner's side) Application from adopter's side.
