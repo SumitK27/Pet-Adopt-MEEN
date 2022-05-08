@@ -12,7 +12,6 @@ async function getSearch(req, res) {
     const pet = new Pet();
 
     if (city) {
-        console.log(city);
         const count = await pet.getCountByCity(city);
         const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
