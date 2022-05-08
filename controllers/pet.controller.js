@@ -143,6 +143,7 @@ async function addPet(req, res) {
         characteristics,
         giveaway,
         price,
+        description,
     } = req.body;
     characteristics = characteristics ? characteristics : [];
     const uploadedImages = req.files;
@@ -183,6 +184,7 @@ async function addPet(req, res) {
             country: userData.address.country,
             postalCode: userData.address.postalCode,
         },
+        description,
     };
 
     try {
@@ -343,7 +345,7 @@ async function getPetDetails(req, res) {
     if (res.locals.uid) {
         const user = new User();
         const userData = await user.getUserDetails(res.locals.uid);
-        isWishlisted = userData.wishlist.includes(petData._id.toString())
+        isWishlisted = userData?.wishlist?.includes(petData._id.toString())
             ? true
             : false;
     }

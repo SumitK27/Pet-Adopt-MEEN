@@ -18,7 +18,7 @@
                                 <div class="w-full lg:w-1/2 px-4 py-8">
                                     <% if (animalData.images.length > 0) { %>
                                     <%- include("../includes/image-gallery", {
-                                    images: animalData.images}) %>
+                                    images: animalData.images, suffix: "public"}) %>
                                     <% } %>
                                 </div>
                                 <div class="w-full lg:w-1/2 px-4">
