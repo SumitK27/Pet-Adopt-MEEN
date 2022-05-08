@@ -53,6 +53,14 @@ class Pets {
         return await collection.count();
     }
 
+    async getCountByCity(city) {
+        const collection = await db
+            .getDb()
+            .collection("pets")
+            .find({ "address.city": city });
+        return await collection.count();
+    }
+
     getAllPets(startFrom, perPage) {
         return db
             .getDb()
@@ -109,6 +117,17 @@ class Pets {
             .getDb()
             .collection("pets")
             .find({ breed: breed })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
+    }
+
+    getAllPetsByCity(city, startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ "address.city": city })
             .sort({ _id: -1 })
             .skip(startFrom)
             .limit(perPage)

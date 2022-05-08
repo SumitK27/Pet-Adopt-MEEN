@@ -9,6 +9,7 @@
     -   [x] User Profile: Sign up, Login, My Profile, Update, Delete Profile
     -   [x] Pet Profile: Create Profile, View All Profile Created by User, View Profile, Update a Profile, Delete Profile
     -   [x] Applications: Send Application, Check Application Status, Withdraw an Application, Check Received Application, Review and Approve/Reject Application
+    -   [ ] Recommend Pet based on Questions
 -   [x] Admin Side:
     -   [x] Users: List All, Check & Update User Details, Delete User
     -   [x] Pets: Show All Pet Profiles, Check Pet Profile Details, Update Pet Profile Details, Delete a Pet Profile
@@ -23,17 +24,18 @@
         -   [ ] Check Application Score
     -   [ ] Adoption
     -   [x] Messages: List All, Display & Delete Message
--   [ ] Backend
-    -   [ ] Get Address from GeoLocation
-    -   [ ] Find Pet Profiles Nearby
-    -   [ ] Analyzing Sentiment Value of Application
-    -   [ ] Auto Application Validation
-    -   [ ] Uploading Image for Recognition
-    -   [ ] Get Breed name from Image
+-   [x] Backend
+    -   [x] Get Address from GeoLocation
+    -   [x] Find Pet Profiles Nearby
+    -   [x] Analyzing Sentiment Value of Application
+    -   [x] Auto Application Validation
+    -   [x] Uploading Image for Recognition
+    -   [x] Get Breed name from Image
 
 ## **TODO**
 
 -   [ ] Improve Views for Application Pages
+-   [ ] Find page not loading for first click when user is not logged in
 
 ## **Bugs**
 

@@ -8,7 +8,19 @@ const { ObjectId } = require("mongodb");
 
 async function getSearch(req, res) {
     const currentPage = req.query.page;
+    const city = req.query.city;
     const pet = new Pet();
+
+    if (city) {
+        console.log(city);
+        const count = await pet.getCountByCity(city);
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+
+        const petData = await pet.getAllPetsByCity(city, startFrom, perPage);
+        res.render("users/search", { petData, pages, currentPage });
+        return;
+    }
+
     const count = await pet.getCount();
     const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 

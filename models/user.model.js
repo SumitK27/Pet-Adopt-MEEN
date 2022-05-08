@@ -82,7 +82,9 @@ class User {
 
     async deleteUser(uid) {
         const userData = await this.getUserDetails(uid);
-        fs.unlinkSync(userData.image);
+        if (userData.image) {
+            fs.unlinkSync(userData.image);
+        }
         await db
             .getDb()
             .collection("users")

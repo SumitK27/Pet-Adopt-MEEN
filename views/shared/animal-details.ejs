@@ -16,8 +16,10 @@
                                 <%- include("../includes/breadcrumb", {type:
                                 animalData.type, breed: animalData.breedName}) %>
                                 <div class="w-full lg:w-1/2 px-4 py-8">
+                                    <% if (animalData.images.length > 0) { %>
                                     <%- include("../includes/image-gallery", {
                                     images: animalData.images}) %>
+                                    <% } %>
                                 </div>
                                 <div class="w-full lg:w-1/2 px-4">
                                     <div class="max-w-md mb-6">
@@ -283,6 +285,7 @@
         <!-- End Details -->
 
         <!-- Find Similar -->
+        <!--
         <section class="text-gray-600 body-font">
             <div class="container px-5 lg:px-24 py-24 mx-auto">
                 <div class="flex flex-col text-center w-full mb-20">
@@ -551,6 +554,7 @@
                 </div>
             </div>
         </section>
+        -->
         <!-- End Find Similar -->
         <%- include("../includes/footer") %>
     </body>
