@@ -454,19 +454,20 @@ async function deleteApplication(req, res) {
     const application = await adoptionForm.getFormById(formId);
 
     if (!application) {
-        res.redirect("/dashboard");
+        return res.redirect("/applications/sent");
     }
 
     if (
-        application.adopterId !== userId ||
-        application.ownerId !== userId ||
+        application.adopterId !== userId &&
+        application.ownerId !== userId &&
         !res.locals.isAdmin
     ) {
-        res.redirect("/dashboard");
+        return res.redirect("/applications/sent");
     }
 
-    adoptionForm.deleteApplication(formId);
-    res.redirect("/dashboard");
+    await adoptionForm.deleteApplication(formId);
+    res.redirect("/applications/sent");
+    return;
 }
 
 async function acceptApplication(req, res) {
@@ -476,25 +477,25 @@ async function acceptApplication(req, res) {
     const application = await adoptionForm.getFormById(formId);
 
     if (!application) {
-        res.redirect("/dashboard");
+        res.redirect("/applications/received");
     }
 
     if (application.ownerId !== userId) {
-        res.redirect("/dashboard");
+        res.redirect("/applications/received");
     }
 
     // const pet = new Pet();
     // const petData = await pet.getPetById(application.petId);
 
     // if (!petData) {
-    //     res.redirect("/dashboard");
+    //     res.redirect("/applications/received");
     // }
 
     // const user = new User();
     // const userData = await user.getUserDetails(application.userId);
 
     // if (!userData) {
-    //     res.redirect("/dashboard");
+    //     res.redirect("/applications/received");
     // }
 
     adoptionForm.acceptApplication(formId);
@@ -503,7 +504,7 @@ async function acceptApplication(req, res) {
     // const email = new Email();
     // email.sendAcceptedEmail(userData.email, petData.name);
 
-    res.redirect("/dashboard");
+    res.redirect("/applications/received");
 }
 
 async function rejectApplication(req, res) {
@@ -513,25 +514,25 @@ async function rejectApplication(req, res) {
     const application = await adoptionForm.getFormById(formId);
 
     if (!application) {
-        res.redirect("/dashboard");
+        res.redirect("/applications/received");
     }
 
     if (application.ownerId !== userId) {
-        res.redirect("/dashboard");
+        res.redirect("/applications/received");
     }
 
     // const pet = new Pet();
     // const petData = await pet.getPetById(application.petId);
 
     // if (!petData) {
-    //     res.redirect("/dashboard");
+    //     res.redirect("/applications/received");
     // }
 
     // const user = new User();
     // const userData = await user.getUserDetails(application.userId);
 
     // if (!userData) {
-    //     res.redirect("/dashboard");
+    //     res.redirect("/applications/received");
     // }
 
     adoptionForm.rejectApplication(formId);
@@ -540,7 +541,7 @@ async function rejectApplication(req, res) {
     // const email = new Email();
     // email.sendRejectedEmail(userData.email, petData.name);
 
-    res.redirect("/dashboard");
+    res.redirect("/applications/received");
 }
 
 async function getSentApplications(req, res) {

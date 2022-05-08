@@ -35,10 +35,10 @@
 ## **TODO**
 
 -   [ ] Improve Views for Application Pages
--   [ ] Find page not loading for first click when user is not logged in
+-   [ ] Add Question-based Recommendation System
+-   [ ] Make filters functional for Find Pets Page
 
 ## **Bugs**
 
 -   User Avatar updating is not working on Admin-side.
--   Find Page isn't loading if not logged in.
--   `ErrorCaptureStackTrace` for Approving, Rejecting and Deleting (with owner's side) Application from adopter's side.
+-   Find page not loading for first click when user is not logged in
