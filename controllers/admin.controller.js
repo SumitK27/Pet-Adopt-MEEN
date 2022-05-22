@@ -29,7 +29,7 @@ async function getAllMessages(req, res) {
     try {
         const contact = new Contact();
         const count = await contact.getCount();
-        const { startFrom, perPage, pages } = pagination(count, currentPage, 1);
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 6);
 
         messages = await contact.getAll(startFrom, perPage);
         totalPages = pages;
