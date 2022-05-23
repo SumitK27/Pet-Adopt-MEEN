@@ -4,7 +4,6 @@ const User = require("../models/user.model");
 const Adoption = require("../models/adoptionForm.model");
 const pagination = require("../util/pagination");
 const { getSentiment } = require("../util/sentiment-analysis");
-const { ObjectId } = require("mongodb");
 
 async function getSearch(req, res) {
     const currentPage = req.query.page;
@@ -29,24 +28,26 @@ async function getSearch(req, res) {
 
 async function getByType(req, res) {
     const type = req.params.type;
+    const city = req.query.city;
     const currentPage = req.query.page;
     const pet = new Pet();
     const count = await pet.getCountByType(type);
     const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
     const petData = await pet.getAllPetsByType(type, startFrom, perPage);
-    res.render("users/search", { petData, pages, currentPage });
+    res.render("users/search", { petData, pages, currentPage, city });
 }
 
 async function getByBreed(req, res) {
     const breed = req.params.breed;
+    const city = req.query.city;
     const currentPage = req.query.page;
     const pet = new Pet();
     const count = await pet.getCountByBreed(breed);
     const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
     const petData = await pet.getAllPetsByBreed(breed, startFrom, perPage);
-    res.render("users/search", { petData, pages, currentPage });
+    res.render("users/search", { petData, pages, currentPage, city });
 }
 
 async function getPetProfiles(req, res) {
