@@ -16,7 +16,7 @@ async function getSearch(req, res) {
         const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
         const petData = await pet.getAllPetsByCity(city, startFrom, perPage);
-        res.render("users/search", { petData, pages, currentPage });
+        res.render("users/search", { petData, pages, currentPage, city });
         return;
     }
 
@@ -24,7 +24,7 @@ async function getSearch(req, res) {
     const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
     const petData = await pet.getAllPets(startFrom, perPage);
-    res.render("users/search", { petData, pages, currentPage });
+    res.render("users/search", { petData, pages, currentPage, city });
 }
 
 async function getByType(req, res) {
