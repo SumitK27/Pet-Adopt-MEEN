@@ -1,9 +1,6 @@
 <h3 class="sr-only">Categories</h3>
 <!-- Breed -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -14,16 +11,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Breed
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Breed </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -46,7 +37,7 @@
                     for="filter-category-0"
                     class="ml-3 text-sm text-gray-600"
                 >
-                    New Arrivals
+                    Pug
                 </label>
             </div>
 
@@ -62,7 +53,7 @@
                     for="filter-category-1"
                     class="ml-3 text-sm text-gray-600"
                 >
-                    Sale
+                    Bulldog
                 </label>
             </div>
 
@@ -79,7 +70,7 @@
                     for="filter-category-2"
                     class="ml-3 text-sm text-gray-600"
                 >
-                    Travel
+                    Husky
                 </label>
             </div>
 
@@ -95,7 +86,7 @@
                     for="filter-category-3"
                     class="ml-3 text-sm text-gray-600"
                 >
-                    Organization
+                    Havanese
                 </label>
             </div>
 
@@ -111,7 +102,7 @@
                     for="filter-category-4"
                     class="ml-3 text-sm text-gray-600"
                 >
-                    Accessories
+                    Beagle
                 </label>
             </div>
         </div>
@@ -120,10 +111,7 @@
 <!-- End Breed -->
 
 <!-- Age -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -134,16 +122,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Age
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Age </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -162,10 +144,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Puppy
                 </label>
             </div>
@@ -178,10 +157,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Young
                 </label>
             </div>
@@ -194,10 +170,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-2"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-2" class="ml-3 text-sm text-gray-600">
                     Adult
                 </label>
             </div>
@@ -210,10 +183,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-3"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-3" class="ml-3 text-sm text-gray-600">
                     Senior
                 </label>
             </div>
@@ -223,10 +193,7 @@
 <!-- End Age -->
 
 <!-- Size -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -237,16 +204,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Size
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Size </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -265,10 +226,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Small
                 </label>
             </div>
@@ -281,10 +239,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Medium
                 </label>
             </div>
@@ -297,10 +252,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-2"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-2" class="ml-3 text-sm text-gray-600">
                     Large
                 </label>
             </div>
@@ -313,10 +265,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-3"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-3" class="ml-3 text-sm text-gray-600">
                     Extra Large
                 </label>
             </div>
@@ -326,10 +275,7 @@
 <!-- End Size -->
 
 <!-- Gender -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -340,16 +286,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Gender
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Gender </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -368,10 +308,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Male
                 </label>
             </div>
@@ -384,10 +321,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Female
                 </label>
             </div>
@@ -397,10 +331,7 @@
 <!-- End Gender -->
 
 <!-- Good With -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -411,16 +342,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Good With
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Good With </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -439,10 +364,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Kids
                 </label>
             </div>
@@ -455,10 +377,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Other Pets
                 </label>
             </div>
@@ -468,10 +387,7 @@
 <!-- End Good With -->
 
 <!-- Coat Length -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -482,16 +398,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Coat Length
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Coat Length </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -510,10 +420,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Hairless
                 </label>
             </div>
@@ -526,10 +433,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Short
                 </label>
             </div>
@@ -542,10 +446,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-2"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-2" class="ml-3 text-sm text-gray-600">
                     Medium
                 </label>
             </div>
@@ -558,10 +459,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-3"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-3" class="ml-3 text-sm text-gray-600">
                     Long
                 </label>
             </div>
@@ -574,10 +472,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-4"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-4" class="ml-3 text-sm text-gray-600">
                     Wire
                 </label>
             </div>
@@ -590,10 +485,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-5"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-5" class="ml-3 text-sm text-gray-600">
                     Curly
                 </label>
             </div>
@@ -603,10 +495,7 @@
 <!-- End Coat Length -->
 
 <!-- Color -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -617,16 +506,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Color
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
+            <span class="font-medium text-gray-900"> Color </span>
+            <span class="flex items-center ml-6">
                 <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -645,10 +528,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-0" class="ml-3 text-sm text-gray-600">
                     White
                 </label>
             </div>
@@ -661,10 +541,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-1" class="ml-3 text-sm text-gray-600">
                     Beige
                 </label>
             </div>
@@ -678,10 +555,7 @@
                     checked=""
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-2"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-2" class="ml-3 text-sm text-gray-600">
                     Blue
                 </label>
             </div>
@@ -694,10 +568,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-3"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-3" class="ml-3 text-sm text-gray-600">
                     Brown
                 </label>
             </div>
@@ -710,10 +581,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-4"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-4" class="ml-3 text-sm text-gray-600">
                     Green
                 </label>
             </div>
@@ -726,10 +594,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-color-5"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-color-5" class="ml-3 text-sm text-gray-600">
                     Purple
                 </label>
             </div>
@@ -739,10 +604,7 @@
 <!-- End Color -->
 
 <!-- Trained -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -753,16 +615,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Trained
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
+            <span class="font-medium text-gray-900"> Trained </span>
+            <span class="flex items-center ml-6">
                 <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -810,10 +666,7 @@
 <!-- End Trained -->
 
 <!-- Buy / Adopt -->
-<div
-    x-data="{ open: false }"
-    class="py-6 border-b border-gray-200"
->
+<div x-data="{ open: false }" class="py-6 border-b border-gray-200">
     <h3 class="flow-root -my-3">
         <button
             type="button"
@@ -824,16 +677,10 @@
             aria-expanded="true"
             x-bind:aria-expanded="open.toString()"
         >
-            <span
-                class="font-medium text-gray-900"
-            >
-                Adopt / Buy
-            </span>
-            <span
-                class="flex items-center ml-6"
-            >
-            <i class="fas fa-plus" x-show="!(open)"></i>
-            <i class="fas fa-minus" x-show="open"></i>
+            <span class="font-medium text-gray-900"> Adopt / Buy </span>
+            <span class="flex items-center ml-6">
+                <i class="fas fa-plus" x-show="!(open)"></i>
+                <i class="fas fa-minus" x-show="open"></i>
             </span>
         </button>
     </h3>
@@ -852,10 +699,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-0"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-0" class="ml-3 text-sm text-gray-600">
                     Adopt
                 </label>
             </div>
@@ -868,10 +712,7 @@
                     type="checkbox"
                     class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                 />
-                <label
-                    for="filter-size-1"
-                    class="ml-3 text-sm text-gray-600"
-                >
+                <label for="filter-size-1" class="ml-3 text-sm text-gray-600">
                     Buy
                 </label>
             </div>
