@@ -1,9 +1,9 @@
 <header class="text-gray-600 body-font">
     <div
-        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+        class=" bg-transparent mx-auto flex flex-wrap py-3 flex-col md:flex-row items-center"
     >
-        <div
-            class="w-full text-white bg-indigo-600 shadow-xl dark-mode:text-gray-200 dark-mode:bg-gray-800"
+        <div 
+            class="w-full text-slate-50 dark-mode:text-gray-200 dark-mode:bg-gray-800 "
         >
             <div
                 x-data="{ open: false }"
@@ -12,17 +12,17 @@
                 <div class="p-4 flex flex-row items-center justify-between">
                     <a
                         href="/"
-                        class="text-3xl md:text-base font-semibold tracking-widest rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
+                        class="text-3xl md:text-base font-semibold tracking-widest rounded-lg focus:outline-none focus:shadow-outline text-indigo-600"
                         style="font-family: lobster"
                     >
                         <i
-                            class="fas fa-paw text-md bg-white text-center align-middle p-2 w-8 h-8 text-indigo-500 rounded-full"
+                            class="fas fa-paw text-md bg-indigo-600 text-center align-middle p-2 w-8 h-8 text-white rounded-full"
                         >
                         </i>
                         Peta
                     </a>
                     <button
-                        class="md:hidden rounded-lg focus:outline-none focus:shadow-outline"
+                        class="md:hidden rounded-lg focus:outline-none focus:shadow-outline "
                         @click="open = !open"
                     >
                         <i x-show="!open" class="fas fa-bars text-xl"></i>

@@ -4,7 +4,7 @@
         <title>Pet Details</title>
         <script src="/scripts/imageGallerySelector.js" defer></script>
     </head>
-    <body class="bg-slate-200">
+    <body class="">
         <%- include("../includes/navbar") %>
         <!-- Details -->
         <section class="text-gray-600 body-font overflow-hidden">
@@ -21,7 +21,17 @@
                                     images: petData.images, suffix: "public"}) %>
                                     <% } %>
                                 </div>
-                                <div class="w-full lg:w-1/2 px-4">
+                                <div class="w-full lg:w-1/2 px-4 shadow-2xl"
+                                style="position: relative;">
+                                    <div 
+                                    style="
+                                    position: absolute;
+                                    background-color: #3730a3;
+                                    left: 0px;
+                                    width: 100%;
+                                    height: 100%;
+                                    clip-path: ellipse(62% 38% at 51% 100%);
+                                    "></div>
                                     <div class="max-w-md mb-6">
                                         <h2
                                             class="mt-6 mb-4 text-xl md:text-2xl lg:text-3xl font-heading font-medium"
@@ -52,7 +62,8 @@
                                             <%= petData.description %>
                                         </p>
                                     </div>
-                                    <div class="flex flex-wrap">
+                                    <div class="flex flex-wrap"
+                                    style="position: relative;">
                                         <span
                                             class="mb-3 text-lg w-full lg:w-1/2"
                                         >
@@ -73,7 +84,8 @@
                                             </span>
                                         </h4>
                                     </div>
-                                    <div class="mb-6">
+                                    <div class="mb-6"
+                                    style="position: relative;">
                                         <h4
                                             class="mb-3 font-heading font-medium"
                                         >
@@ -83,7 +95,8 @@
                                             >
                                         </h4>
                                     </div>
-                                    <div class="flex flex-wrap -mx-2 mb-12">
+                                    <div class="flex flex-wrap -mx-2 mb-12"
+                                    style="position: relative;">
                                         <div
                                             class="w-full md:w-2/3 px-2 mb-2 md:mb-0"
                                         >
@@ -145,7 +158,7 @@
                                                 </span>
                                             </details>
                                             <details
-                                                class="flex w-full lg:w-1/2 pr-6 py-4 justify-between items-center leading-7 rounded-2xl border-2 border-blueGray-200"
+                                                class="flex w-full lg:w-1/2 pr-6 py-4 mb-2 justify-between items-center leading-7 rounded-2xl border-2 border-gray-200"
                                             >
                                                 <summary
                                                     class="text-lg font-heading font-medium"
@@ -235,13 +248,21 @@
                                 <a  href="/pet-details/<%= similarPet._id %>">
                                     <div
                                         class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden"
-                                    >
+                                    style="position: relative"
+                                        >
                                         <img
                                             class="lg:h-48 md:h-36 w-full object-cover object-center"
                                             src="<%= similarPet.images[0].replace("public", "") %>"
                                             alt="blog"
                                         />
-                                        <div class="p-6">
+                                        <div class="p-6" style="
+                                        position: absolute;
+                                        background-color: #3730a3;
+                                        left: 0px;
+                                        width: 100%;
+                                        height: 100%;
+                                        clip-path: ellipse(62% 38% at 51% 100%);
+                                        ">
                                             <h2
                                                 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
                                             >
@@ -282,8 +303,7 @@
                                                             cx="12"
                                                             cy="12"
                                                             r="3"
-                                                        ></circle></svg
-                                                    >1.2K
+                                                        ></circle></svg >1.2K
                                                 </span>
                                                 <span
                                                     class="text-gray-400 inline-flex items-center leading-none text-sm"
@@ -299,8 +319,7 @@
                                                     >
                                                         <path
                                                             d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"
-                                                        ></path></svg
-                                                    >6
+                                                        ></path></svg>6
                                                 </span>
                                             </div>
                                         </div>
