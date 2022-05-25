@@ -14,14 +14,7 @@
     -   [x] Users: List All, Check & Update User Details, Delete User
     -   [x] Pets: Show All Pet Profiles, Check Pet Profile Details, Update Pet Profile Details, Delete a Pet Profile
     -   [x] Animals: Show All Animals Profiles, Check Animal Profile Details, Update Animal Profile Details, Delete a Animal Profile
-    -   [ ] Applications
-        -   [ ] Show All Applications
-        -   [ ] Show Approved Applications
-        -   [ ] Show Pending Applications
-        -   [ ] Show Rejected Applications
-        -   [ ] Show Specific Application
-        -   [ ] Update Application Status
-        -   [ ] Check Application Score
+    -   [x] Applications: Show All Applications, Show Approved / Pending / Rejected Applications, Show Specific Application, Update Application Status, Check Application Score
     -   [ ] Adoption
     -   [x] Messages: List All, Display & Delete Message
 -   [x] Backend
@@ -37,8 +30,9 @@
 -   [ ] Improve Views for Application Pages
 -   [ ] Add Question-based Recommendation System
 -   [ ] Make filters functional for Find Pets Page
+-   [ ] After Application Approved, mark pet profile as adopted (hidden), change pet owner to adopter, remove profile from old adopter.
 
 ## **Bugs**
 
 -   User Avatar updating is not working on Admin-side.
--   Find page not loading for first click when user is not logged in
+-   Pet details has color field which is never set in the profile.
