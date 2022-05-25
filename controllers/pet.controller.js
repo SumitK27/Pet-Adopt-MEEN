@@ -433,6 +433,11 @@ async function removeFromWishlist(req, res) {
 }
 
 async function getApplication(req, res) {
+    const userId = res.locals.uid;
+    if (!userId) {
+        return res.redirect("/");
+    }
+
     const formId = req.params.id;
     const adoptionForm = new Adoption();
     const application = await adoptionForm.getFormById(formId);
