@@ -7,8 +7,15 @@ class Adoption {
         return await collection.countDocuments();
     }
 
-    getAllForms() {
-        return db.getDb().collection("adoptionForm").find({}).toArray();
+    getAllForms(startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("adoptionForm")
+            .find({})
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
     }
 
     getMySubmittedForms(adopterId) {

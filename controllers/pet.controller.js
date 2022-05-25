@@ -467,7 +467,16 @@ async function deleteApplication(req, res) {
     }
 
     await adoptionForm.deleteApplication(formId);
-    res.redirect("/applications/sent");
+    if (!res.locals.isAdmin && application.adopterId === userId) {
+        res.redirect("/applications/sent");
+        return;
+    }
+
+    if (!res.locals.isAdmin && application.ownerId === userId) {
+        res.redirect("/applications/received");
+        return;
+    }
+    res.redirect("/applications");
     return;
 }
 
@@ -481,7 +490,7 @@ async function acceptApplication(req, res) {
         res.redirect("/applications/received");
     }
 
-    if (application.ownerId !== userId) {
+    if (application.ownerId !== userId && !res.locals.isAdmin) {
         res.redirect("/applications/received");
     }
 
@@ -505,7 +514,11 @@ async function acceptApplication(req, res) {
     // const email = new Email();
     // email.sendAcceptedEmail(userData.email, petData.name);
 
-    res.redirect("/applications/received");
+    if (!res.locals.isAdmin) {
+        res.redirect("/applications/received");
+        return;
+    }
+    res.redirect("/applications");
 }
 
 async function rejectApplication(req, res) {
@@ -518,7 +531,7 @@ async function rejectApplication(req, res) {
         res.redirect("/applications/received");
     }
 
-    if (application.ownerId !== userId) {
+    if (application.ownerId !== userId && !res.locals.isAdmin) {
         res.redirect("/applications/received");
     }
 
@@ -542,7 +555,11 @@ async function rejectApplication(req, res) {
     // const email = new Email();
     // email.sendRejectedEmail(userData.email, petData.name);
 
-    res.redirect("/applications/received");
+    if (!res.locals.isAdmin) {
+        res.redirect("/applications/received");
+        return;
+    }
+    res.redirect("/applications");
 }
 
 async function getSentApplications(req, res) {

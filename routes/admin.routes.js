@@ -36,4 +36,6 @@ router.post(
 );
 router.get("/animal/:id/delete", AdminController.deleteAnimal);
 
+router.get("/applications", AdminController.getApplications);
+
 module.exports = router;

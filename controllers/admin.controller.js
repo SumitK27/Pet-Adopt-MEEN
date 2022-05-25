@@ -5,6 +5,7 @@ const Animal = require("../models/animal.model");
 const db = require("../data/database");
 const bcrypt = require("bcrypt");
 const pagination = require("../util/pagination");
+const Adoption = require("../models/adoptionForm.model");
 
 async function getAllMessages(req, res) {
     const currentPage = req.query.page;
@@ -122,7 +123,7 @@ async function getAllUsers(req, res) {
     try {
         const user = new User();
         const count = await user.getCount();
-        const { startFrom, perPage, pages } = pagination(count, currentPage, 4);
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 5);
 
         users = await user.getAllUsers(startFrom, perPage);
         totalPages = pages;
@@ -686,6 +687,44 @@ async function deleteAnimal(req, res) {
     res.redirect("/animals");
 }
 
+async function getApplications(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    const currentPage = req.query.page || 1;
+    let totalPages;
+    let applications;
+    try {
+        const applicationObj = new Adoption();
+        const count = await applicationObj.getCount();
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+        applications = await applicationObj.getAllForms(startFrom, perPage);
+        totalPages = pages;
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.render("admin/applications", {
+        applications,
+        pages: totalPages,
+        currentPage,
+    });
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
@@ -701,4 +740,5 @@ module.exports = {
     getUpdateAnimal,
     updateAnimal,
     deleteAnimal,
+    getApplications,
 };
