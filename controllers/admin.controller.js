@@ -709,9 +709,17 @@ async function getApplications(req, res) {
     try {
         const applicationObj = new Adoption();
         const count = await applicationObj.getCount();
-        const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
-        applications = await applicationObj.getAllForms(startFrom, perPage);
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 3);
         totalPages = pages;
+        applications = await applicationObj.getAllForms(startFrom, perPage);
+        const user = new User();
+        const pet = new Pet();
+        for (let application of applications) {
+            const owner = await user.getUserDetails(application.ownerId);
+            application.owner = owner;
+            const petDetails = await pet.getPetById(application.petId);
+            application.pet = petDetails;
+        }
     } catch (error) {
         console.log(error);
         res.render("error/500");

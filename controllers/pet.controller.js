@@ -576,8 +576,15 @@ async function getSentApplications(req, res) {
     const adoptionForm = new Adoption();
     const applications = await adoptionForm.getMySubmittedForms(userId);
 
+    const pet = new Pet();
+    for (let application of applications) {
+        const owner = await user.getUserDetails(application.ownerId);
+        application.owner = owner;
+        const petDetails = await pet.getPetById(application.petId);
+        application.pet = petDetails;
+    }
     const count = applications.length;
-    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 2);
 
     res.render("users/applications-sent", {
         applications: applications,
@@ -601,8 +608,15 @@ async function getReceivedApplications(req, res) {
     const applications = await adoptionForm.getMyReceivedForms(userId);
 
     const count = applications.length;
-    const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
+    const { startFrom, perPage, pages } = pagination(count, currentPage, 2);
 
+    const pet = new Pet();
+    for (let application of applications) {
+        const owner = await user.getUserDetails(application.ownerId);
+        application.owner = owner;
+        const petDetails = await pet.getPetById(application.petId);
+        application.pet = petDetails;
+    }
     res.render("users/applications-received", {
         applications: applications,
         pages,

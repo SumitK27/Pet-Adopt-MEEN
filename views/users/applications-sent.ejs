@@ -26,7 +26,7 @@
                             </h5>
                         </div>
                         <div class="p-6">
-                            <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="flex flex-wrap mb-6">
                                 <% if(!applications) { %>
                                 <div class="w-full px-3">
                                     <p class="text-center text-gray-600">
@@ -35,15 +35,66 @@
                                 </div>
                                 <% } else { for(let application of applications)
                                 { %> %>
-                                <div class="w-full md:w-1/2 lg:w-1/3">
+                                <div class="w-full">
                                     <div
                                         class="m-2 p-2 w-full <%= application.userStatus === 'Pending' ? 'bg-orange-500 hover:bg-orange-700' : application.userStatus === 'Approved' ? 'bg-green-500 hover:bg-green-700' : 'bg-red-500 hover:bg-red-700' %> lg:min-h-max text-white shadow-lg rounded-md"
                                     >
                                         <div class="flex items-center">
-                                            <div class="py-1">
-                                                <h3 class="text-lg font-bold">
-                                                    <%-
-                                                    application.applicantName %>
+                                            <div class="py-1 w-full">
+                                                <h3
+                                                    class="text-lg font-bold flex flex-wrap justify-between"
+                                                >
+                                                    <span>
+                                                        Application ID:
+                                                    </span>
+                                                    <a
+                                                        href="/application/<%= application._id %>"
+                                                        class="text-gray-600"
+                                                    >
+                                                        <%= application._id %>
+                                                    </a>
+                                                </h3>
+                                                <h3
+                                                    class="text-lg font-bold flex flex-wrap justify-between"
+                                                >
+                                                    <span>
+                                                        Applicant Name:
+                                                    </span>
+                                                    <a
+                                                        href="/user/<%= application.adopterId %>"
+                                                        class="text-gray-600"
+                                                    >
+                                                        <%=
+                                                        application.applicantName
+                                                        %>
+                                                    </a>
+                                                </h3>
+                                                <h3
+                                                    class="text-lg font-bold flex flex-wrap justify-between"
+                                                >
+                                                    <span> Owner Name: </span>
+                                                    <a
+                                                        href="/user/<%= application.owner._id %>"
+                                                        class="text-gray-600"
+                                                    >
+                                                        <%=
+                                                        application.owner.firstName
+                                                        +
+                                                        application.owner.lastName
+                                                        %>
+                                                    </a>
+                                                </h3>
+                                                <h3
+                                                    class="text-lg font-bold flex flex-wrap justify-between"
+                                                >
+                                                    <span> Pet's Name: </span>
+                                                    <a
+                                                        href="/pet-details/<%= application.petId %>"
+                                                        class="text-gray-600"
+                                                    >
+                                                        <%= application.pet.name
+                                                        %>
+                                                    </a>
                                                 </h3>
                                                 <p
                                                     class="text-sm text-gray-200"
