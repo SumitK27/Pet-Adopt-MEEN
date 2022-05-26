@@ -190,6 +190,39 @@
                                     </div>
                                     <!-- End Size -->
 
+                                    <!-- Color -->
+                                    <div
+                                    class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"
+                                    >
+                                    <label
+                                        for="color"
+                                        class="block text-gray-700 text-sm font-bold mb-2"
+                                    >
+                                        Color
+                                    </label>
+                                    <select
+                                        required
+                                        name="color"
+                                        id="color"
+                                        class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    >
+                                        <option value="" disabled selected>
+                                            Select Color
+                                        </option>
+                                        <option value="white"  <%= petData.color === "white" ? "selected" : "" %>>White</option>
+                                        <option value="black"  <%= petData.color === "black" ? "selected" : "" %>>Black</option>
+                                        <option value="blue"  <%= petData.color === "blue" ? "selected" : "" %>>Blue</option>
+                                        <option value="brown"  <%= petData.color === "brown" ? "selected" : "" %>>Brown</option>
+                                        <option value="golden"  <%= petData.color === "golden" ? "selected" : "" %>>Golden</option>
+                                        <option value="gray"  <%= petData.color === "gray" ? "selected" : "" %>>Gray</option>
+                                        <option value="pink"  <%= petData.color === "pink" ? "selected" : "" %>>Pink</option>
+                                        <option value="silver"  <%= petData.color === "silver" ? "selected" : "" %>>Silver</option>
+                                        <option value="red"  <%= petData.color === "red" ? "selected" : "" %>>Red</option>
+                                        <option value="cream"  <%= petData.color === "cream" ? "selected" : "" %>>Cream</option>
+                                    </select>
+                                    </div>
+                                    <!-- End Color -->
+
                                     <!-- Coat Length -->
                                     <div
                                         class="flex flex-wrap mb-6 px-2 w-full md:w-1/2 lg:w-1/3"

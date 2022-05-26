@@ -30,9 +30,7 @@
 -   [ ] Improve Views for Application Pages
 -   [ ] Add Question-based Recommendation System
 -   [ ] Make filters functional for Find Pets Page
--   [ ] After Application Approved, mark pet profile as adopted (hidden), change pet owner to adopter, remove profile from old adopter.
 
 ## **Bugs**
 
 -   User Avatar updating is not working on Admin-side.
--   Pet details has color field which is never set in the profile.

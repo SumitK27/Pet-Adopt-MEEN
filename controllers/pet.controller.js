@@ -138,6 +138,7 @@ async function addPet(req, res) {
         type,
         breed,
         size,
+        color,
         coatLength,
         trained,
         health,
@@ -170,6 +171,7 @@ async function addPet(req, res) {
         type,
         breed,
         size,
+        color,
         coatLength,
         trained,
         health,
@@ -213,6 +215,7 @@ async function updatePet(req, res) {
         type,
         breed,
         size,
+        color,
         coatLength,
         trained,
         health,
@@ -256,6 +259,7 @@ async function updatePet(req, res) {
         type,
         breed,
         size,
+        color,
         coatLength,
         trained,
         health,
@@ -516,13 +520,13 @@ async function acceptApplication(req, res) {
 
     adoptionForm.acceptApplication(formId);
 
-    // TODO: Change Pet profile to hidden
-    // TODO: Change pet status to adopted
-    // TODO: Change Pet owner to adopter
+    // Change Pet profile to hidden
+    // Change pet status to adopted
+    // Change Pet owner to adopter
     await pet.updatePet(application.petId, {
         isHidden: true,
         status: "adopted",
-        ownerId: application.adopterId,
+        uid: application.adopterId,
     });
 
     // Send email to user
