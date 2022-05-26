@@ -30,7 +30,6 @@
 -   [ ] Improve Views for Application Pages
 -   [ ] Add Question-based Recommendation System
 -   [ ] Make filters functional for Find Pets Page
--   [ ] Reset Sample Data
 
 ## **Bugs**
 

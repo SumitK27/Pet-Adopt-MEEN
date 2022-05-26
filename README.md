@@ -4,8 +4,14 @@
 
 With the help of Artificial Intelligence this system will make the pet adoption process by Analyzing pet breed from image and validate adoption applications through the sentiment value.
 
+Source Code:
+[AI-Based Pet Adoption System (GitHub)](https://github.com/SumitK27/Pet-Adopt-MEEN)
+
 Presentation of the project:
-[https://sumitk27.github.io/AI-Based-Pet-Adoption-Presentation/](https://sumitk27.github.io/AI-Based-Pet-Adoption-Presentation/)
+[AI-Based Pet Adoption System (GitHub)](https://sumitk27.github.io/AI-Based-Pet-Adoption-Presentation/)
+
+Published Paper:
+[AI-Based Pet Adoption System (IRJET)](https://www.irjet.net/archives/V9/i4/IRJET-V9I4298.pdf)
 
 ## **Technologies**
 
@@ -13,3 +19,12 @@ Presentation of the project:
 -   ExpressJS - Wrapper for HTTP server
 -   MongoDB - Database
 -   EJS - Template Language
+
+## **Use**
+
+1. Clone the repository
+2. Navigate to the root directory of the project
+3. Install the dependencies `npm install`
+4. Rename the `sample.env` file to `.env` and fill the details in the file
+5. Start the MongoDB server `mongod`
+6. Run the server `npm start`
