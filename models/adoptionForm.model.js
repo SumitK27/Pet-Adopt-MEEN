@@ -77,6 +77,13 @@ class Adoption {
         const result = await collection.deleteOne({ _id: ObjectId(formId) });
         return result.deletedCount;
     }
+
+    async deleteMyForms(userId) {
+        await db
+            .getDb()
+            .collection("adoptionForm")
+            .deleteMany({ $or: [{ ownerId: userId }, { adopterId: userId }] });
+    }
 }
 
 module.exports = Adoption;

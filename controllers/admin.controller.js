@@ -289,6 +289,8 @@ async function deleteUser(req, res) {
 
     try {
         const pet = new Pet();
+        const adoption = new Adoption();
+        await adoption.deleteMyForms(req.params.id);
         await pet.deleteMyPets(req.params.id);
         await db
             .getDb()
@@ -760,7 +762,6 @@ async function getAdopted(req, res) {
         totalPages = pages;
         adoptions = await pets.getAdoptedPets(startFrom, perPage);
         const user = new User();
-        const pet = new Pet();
         for (let adoption of adoptions) {
             const oldOwner = await user.getUserDetails(adoption.oldOwner);
             adoption.oldOwner = oldOwner;

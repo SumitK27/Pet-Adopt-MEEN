@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const Pet = require("../models/pet.model");
 const authUtil = require("../util/authentication");
 const bcrypt = require("bcrypt");
+const Adoption = require("../models/adoptionForm.model");
 
 async function getDashboard(req, res) {
     if (res.locals.isAuth && res.locals.isAdmin) {
@@ -205,9 +206,10 @@ async function deleteProfile(req, res) {
     }
 
     const pet = new Pet();
+    const adoptionForms = new Adoption();
     try {
         await pet.deleteMyPets(userData._id);
-        // TODO: Delete Applications
+        await adoptionForms.deleteMyForms(userData._id);
         authUtil.destroyUserAuthSession(req);
         await user.deleteUser(userData._id);
     } catch (error) {
