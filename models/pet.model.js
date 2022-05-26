@@ -37,6 +37,15 @@ class Pets {
         return await collection.countDocuments();
     }
 
+    async getAdoptedCount() {
+        const collection = await db
+            .getDb()
+            .collection("pets")
+            .find({ status: "adopted" })
+            .toArray();
+        return await collection.length;
+    }
+
     async getCountByType(type) {
         const collection = await db
             .getDb()
@@ -77,6 +86,17 @@ class Pets {
             .getDb()
             .collection("pets")
             .find({ isHidden: { $ne: true } })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
+    }
+
+    getAdoptedPets(startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ status: "adopted" })
             .sort({ _id: -1 })
             .skip(startFrom)
             .limit(perPage)

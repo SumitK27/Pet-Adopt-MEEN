@@ -526,6 +526,7 @@ async function acceptApplication(req, res) {
     await pet.updatePet(application.petId, {
         isHidden: true,
         status: "adopted",
+        oldOwner: application.ownerId,
         uid: application.adopterId,
     });
 

@@ -6,6 +6,7 @@ const db = require("../data/database");
 const bcrypt = require("bcrypt");
 const pagination = require("../util/pagination");
 const Adoption = require("../models/adoptionForm.model");
+const Pets = require("../models/pet.model");
 
 async function getAllMessages(req, res) {
     const currentPage = req.query.page;
@@ -733,6 +734,50 @@ async function getApplications(req, res) {
     });
 }
 
+async function getAdopted(req, res) {
+    if (!res.locals.isAuth) {
+        res.redirect("/login");
+        return;
+    }
+
+    if (!res.locals.uid) {
+        redirect("/login");
+        return;
+    }
+
+    if (!res.locals.isAdmin) {
+        res.render("error/401");
+        return;
+    }
+
+    const currentPage = req.query.page || 1;
+    let totalPages;
+    let adoptions;
+    try {
+        const pets = new Pets();
+        const count = await pets.getAdoptedCount();
+        const { startFrom, perPage, pages } = pagination(count, currentPage, 3);
+        totalPages = pages;
+        adoptions = await pets.getAdoptedPets(startFrom, perPage);
+        const user = new User();
+        const pet = new Pet();
+        for (let adoption of adoptions) {
+            const oldOwner = await user.getUserDetails(adoption.oldOwner);
+            adoption.oldOwner = oldOwner;
+        }
+    } catch (error) {
+        console.log(error);
+        res.render("error/500");
+        return;
+    }
+
+    res.render("admin/adoption", {
+        adoptions,
+        pages: totalPages,
+        currentPage,
+    });
+}
+
 module.exports = {
     getAllMessages,
     getMessage,
@@ -749,4 +794,5 @@ module.exports = {
     updateAnimal,
     deleteAnimal,
     getApplications,
+    getAdopted,
 };

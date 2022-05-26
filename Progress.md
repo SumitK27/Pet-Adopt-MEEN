@@ -15,7 +15,7 @@
     -   [x] Pets: Show All Pet Profiles, Check Pet Profile Details, Update Pet Profile Details, Delete a Pet Profile
     -   [x] Animals: Show All Animals Profiles, Check Animal Profile Details, Update Animal Profile Details, Delete a Animal Profile
     -   [x] Applications: Show All Applications, Show Approved / Pending / Rejected Applications, Show Specific Application, Update Application Status, Check Application Score
-    -   [ ] Adoption
+    -   [x] Adoption
     -   [x] Messages: List All, Display & Delete Message
 -   [x] Backend
     -   [x] Get Address from GeoLocation
@@ -30,6 +30,7 @@
 -   [ ] Improve Views for Application Pages
 -   [ ] Add Question-based Recommendation System
 -   [ ] Make filters functional for Find Pets Page
+-   [ ] Reset Sample Data
 
 ## **Bugs**
 
