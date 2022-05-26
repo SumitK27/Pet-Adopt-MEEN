@@ -72,6 +72,17 @@ class Pets {
             .toArray();
     }
 
+    getAllPetsAvailable(startFrom, perPage) {
+        return db
+            .getDb()
+            .collection("pets")
+            .find({ isHidden: { $ne: true } })
+            .sort({ _id: -1 })
+            .skip(startFrom)
+            .limit(perPage)
+            .toArray();
+    }
+
     getMyPets(uid) {
         return db.getDb().collection("pets").find({ uid: uid }).toArray();
     }

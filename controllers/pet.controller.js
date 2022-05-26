@@ -22,7 +22,7 @@ async function getSearch(req, res) {
     const count = await pet.getCount();
     const { startFrom, perPage, pages } = pagination(count, currentPage, 8);
 
-    const petData = await pet.getAllPets(startFrom, perPage);
+    const petData = await pet.getAllPetsAvailable(startFrom, perPage);
     res.render("users/search", { petData, pages, currentPage, city });
 }
 
@@ -187,6 +187,7 @@ async function addPet(req, res) {
         },
         description,
     };
+    petData.isHidden = false;
 
     try {
         const pet = new Pet(petData);
@@ -499,12 +500,12 @@ async function acceptApplication(req, res) {
         res.redirect("/applications/received");
     }
 
-    // const pet = new Pet();
-    // const petData = await pet.getPetById(application.petId);
+    const pet = new Pet();
+    const petData = await pet.getPetById(application.petId);
 
-    // if (!petData) {
-    //     res.redirect("/applications/received");
-    // }
+    if (!petData) {
+        res.redirect("/applications/received");
+    }
 
     // const user = new User();
     // const userData = await user.getUserDetails(application.userId);
@@ -514,6 +515,15 @@ async function acceptApplication(req, res) {
     // }
 
     adoptionForm.acceptApplication(formId);
+
+    // TODO: Change Pet profile to hidden
+    // TODO: Change pet status to adopted
+    // TODO: Change Pet owner to adopter
+    await pet.updatePet(application.petId, {
+        isHidden: true,
+        status: "adopted",
+        ownerId: application.adopterId,
+    });
 
     // Send email to user
     // const email = new Email();
